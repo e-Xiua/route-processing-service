@@ -1,6 +1,7 @@
 package com.exiua.processing.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ import jakarta.validation.constraints.Positive;
 /**
  * Configuration properties for gRPC communication with Python MRL-AMIS service
  */
+@Component
 @ConfigurationProperties(prefix = "grpc.python-mrl-amis")
 @Validated
 public class GrpcPythonMrlAmisConfigurationProperties {

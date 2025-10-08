@@ -1,121 +1,47 @@
 {
   "groups": [
     {
-      "name": "cors",
-      "type": "com.exiua.processing.config.CorsConfigurationProperties",
-      "sourceType": "com.exiua.processing.config.CorsConfigurationProperties"
-    },
-    {
       "name": "grpc.python-mrl-amis",
       "type": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties",
       "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
-    },
-    {
-      "name": "processing",
-      "type": "com.exiua.processing.config.ProcessingConfigurationProperties",
-      "sourceType": "com.exiua.processing.config.ProcessingConfigurationProperties"
-    },
-    {
-      "name": "python.mrl-amis",
-      "type": "com.exiua.processing.config.PythonMrlAmisConfigurationProperties",
-      "sourceType": "com.exiua.processing.config.PythonMrlAmisConfigurationProperties"
     }
   ],
   "properties": [
     {
-      "name": "cors.allowed-origins",
-      "type": "java.util.List<java.lang.String>",
-      "sourceType": "com.exiua.processing.config.CorsConfigurationProperties"
-    },
-    {
       "name": "grpc.python-mrl-amis.connection-timeout-seconds",
       "type": "java.lang.Long",
       "description": "Connection timeout in seconds",
-      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties",
-      "defaultValue": 30
+      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
     },
     {
       "name": "grpc.python-mrl-amis.enable-tls",
       "type": "java.lang.Boolean",
       "description": "Enable TLS for gRPC connection",
-      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties",
-      "defaultValue": false
+      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
     },
     {
       "name": "grpc.python-mrl-amis.host",
       "type": "java.lang.String",
       "description": "Host where Python gRPC server is running",
-      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties",
-      "defaultValue": "localhost"
+      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
     },
     {
       "name": "grpc.python-mrl-amis.max-retry-attempts",
       "type": "java.lang.Integer",
       "description": "Maximum retry attempts for failed requests",
-      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties",
-      "defaultValue": 3
+      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
     },
     {
       "name": "grpc.python-mrl-amis.port",
       "type": "java.lang.Integer",
       "description": "Port where Python gRPC server is listening",
-      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties",
-      "defaultValue": 50051
+      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
     },
     {
       "name": "grpc.python-mrl-amis.request-timeout-seconds",
       "type": "java.lang.Long",
       "description": "Request timeout in seconds (should be long for MRL-AMIS processing)",
-      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties",
-      "defaultValue": 600
-    },
-    {
-      "name": "processing.cleanup-after-hours",
-      "type": "java.lang.Integer",
-      "description": "Hours after which temporary files are cleaned up",
-      "sourceType": "com.exiua.processing.config.ProcessingConfigurationProperties",
-      "defaultValue": 2
-    },
-    {
-      "name": "processing.max-concurrent-requests",
-      "type": "java.lang.Integer",
-      "description": "Maximum number of concurrent processing requests",
-      "sourceType": "com.exiua.processing.config.ProcessingConfigurationProperties",
-      "defaultValue": 5
-    },
-    {
-      "name": "processing.temp-data-directory",
-      "type": "java.lang.String",
-      "description": "Directory for temporary data files",
-      "sourceType": "com.exiua.processing.config.ProcessingConfigurationProperties",
-      "defaultValue": "\/tmp\/route-processing"
-    },
-    {
-      "name": "python.mrl-amis.conda-env-name",
-      "type": "java.lang.String",
-      "sourceType": "com.exiua.processing.config.PythonMrlAmisConfigurationProperties"
-    },
-    {
-      "name": "python.mrl-amis.enabled",
-      "type": "java.lang.Boolean",
-      "sourceType": "com.exiua.processing.config.PythonMrlAmisConfigurationProperties",
-      "defaultValue": true
-    },
-    {
-      "name": "python.mrl-amis.script-path",
-      "type": "java.lang.String",
-      "sourceType": "com.exiua.processing.config.PythonMrlAmisConfigurationProperties"
-    },
-    {
-      "name": "python.mrl-amis.timeout-minutes",
-      "type": "java.lang.Integer",
-      "sourceType": "com.exiua.processing.config.PythonMrlAmisConfigurationProperties",
-      "defaultValue": 10
-    },
-    {
-      "name": "python.mrl-amis.working-directory",
-      "type": "java.lang.String",
-      "sourceType": "com.exiua.processing.config.PythonMrlAmisConfigurationProperties"
+      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
     }
   ],
   "hints": []

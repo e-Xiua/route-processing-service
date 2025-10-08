@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties;
@@ -31,12 +30,14 @@ public class GrpcPythonMrlAmisService {
     private static final Logger logger = LoggerFactory.getLogger(GrpcPythonMrlAmisService.class);
     
     private final GrpcPythonMrlAmisConfigurationProperties grpcConfig;
+    private final ProcessingMessageService messageService;
     private ManagedChannel channel;
     private RouteOptimizationServiceGrpc.RouteOptimizationServiceBlockingStub blockingStub;
 
-    @Autowired
-    public GrpcPythonMrlAmisService(GrpcPythonMrlAmisConfigurationProperties grpcConfig) {
+    public GrpcPythonMrlAmisService(GrpcPythonMrlAmisConfigurationProperties grpcConfig,
+                                   ProcessingMessageService messageService) {
         this.grpcConfig = grpcConfig;
+        this.messageService = messageService;
     }
 
     @PostConstruct
@@ -80,43 +81,178 @@ public class GrpcPythonMrlAmisService {
     }
 
     /**
+     * Resultado de una operación de polling
+     */
+    public static class PollingResult {
+        private final JobStatus status;
+        private final String jobId;
+        private final String message;
+        private final float progress;
+        private final RouteOptimization.RouteOptimizationResponse grpcResponse;
+        private final int attempts;
+
+        private PollingResult(Builder builder) {
+            this.status = builder.status;
+            this.jobId = builder.jobId;
+            this.message = builder.message;
+            this.progress = builder.progress;
+            this.grpcResponse = builder.grpcResponse;
+            this.attempts = builder.attempts;
+        }
+
+        // Getters
+        public JobStatus getStatus() { return status; }
+        public String getJobId() { return jobId; }
+        public String getMessage() { return message; }
+        public float getProgress() { return progress; }
+        public RouteOptimization.RouteOptimizationResponse getGrpcResponse() { return grpcResponse; }
+        public int getAttempts() { return attempts; }
+
+        public boolean isCompleted() {
+            return status == JobStatus.COMPLETED;
+        }
+
+        public boolean shouldRetry() {
+            return !status.isFinal();
+        }
+
+        // Builder pattern
+        public static class Builder {
+            private JobStatus status;
+            private String jobId;
+            private String message;
+            private float progress;
+            private RouteOptimization.RouteOptimizationResponse grpcResponse;
+            private int attempts;
+
+            public Builder status(JobStatus status) {
+                this.status = status;
+                return this;
+            }
+
+            public Builder jobId(String jobId) {
+                this.jobId = jobId;
+                return this;
+            }
+
+            public Builder message(String message) {
+                this.message = message;
+                return this;
+            }
+
+            public Builder progress(float progress) {
+                this.progress = progress;
+                return this;
+            }
+
+            public Builder grpcResponse(RouteOptimization.RouteOptimizationResponse grpcResponse) {
+                this.grpcResponse = grpcResponse;
+                return this;
+            }
+
+            public Builder attempts(int attempts) {
+                this.attempts = attempts;
+                return this;
+            }
+
+            public PollingResult build() {
+                return new PollingResult(this);
+            }
+        }
+
+        @Override
+        public String toString() {
+            return String.format("PollingResult{status=%s, jobId='%s', progress=%.1f%%, attempts=%d, message='%s'}",
+                    status, jobId, progress, attempts, message);
+        }
+    }
+
+    /**
+     * Process route optimization using gRPC communication with Python MRL-AMIS model
+     */
+// ...existing code...
+
+    /**
      * Process route optimization using gRPC communication with Python MRL-AMIS model
      */
     public RouteOptimizationResult processRoute(RouteProcessingRequest request) throws Exception {
-        logger.info("=== PROCESSING ROUTE VIA GRPC ===");
-        logger.info("Route ID: {}", request.getRouteId());
-        logger.info("User ID: {}", request.getUserId());
-        logger.info("Number of POIs: {}", request.getPois() != null ? request.getPois().size() : 0);
+        logger.info("╔════════════════════════════════════════════════════════════════");
+        logger.info("║ PROCESSING ROUTE VIA GRPC");
+        logger.info("║ Route ID: {}", request.getRouteId());
+        logger.info("║ User ID: {}", request.getUserId());
+        logger.info("║ Number of POIs: {}", request.getPois() != null ? request.getPois().size() : 0);
+        logger.info("╚════════════════════════════════════════════════════════════════");
+        
+        messageService.enviarMensajeEstado(
+            "Started gRPC processing for route " + request.getRouteId()
+        );
         
         try {
-            // Convert Java request to gRPC request
+            // 1. Convertir solicitud a formato gRPC
             RouteOptimization.RouteOptimizationRequest grpcRequest = 
                     convertToGrpcRequest(request);
             
-            logger.info("=== SENDING GRPC REQUEST TO PYTHON SERVICE ===");
-            logger.info("gRPC Request: {}", grpcRequest.toString());
+            logger.info("→ Sending gRPC request to Python service...");
+            logGrpcRequest(grpcRequest);
             
-            // Call Python service via gRPC with retry logic
-            RouteOptimization.RouteOptimizationResponse grpcResponse = 
+            // 2. Enviar solicitud inicial
+            RouteOptimization.RouteOptimizationResponse initialResponse = 
                     callWithRetry(grpcRequest);
             
-            logger.info("=== RECEIVED GRPC RESPONSE FROM PYTHON SERVICE ===");
-            logger.info("Success: {}", grpcResponse.getSuccess());
-            logger.info("Message: {}", grpcResponse.getMessage());
+            logger.info("← Received initial gRPC response");
+            logGrpcResponse(initialResponse, "INITIAL");
             
-            // Convert gRPC response to Java result
-            RouteOptimizationResult result = convertFromGrpcResponse(grpcResponse);
-            result.setProcessedAt(LocalDateTime.now());
+            // 3. Crear resultado de polling inicial
+            PollingResult pollingResult = GrpcResponseFactory.createPollingResult(initialResponse, 0);
+            logger.info("📊 Polling Result: {}", pollingResult);
             
-            logger.info("Route processing completed successfully via gRPC for route: {}", request.getRouteId());
+            // 4. Si está en cola o procesando, hacer polling
+            if (pollingResult.shouldRetry()) {
+                logger.info("⏳ Job {} is {}, starting polling...", 
+                           pollingResult.getJobId(), pollingResult.getStatus());
+                
+                pollingResult = pollJobUntilComplete(
+                    pollingResult.getJobId(), 
+                    request.getRouteId()
+                );
+            }
+            
+            // 5. Verificar resultado final
+            if (pollingResult.getStatus().isError()) {
+                String errorMsg = String.format(
+                    "Optimization failed with status %s: %s", 
+                    pollingResult.getStatus(), 
+                    pollingResult.getMessage()
+                );
+                logger.error("❌ {}", errorMsg);
+                throw new RuntimeException(errorMsg);
+            }
+            
+            // 6. Convertir a resultado final
+            RouteOptimizationResult result = GrpcResponseFactory.createOptimizationResult(
+                pollingResult.getGrpcResponse()
+            );
+            
+            logger.info("✅ Route processing completed successfully");
+            logger.info("   Score: {}, Distance: {}km, Time: {}min", 
+                       result.getOptimizationScore(),
+                       result.getTotalDistanceKm(),
+                       result.getTotalTimeMinutes());
+            
+            messageService.enviarMensajeResultados(
+                String.format("Completed route %s - Score: %.2f, Distance: %.1fkm",
+                             request.getRouteId(),
+                             result.getOptimizationScore(),
+                             result.getTotalDistanceKm())
+            );
+            
             return result;
             
-        } catch (StatusRuntimeException e) {
-            logger.error("gRPC call failed with status: {}, description: {}", 
-                        e.getStatus().getCode(), e.getStatus().getDescription());
-            throw new RuntimeException("gRPC communication failed: " + e.getStatus().getDescription(), e);
         } catch (Exception e) {
-            logger.error("Error in gRPC route processing", e);
+            logger.error("💥 Error in gRPC route processing", e);
+            messageService.enviarMensajeEstado(
+                "Processing Error for route " + request.getRouteId() + ": " + e.getMessage()
+            );
             throw new RuntimeException("Route processing failed: " + e.getMessage(), e);
         }
     }
@@ -125,6 +261,8 @@ public class GrpcPythonMrlAmisService {
      * Test gRPC connection with health check
      */
     private void testConnection() {
+        String requestId = "health-" + System.currentTimeMillis();
+        
         try {
             RouteOptimization.HealthRequest healthRequest = 
                 RouteOptimization.HealthRequest.newBuilder()
@@ -137,7 +275,20 @@ public class GrpcPythonMrlAmisService {
             
             logger.info("Health check response: healthy={}, status={}, version={}", 
                        healthResponse.getIsHealthy(), healthResponse.getStatus(), healthResponse.getVersion());
+            
+            // Send health check success message
+            messageService.enviarMensajeEstado(
+                "gRPC Health Check - Success: " + healthResponse.getStatus() + 
+                " for " + grpcConfig.getHost() + ":" + grpcConfig.getPort()
+            );
+            
         } catch (Exception e) {
+            // Send health check failure message
+            messageService.enviarMensajeEstado(
+                "gRPC Health Check - Failed: " + e.getMessage() + 
+                " for " + grpcConfig.getHost() + ":" + grpcConfig.getPort()
+            );
+            
             throw new RuntimeException("Health check failed", e);
         }
     }
@@ -149,6 +300,7 @@ public class GrpcPythonMrlAmisService {
             RouteOptimization.RouteOptimizationRequest request) throws Exception {
         
         Exception lastException = null;
+        String requestId = request.getRouteId() + "-retry-" + System.currentTimeMillis();
         
         for (int attempt = 1; attempt <= grpcConfig.getMaxRetryAttempts(); attempt++) {
             try {
@@ -158,6 +310,12 @@ public class GrpcPythonMrlAmisService {
             } catch (StatusRuntimeException e) {
                 lastException = e;
                 logger.warn("gRPC call attempt {} failed: {}", attempt, e.getStatus().getDescription());
+                
+                // Send retry attempt message
+                messageService.enviarMensajeEstado(
+                    "gRPC Retry Attempt " + attempt + "/" + grpcConfig.getMaxRetryAttempts() + 
+                    " for route " + request.getRouteId() + ": " + e.getStatus().getDescription()
+                );
                 
                 if (attempt < grpcConfig.getMaxRetryAttempts()) {
                     // Wait before retry (exponential backoff)
@@ -261,43 +419,76 @@ public class GrpcPythonMrlAmisService {
     /**
      * Convert gRPC response to Java result format
      */
-    private RouteOptimizationResult convertFromGrpcResponse(
-            RouteOptimization.RouteOptimizationResponse response) {
+// ...existing code...
+
+    /**
+     * Factory para convertir respuestas gRPC a resultados Java
+     */
+    private static class GrpcResponseFactory {
         
-        RouteOptimizationResult result = new RouteOptimizationResult();
-        result.setRequestId(response.getRouteId());
-        result.setOptimizedRouteId(response.getRouteId() + "-optimized");
-        result.setAlgorithm("MRL-AMIS-gRPC");
-        
-        if (!response.getSuccess()) {
-            throw new RuntimeException("Python MRL-AMIS optimization failed: " + response.getMessage());
+        /**
+         * Crea un PollingResult desde una respuesta gRPC
+         */
+        public static PollingResult createPollingResult(
+                RouteOptimization.RouteOptimizationResponse response, 
+                int attempts) {
+            
+            String statusStr = response.getStatus();
+            JobStatus status = JobStatus.fromGrpcStatus(statusStr);
+            
+            return new PollingResult.Builder()
+                    .status(status)
+                    .jobId(response.getJobId())
+                    .message(response.getMessage())
+                    .progress(calculateProgress(response.getQueuePosition()))
+                    .grpcResponse(response)
+                    .attempts(attempts)
+                    .build();
         }
         
-        if (response.hasResults()) {
-            RouteOptimization.OptimizationResults results = response.getResults();
+        /**
+         * Convierte una respuesta gRPC completa a RouteOptimizationResult
+         */
+        public static RouteOptimizationResult createOptimizationResult(
+                RouteOptimization.RouteOptimizationResponse response) {
             
-            result.setTotalDistanceKm(results.getTotalDistanceKm());
-            result.setTotalTimeMinutes(results.getTotalTimeMinutes());
-            result.setOptimizationScore(results.getOptimizationScore());
+            RouteOptimizationResult result = new RouteOptimizationResult();
+            result.setRequestId(response.getRouteId());
+            result.setOptimizedRouteId(response.getJobId() + "-optimized");
+            result.setAlgorithm("MRL-AMIS-gRPC");
+            result.setProcessedAt(LocalDateTime.now());
             
-            // Convert optimized sequence
-            List<OptimizedPOI> optimizedPOIs = new ArrayList<>();
-            for (RouteOptimization.OptimizedPOI grpcPOI : results.getOptimizedSequenceList()) {
-                OptimizedPOI optimizedPOI = new OptimizedPOI();
-                optimizedPOI.setPoiId((long) grpcPOI.getPoiId());
-                optimizedPOI.setName(grpcPOI.getPoiName());
-                optimizedPOI.setLatitude(grpcPOI.getLatitude());
-                optimizedPOI.setLongitude(grpcPOI.getLongitude());
-                optimizedPOI.setVisitOrder(grpcPOI.getVisitOrder());
-                optimizedPOI.setEstimatedVisitTime(grpcPOI.getEstimatedVisitTime());
-                optimizedPOI.setArrivalTime(grpcPOI.getArrivalTime());
-                optimizedPOI.setDepartureTime(grpcPOI.getDepartureTime());
-                optimizedPOIs.add(optimizedPOI);
+            if (response.hasResults()) {
+                RouteOptimization.OptimizationResults results = response.getResults();
+                
+                result.setTotalDistanceKm(results.getTotalDistanceKm());
+                result.setTotalTimeMinutes(results.getTotalTimeMinutes());
+                result.setOptimizationScore(results.getOptimizationScore());
+                
+                // Convert optimized sequence
+                List<OptimizedPOI> optimizedPOIs = new ArrayList<>();
+                for (RouteOptimization.OptimizedPOI grpcPOI : results.getOptimizedSequenceList()) {
+                    OptimizedPOI optimizedPOI = new OptimizedPOI();
+                    optimizedPOI.setPoiId((long) grpcPOI.getPoiId());
+                    optimizedPOI.setName(grpcPOI.getPoiName());
+                    optimizedPOI.setLatitude(grpcPOI.getLatitude());
+                    optimizedPOI.setLongitude(grpcPOI.getLongitude());
+                    optimizedPOI.setVisitOrder(grpcPOI.getVisitOrder());
+                    optimizedPOI.setEstimatedVisitTime(grpcPOI.getEstimatedVisitTime());
+                    optimizedPOI.setArrivalTime(grpcPOI.getArrivalTime());
+                    optimizedPOI.setDepartureTime(grpcPOI.getDepartureTime());
+                    optimizedPOIs.add(optimizedPOI);
+                }
+                result.setOptimizedSequence(optimizedPOIs);
             }
-            result.setOptimizedSequence(optimizedPOIs);
+            
+            return result;
         }
         
-        return result;
+        private static float calculateProgress(int queuePosition) {
+            // Estimación simple: mientras menor la posición en cola, mayor el progreso
+            return Math.max(0, 100 - (queuePosition * 10));
+        }
     }
 
     // Reuse existing inner classes from PythonMrlAmisService
@@ -314,6 +505,16 @@ public class GrpcPythonMrlAmisService {
         private String algorithm;
         private Double optimizationScore;
         private LocalDateTime processedAt;
+
+        // Static factory method for success result
+        public static RouteOptimizationResult success(String message, String jobId) {
+            RouteOptimizationResult result = new RouteOptimizationResult();
+            result.setRequestId(jobId);
+            result.setOptimizedRouteId(jobId + "-optimized");
+            result.setAlgorithm("MRL-AMIS-gRPC");
+            // Optionally, you can add a field for message if needed
+            return result;
+        }
 
         // Getters and Setters
         public String getRequestId() { return requestId; }
@@ -362,4 +563,215 @@ public class GrpcPythonMrlAmisService {
         public String getDepartureTime() { return departureTime; }
         public void setDepartureTime(String departureTime) { this.departureTime = departureTime; }
     }
+
+
+    public enum JobStatus {
+
+    QUEUED("Trabajo en cola", false, false),
+    PROCESSING("Procesando", false, false),
+    COMPLETED("Completado exitosamente", true, false),
+    FAILED("Falló", true, true),
+    TIMEOUT("Tiempo agotado", true, true),
+    UNKNOWN("Estado desconocido", false, false);
+
+    private final String description;
+    private final boolean isFinal;
+    private final boolean isError;
+
+    JobStatus(String description, boolean isFinal, boolean isError) {
+        this.description = description;
+        this.isFinal = isFinal;
+        this.isError = isError;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isFinal() {
+        return isFinal;
+    }
+
+    public boolean isError() {
+        return isError;
+    }
+
+    /**
+     * Convierte un string de status de gRPC a enum
+         */
+    public static JobStatus fromGrpcStatus(String grpcStatus) {
+        if (grpcStatus == null || grpcStatus.isEmpty()) {
+            return UNKNOWN;
+        }
+
+        String statusUpper = grpcStatus.toUpperCase().trim();
+        
+        switch (statusUpper) {
+            case "QUEUED":
+                return QUEUED;
+            case "PROCESSING":
+                return PROCESSING;
+            case "COMPLETED", "SUCCESS":
+                return COMPLETED;
+            case "FAILED", "ERROR":
+                return FAILED;
+            case "TIMEOUT":
+                return TIMEOUT;
+            default:
+                return UNKNOWN;
+        }
+    }
+
 }
+
+// ...existing code...
+
+    /**
+     * Hace polling del estado del trabajo hasta que se complete
+     */
+    private PollingResult pollJobUntilComplete(String jobId, String routeId) {
+        int maxAttempts = 60; // 60 intentos
+        int delaySeconds = 5; // 5 segundos entre intentos
+        int totalMaxSeconds = maxAttempts * delaySeconds;
+        
+        logger.info("╔════════════════════════════════════════════════════════════════");
+        logger.info("║ STARTING POLLING FOR JOB: {}", jobId);
+        logger.info("║ Max attempts: {}, Delay: {}s, Total max time: {}s", 
+                   maxAttempts, delaySeconds, totalMaxSeconds);
+        logger.info("╚════════════════════════════════════════════════════════════════");
+        
+        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+            try {
+                logger.info("🔄 Polling attempt {}/{} for job {}", attempt, maxAttempts, jobId);
+                
+                // CORRECCIÓN: Usar el método correcto del proto
+                RouteOptimization.JobStatusRequest statusRequest = 
+                    RouteOptimization.JobStatusRequest.newBuilder()
+                        .setJobId(jobId)
+                        .build();
+                
+                // CORRECCIÓN: Llamar al método getJobStatus (NO getStatus)
+                RouteOptimization.JobStatusResponse statusResponse = 
+                    blockingStub.getJobStatus(statusRequest);
+                
+                logJobStatusResponse(statusResponse, attempt);
+                
+                // Crear resultado de polling
+                PollingResult pollingResult = new PollingResult.Builder()
+                        .status(JobStatus.fromGrpcStatus(statusResponse.getStatus()))
+                        .jobId(jobId)
+                        .message(statusResponse.getMessage())
+                        .progress(statusResponse.getProgress())
+                        .attempts(attempt)
+                        .build();
+                
+                logger.info("📊 {}", pollingResult);
+                
+                // Enviar mensaje de estado a RabbitMQ
+                messageService.enviarMensajeEstado(String.format(
+                    "Route %s: %s (%.1f%%) - Attempt %d/%d",
+                    routeId, 
+                    pollingResult.getStatus().getDescription(),
+                    pollingResult.getProgress(),
+                    attempt,
+                    maxAttempts
+                ));
+                
+                // Si terminó (éxito o error)
+                if (pollingResult.getStatus().isFinal()) {
+                    if (pollingResult.isCompleted()) {
+                        logger.info("✅ Job {} completed successfully after {} attempts", 
+                                   jobId, attempt);
+                        
+                        // IMPORTANTE: Obtener el resultado completo
+                        RouteOptimization.JobResultRequest resultRequest = 
+                            RouteOptimization.JobResultRequest.newBuilder()
+                                .setJobId(jobId)
+                                .build();
+                        
+                        RouteOptimization.RouteOptimizationResponse fullResponse = 
+                            blockingStub.getJobResult(resultRequest);
+                        
+                        // Actualizar el pollingResult con la respuesta completa
+                        pollingResult = new PollingResult.Builder()
+                                .status(JobStatus.COMPLETED)
+                                .jobId(jobId)
+                                .message(statusResponse.getMessage())
+                                .progress(100.0f)
+                                .grpcResponse(fullResponse)
+                                .attempts(attempt)
+                                .build();
+                        
+                    } else {
+                        logger.error("❌ Job {} failed with status: {}", 
+                                    jobId, pollingResult.getStatus());
+                    }
+                    return pollingResult;
+                }
+                
+                // Esperar antes del siguiente intento
+                if (attempt < maxAttempts) {
+                    logger.info("⏸️  Waiting {}s before next polling attempt...", delaySeconds);
+                    Thread.sleep(delaySeconds * 1000);
+                }
+                
+            } catch (StatusRuntimeException e) {
+                logger.warn("⚠️  gRPC error during polling attempt {}: {}", 
+                           attempt, e.getStatus().getDescription());
+                
+                if (attempt == maxAttempts) {
+                    return new PollingResult.Builder()
+                            .status(JobStatus.FAILED)
+                            .jobId(jobId)
+                            .message("Polling failed: " + e.getStatus().getDescription())
+                            .attempts(attempt)
+                            .build();
+                }
+                
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                logger.error("🛑 Polling interrupted");
+                return new PollingResult.Builder()
+                        .status(JobStatus.FAILED)
+                        .jobId(jobId)
+                        .message("Polling interrupted")
+                        .attempts(attempt)
+                        .build();
+            }
+        }
+        
+        logger.error("⏱️  Polling timeout after {} seconds for job {}", totalMaxSeconds, jobId);
+        return new PollingResult.Builder()
+                .status(JobStatus.TIMEOUT)
+                .jobId(jobId)
+                .message("Timeout after " + totalMaxSeconds + " seconds")
+                .attempts(maxAttempts)
+                .build();
+    }
+
+    // Métodos de logging auxiliares
+    
+    private void logGrpcRequest(RouteOptimization.RouteOptimizationRequest request) {
+        logger.debug("  RouteId: {}", request.getRouteId());
+        logger.debug("  UserId: {}", request.getUserId());
+        logger.debug("  POIs count: {}", request.getPoisCount());
+        logger.debug("  Preferences: optimize_for={}, max_time={}, max_cost={}", 
+                    request.getPreferences().getOptimizeFor(),
+                    request.getPreferences().getMaxTotalTime(),
+                    request.getPreferences().getMaxTotalCost());
+    }
+    
+    private void logGrpcResponse(RouteOptimization.RouteOptimizationResponse response, String label) {
+        logger.info("  [{}] Status: {}", label, response.getStatus());
+        logger.info("  [{}] JobId: {}", label, response.getJobId());
+        logger.info("  [{}] Message: {}", label, response.getMessage());
+        logger.info("  [{}] Queue Position: {}", label, response.getQueuePosition());
+    }
+    
+    private void logJobStatusResponse(RouteOptimization.JobStatusResponse response, int attempt) {
+        logger.info("  └─ Status: {}", response.getStatus());
+        logger.info("  └─ Progress: {:.1f}%", response.getProgress());
+        logger.info("  └─ Message: {}", response.getMessage());
+    }
+}
+// ...existing code...
