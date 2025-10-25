@@ -1,0 +1,48 @@
+# Archivos y directorios de compilación
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+
+# Sistema de control de versiones
+.git/
+.gitignore
+.gitattributes
+
+# Logs
+*.log
+logs/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*~
+
+# README y documentación
+README.md
+docs/
+
+# Archivos de configuración local
+application-local.properties
+.env
+.env.*
+docker-compose.yml
+Dockerfile
+
+# Scripts de generación
+generate_java_proto.sh
