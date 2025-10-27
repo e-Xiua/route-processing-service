@@ -1,5 +1,5 @@
-# Etapa 1: Build
-FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
+# Etapa 1: Build (usar imagen basada en Debian para compatibilidad con protoc)
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
@@ -13,6 +13,7 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 
 # Compilar la aplicación (incluyendo generación de proto)
+# protoc-gen-grpc-java requiere glibc, que está disponible en imágenes Debian
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Runtime

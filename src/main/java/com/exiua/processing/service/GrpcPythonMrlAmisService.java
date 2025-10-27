@@ -55,8 +55,8 @@ public class GrpcPythonMrlAmisService {
         
         channel = channelBuilder.build();
         
-        blockingStub = RouteOptimizationServiceGrpc.newBlockingStub(channel)
-                .withDeadlineAfter(grpcConfig.getRequestTimeoutSeconds(), TimeUnit.SECONDS);
+        // Create stub WITHOUT deadline - we'll set fresh deadline per call
+        blockingStub = RouteOptimizationServiceGrpc.newBlockingStub(channel);
         
         // Test connection
         try {
@@ -305,7 +305,12 @@ public class GrpcPythonMrlAmisService {
         for (int attempt = 1; attempt <= grpcConfig.getMaxRetryAttempts(); attempt++) {
             try {
                 logger.info("gRPC call attempt {} of {}", attempt, grpcConfig.getMaxRetryAttempts());
-                return blockingStub.optimizeRoute(request);
+                
+                // Create a NEW stub with a FRESH deadline for each retry attempt
+                RouteOptimizationServiceGrpc.RouteOptimizationServiceBlockingStub stubWithDeadline = 
+                    blockingStub.withDeadlineAfter(grpcConfig.getRequestTimeoutSeconds(), TimeUnit.SECONDS);
+                
+                return stubWithDeadline.optimizeRoute(request);
                 
             } catch (StatusRuntimeException e) {
                 lastException = e;
@@ -650,9 +655,10 @@ public class GrpcPythonMrlAmisService {
                         .setJobId(jobId)
                         .build();
                 
-                // CORRECCIÓN: Llamar al método getJobStatus (NO getStatus)
+                // CORRECCIÓN: Llamar al método getJobStatus con fresh deadline
                 RouteOptimization.JobStatusResponse statusResponse = 
-                    blockingStub.getJobStatus(statusRequest);
+                    blockingStub.withDeadlineAfter(grpcConfig.getConnectionTimeoutSeconds(), TimeUnit.SECONDS)
+                               .getJobStatus(statusRequest);
                 
                 logJobStatusResponse(statusResponse, attempt);
                 
@@ -683,14 +689,15 @@ public class GrpcPythonMrlAmisService {
                         logger.info("✅ Job {} completed successfully after {} attempts", 
                                    jobId, attempt);
                         
-                        // IMPORTANTE: Obtener el resultado completo
+                        // IMPORTANTE: Obtener el resultado completo con fresh deadline
                         RouteOptimization.JobResultRequest resultRequest = 
                             RouteOptimization.JobResultRequest.newBuilder()
                                 .setJobId(jobId)
                                 .build();
                         
                         RouteOptimization.RouteOptimizationResponse fullResponse = 
-                            blockingStub.getJobResult(resultRequest);
+                            blockingStub.withDeadlineAfter(grpcConfig.getRequestTimeoutSeconds(), TimeUnit.SECONDS)
+                                       .getJobResult(resultRequest);
                         
                         // Actualizar el pollingResult con la respuesta completa
                         pollingResult = new PollingResult.Builder()
