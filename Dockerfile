@@ -1,5 +1,5 @@
 # Etapa 1: Build
-FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
@@ -12,22 +12,22 @@ RUN mvn dependency:go-offline -B
 # Copiar código fuente y proto files
 COPY src ./src
 
-# Compilar la aplicación (incluyendo generación de proto)
-RUN mvn clean package -DskipTests
+# Compilar el proyecto (sin Alpine, los permisos deberían funcionar correctamente)
+RUN mvn package -DskipTests
 
 # Etapa 2: Runtime
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
-# Instalar herramientas de red 
-RUN apk add --no-cache curl wget
+# Instalar herramientas de red (para Debian)
+RUN apt-get update && apt-get install -y curl wget && rm -rf /var/lib/apt/lists/*
 
 # Copiar el JAR compilado desde la etapa de build
 COPY --from=build /app/target/route-processing-service-*.jar /app/route-processing-service.jar
 
 # Crear usuario no-root para seguridad
-RUN addgroup -S spring && adduser -S spring -G spring
+RUN groupadd -r spring && useradd -r -g spring spring
 RUN chown -R spring:spring /app
 
 USER spring:spring
