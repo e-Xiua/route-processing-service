@@ -635,14 +635,15 @@ public class GrpcPythonMrlAmisService {
      * Hace polling del estado del trabajo hasta que se complete
      */
     private PollingResult pollJobUntilComplete(String jobId, String routeId) {
-        int maxAttempts = 60; // 60 intentos
-        int delaySeconds = 5; // 5 segundos entre intentos
-        int totalMaxSeconds = maxAttempts * delaySeconds;
+        // USE CONFIGURATION VALUES instead of hardcoded
+        int maxAttempts = grpcConfig.getPollingMaxAttempts(); // From config: 120 attempts
+        int delaySeconds = grpcConfig.getPollingIntervalSeconds(); // From config: 10 seconds
+        int totalMaxSeconds = maxAttempts * delaySeconds; // 120 * 10 = 1200 seconds (20 minutes)
         
         logger.info("╔════════════════════════════════════════════════════════════════");
         logger.info("║ STARTING POLLING FOR JOB: {}", jobId);
-        logger.info("║ Max attempts: {}, Delay: {}s, Total max time: {}s", 
-                   maxAttempts, delaySeconds, totalMaxSeconds);
+        logger.info("║ Max attempts: {}, Delay: {}s, Total max time: {}s ({}min)", 
+                   maxAttempts, delaySeconds, totalMaxSeconds, totalMaxSeconds/60);
         logger.info("╚════════════════════════════════════════════════════════════════");
         
         for (int attempt = 1; attempt <= maxAttempts; attempt++) {

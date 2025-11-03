@@ -32,6 +32,18 @@
       "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
     },
     {
+      "name": "grpc.python-mrl-amis.polling-interval-seconds",
+      "type": "java.lang.Integer",
+      "description": "Polling interval in seconds for checking job status",
+      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
+    },
+    {
+      "name": "grpc.python-mrl-amis.polling-max-attempts",
+      "type": "java.lang.Integer",
+      "description": "Maximum number of polling attempts before timeout",
+      "sourceType": "com.exiua.processing.config.GrpcPythonMrlAmisConfigurationProperties"
+    },
+    {
       "name": "grpc.python-mrl-amis.port",
       "type": "java.lang.Integer",
       "description": "Port where Python gRPC server is listening",
