@@ -31,12 +31,16 @@ services:
       # Processing Configuration
       - MAX_CONCURRENT_REQUESTS=${MAX_CONCURRENT_REQUESTS:-5}
       - CLEANUP_HOURS=${CLEANUP_HOURS:-2}
-      
+
       # Java Options (construido desde variables separadas)
       - JAVA_OPTS=-Xms${JAVA_OPTS_XMS:-512m} -Xmx${JAVA_OPTS_XMX:-1024m}
     
     networks:
       - tesisNetwork
+    
+    depends_on:
+      mrl_amis_python_service:
+        condition: service_healthy
     
     restart: unless-stopped
     

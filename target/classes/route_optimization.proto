@@ -6,7 +6,19 @@ package route.optimization;
 service RouteOptimizationService {
     // Método principal para ejecutar el modelo MRL-AMIS
     rpc OptimizeRoute(RouteOptimizationRequest) returns (RouteOptimizationResponse);
+
+    //Consultar estado de un trabajo
+    rpc GetJobStatus(JobStatusRequest) returns (JobStatusResponse);
     
+    // Obtener resultado de un trabajo completado
+    rpc GetJobResult(JobResultRequest) returns (RouteOptimizationResponse);
+    
+    // Cancelar un trabajo
+    rpc CancelJob(CancelJobRequest) returns (CancelJobResponse);
+    
+    // Obtener información del sistema de colas
+    rpc GetQueueInfo(QueueInfoRequest) returns (QueueInfoResponse);
+
     // Método para verificar el estado del servicio
     rpc HealthCheck(HealthRequest) returns (HealthResponse);
 }
@@ -23,10 +35,13 @@ message RouteOptimizationRequest {
 // Respuesta de optimización de ruta
 message RouteOptimizationResponse {
     string route_id = 1;
-    bool success = 2;
     string message = 3;
     OptimizationResults results = 4;
     OptimizationMetrics metrics = 5;
+    string job_id = 6;                      
+    string status = 7;                      
+    int32 queue_position = 8;               
+    int32 estimated_wait_time_minutes = 9;  
 }
 
 // Definición de un POI (Point of Interest)
@@ -54,11 +69,29 @@ message RoutePreferences {
     bool accessibility_required = 4;
 }
 
+message HealthResponse {
+    bool is_healthy = 1;
+    string status = 2;
+    string version = 3;
+    int32 queue_size = 4; // <-- Añade este campo
+    int32 active_jobs = 5; // <-- Añade este campo
+}
+
+
+
+message Location {
+  double latitude = 1;
+  double longitude = 2;
+}
+
+
 // Restricciones de ruta
 message RouteConstraints {
-    string start_time = 1; // formato "HH:mm"
-    bool lunch_break_required = 2;
-    int32 lunch_break_duration = 3; // en minutos
+    Location start_location = 1; 
+    Location end_location = 2; 
+    string start_time = 3; // formato "HH:mm"
+    bool lunch_break_required = 4;
+    int32 lunch_break_duration = 5; // en minutos
 }
 
 // Resultados de optimización
@@ -98,9 +131,63 @@ message HealthRequest {
     string service_name = 1;
 }
 
-// Respuesta de verificación de salud
-message HealthResponse {
-    bool is_healthy = 1;
+// Solicitud de estado de trabajo
+message JobStatusRequest {
+    string job_id = 1;
+}
+
+// Respuesta de estado de trabajo
+message JobStatusResponse {
+    string job_id = 1;
+    string route_id = 2;
+    string status = 3; // QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+    float progress = 4; // 0.0 a 100.0
+    string message = 5;
+    string created_at = 6; // ISO 8601 timestamp
+    string started_at = 7; // ISO 8601 timestamp (opcional)
+    string completed_at = 8; // ISO 8601 timestamp (opcional)
+    string estimated_completion_time = 9; // ISO 8601 timestamp (opcional)
+    string error_message = 10; // Solo si status=FAILED
+    bool has_result = 11; // true si los resultados están listos
+}
+
+// Solicitud de resultado de trabajo
+message JobResultRequest {
+    string job_id = 1;
+}
+
+// Solicitud de cancelación de trabajo
+message CancelJobRequest {
+    string job_id = 1;
+}
+
+// Respuesta de cancelación
+message CancelJobResponse {
+    string job_id = 1;
+    bool success = 2;
+    string message = 3;
+}
+
+// Solicitud de información de cola
+message QueueInfoRequest {
+    // Vacío por ahora, se puede extender en el futuro
+}
+
+// Respuesta de información de cola
+message QueueInfoResponse {
+    int32 queue_size = 1;
+    int32 active_jobs = 2;
+    int32 completed_jobs = 3;
+    int32 max_concurrent_jobs = 4;
+    bool multiprocessing_enabled = 5;
+    repeated JobInfo active_jobs_detail = 6;
+}
+
+// Información resumida de un trabajo
+message JobInfo {
+    string job_id = 1;
     string status = 2;
-    string version = 3;
+    float progress = 3;
+    string created_at = 4;
+    string started_at = 5;
 }
