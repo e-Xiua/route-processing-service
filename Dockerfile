@@ -17,18 +17,18 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Runtime
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
-# Instalar herramientas de red 
-RUN apk add --no-cache curl wget
+# Instalar herramientas de red (para Debian)
+RUN apt-get update && apt-get install -y curl wget && rm -rf /var/lib/apt/lists/*
 
 # Copiar el JAR compilado desde la etapa de build
 COPY --from=build /app/target/route-processing-service-*.jar /app/route-processing-service.jar
 
 # Crear usuario no-root para seguridad
-RUN addgroup -S spring && adduser -S spring -G spring
+RUN groupadd -r spring && useradd -r -g spring spring
 RUN chown -R spring:spring /app
 
 USER spring:spring

@@ -1,12 +1,12 @@
 version: '3.9'
 
 services:
-  route_processing_service:
+  route-processing-service:
     build:
       context: .
       dockerfile: Dockerfile
     image: route-processing-service:latest
-    container_name: route_processing_service
+    container_name: route-processing-service
     ports:
       - "${ROUTE_PROCESSING_PORT:-8086}:8086"
     environment:
@@ -22,7 +22,7 @@ services:
       - CORS_ORIGIN_3=${CORS_ORIGIN_3:-http://localhost:8085}
       
       # gRPC Python Service
-      - GRPC_PYTHON_HOST=${GRPC_PYTHON_HOST:-mrl_amis_python_service}
+      - GRPC_PYTHON_HOST=${GRPC_PYTHON_HOST:-mrl-amis-python-service}
       - GRPC_PYTHON_PORT=${GRPC_PYTHON_PORT:-50051}
       - GRPC_CONNECTION_TIMEOUT=${GRPC_CONNECTION_TIMEOUT:-30}
       - GRPC_REQUEST_TIMEOUT=${GRPC_REQUEST_TIMEOUT:-600}
