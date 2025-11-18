@@ -30,14 +30,11 @@ public class GrpcPythonMrlAmisService {
     private static final Logger logger = LoggerFactory.getLogger(GrpcPythonMrlAmisService.class);
     
     private final GrpcPythonMrlAmisConfigurationProperties grpcConfig;
-    private final ProcessingMessageService messageService;
     private ManagedChannel channel;
     private RouteOptimizationServiceGrpc.RouteOptimizationServiceBlockingStub blockingStub;
 
-    public GrpcPythonMrlAmisService(GrpcPythonMrlAmisConfigurationProperties grpcConfig,
-                                   ProcessingMessageService messageService) {
+    public GrpcPythonMrlAmisService(GrpcPythonMrlAmisConfigurationProperties grpcConfig) {
         this.grpcConfig = grpcConfig;
-        this.messageService = messageService;
     }
 
     @PostConstruct
@@ -183,10 +180,6 @@ public class GrpcPythonMrlAmisService {
         logger.info("║ Number of POIs: {}", request.getPois() != null ? request.getPois().size() : 0);
         logger.info("╚════════════════════════════════════════════════════════════════");
         
-        messageService.enviarMensajeEstado(
-            "Started gRPC processing for route " + request.getRouteId()
-        );
-        
         try {
             // 1. Convertir solicitud a formato gRPC
             RouteOptimization.RouteOptimizationRequest grpcRequest = 
@@ -239,20 +232,10 @@ public class GrpcPythonMrlAmisService {
                        result.getTotalDistanceKm(),
                        result.getTotalTimeMinutes());
             
-            messageService.enviarMensajeResultados(
-                String.format("Completed route %s - Score: %.2f, Distance: %.1fkm",
-                             request.getRouteId(),
-                             result.getOptimizationScore(),
-                             result.getTotalDistanceKm())
-            );
-            
             return result;
             
         } catch (Exception e) {
             logger.error("💥 Error in gRPC route processing", e);
-            messageService.enviarMensajeEstado(
-                "Processing Error for route " + request.getRouteId() + ": " + e.getMessage()
-            );
             throw new RuntimeException("Route processing failed: " + e.getMessage(), e);
         }
     }
@@ -276,18 +259,8 @@ public class GrpcPythonMrlAmisService {
             logger.info("Health check response: healthy={}, status={}, version={}", 
                        healthResponse.getIsHealthy(), healthResponse.getStatus(), healthResponse.getVersion());
             
-            // Send health check success message
-            messageService.enviarMensajeEstado(
-                "gRPC Health Check - Success: " + healthResponse.getStatus() + 
-                " for " + grpcConfig.getHost() + ":" + grpcConfig.getPort()
-            );
             
         } catch (Exception e) {
-            // Send health check failure message
-            messageService.enviarMensajeEstado(
-                "gRPC Health Check - Failed: " + e.getMessage() + 
-                " for " + grpcConfig.getHost() + ":" + grpcConfig.getPort()
-            );
             
             throw new RuntimeException("Health check failed", e);
         }
@@ -315,12 +288,6 @@ public class GrpcPythonMrlAmisService {
             } catch (StatusRuntimeException e) {
                 lastException = e;
                 logger.warn("gRPC call attempt {} failed: {}", attempt, e.getStatus().getDescription());
-                
-                // Send retry attempt message
-                messageService.enviarMensajeEstado(
-                    "gRPC Retry Attempt " + attempt + "/" + grpcConfig.getMaxRetryAttempts() + 
-                    " for route " + request.getRouteId() + ": " + e.getStatus().getDescription()
-                );
                 
                 if (attempt < grpcConfig.getMaxRetryAttempts()) {
                     // Wait before retry (exponential backoff)
@@ -674,16 +641,6 @@ public class GrpcPythonMrlAmisService {
                 
                 logger.info("📊 {}", pollingResult);
                 
-                // Enviar mensaje de estado a RabbitMQ
-                messageService.enviarMensajeEstado(String.format(
-                    "Route %s: %s (%.1f%%) - Attempt %d/%d",
-                    routeId, 
-                    pollingResult.getStatus().getDescription(),
-                    pollingResult.getProgress(),
-                    attempt,
-                    maxAttempts
-                ));
-                
                 // Si terminó (éxito o error)
                 if (pollingResult.getStatus().isFinal()) {
                     if (pollingResult.isCompleted()) {
@@ -782,4 +739,3 @@ public class GrpcPythonMrlAmisService {
         logger.info("  └─ Message: {}", response.getMessage());
     }
 }
-// ...existing code...
