@@ -49,6 +49,130 @@ public final class RouteOptimizationServiceGrpc {
     return getOptimizeRouteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<route.optimization.RouteOptimization.JobStatusRequest,
+      route.optimization.RouteOptimization.JobStatusResponse> getGetJobStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetJobStatus",
+      requestType = route.optimization.RouteOptimization.JobStatusRequest.class,
+      responseType = route.optimization.RouteOptimization.JobStatusResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<route.optimization.RouteOptimization.JobStatusRequest,
+      route.optimization.RouteOptimization.JobStatusResponse> getGetJobStatusMethod() {
+    io.grpc.MethodDescriptor<route.optimization.RouteOptimization.JobStatusRequest, route.optimization.RouteOptimization.JobStatusResponse> getGetJobStatusMethod;
+    if ((getGetJobStatusMethod = RouteOptimizationServiceGrpc.getGetJobStatusMethod) == null) {
+      synchronized (RouteOptimizationServiceGrpc.class) {
+        if ((getGetJobStatusMethod = RouteOptimizationServiceGrpc.getGetJobStatusMethod) == null) {
+          RouteOptimizationServiceGrpc.getGetJobStatusMethod = getGetJobStatusMethod =
+              io.grpc.MethodDescriptor.<route.optimization.RouteOptimization.JobStatusRequest, route.optimization.RouteOptimization.JobStatusResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetJobStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  route.optimization.RouteOptimization.JobStatusRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  route.optimization.RouteOptimization.JobStatusResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new RouteOptimizationServiceMethodDescriptorSupplier("GetJobStatus"))
+              .build();
+        }
+      }
+    }
+    return getGetJobStatusMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<route.optimization.RouteOptimization.JobResultRequest,
+      route.optimization.RouteOptimization.RouteOptimizationResponse> getGetJobResultMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetJobResult",
+      requestType = route.optimization.RouteOptimization.JobResultRequest.class,
+      responseType = route.optimization.RouteOptimization.RouteOptimizationResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<route.optimization.RouteOptimization.JobResultRequest,
+      route.optimization.RouteOptimization.RouteOptimizationResponse> getGetJobResultMethod() {
+    io.grpc.MethodDescriptor<route.optimization.RouteOptimization.JobResultRequest, route.optimization.RouteOptimization.RouteOptimizationResponse> getGetJobResultMethod;
+    if ((getGetJobResultMethod = RouteOptimizationServiceGrpc.getGetJobResultMethod) == null) {
+      synchronized (RouteOptimizationServiceGrpc.class) {
+        if ((getGetJobResultMethod = RouteOptimizationServiceGrpc.getGetJobResultMethod) == null) {
+          RouteOptimizationServiceGrpc.getGetJobResultMethod = getGetJobResultMethod =
+              io.grpc.MethodDescriptor.<route.optimization.RouteOptimization.JobResultRequest, route.optimization.RouteOptimization.RouteOptimizationResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetJobResult"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  route.optimization.RouteOptimization.JobResultRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  route.optimization.RouteOptimization.RouteOptimizationResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new RouteOptimizationServiceMethodDescriptorSupplier("GetJobResult"))
+              .build();
+        }
+      }
+    }
+    return getGetJobResultMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<route.optimization.RouteOptimization.CancelJobRequest,
+      route.optimization.RouteOptimization.CancelJobResponse> getCancelJobMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CancelJob",
+      requestType = route.optimization.RouteOptimization.CancelJobRequest.class,
+      responseType = route.optimization.RouteOptimization.CancelJobResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<route.optimization.RouteOptimization.CancelJobRequest,
+      route.optimization.RouteOptimization.CancelJobResponse> getCancelJobMethod() {
+    io.grpc.MethodDescriptor<route.optimization.RouteOptimization.CancelJobRequest, route.optimization.RouteOptimization.CancelJobResponse> getCancelJobMethod;
+    if ((getCancelJobMethod = RouteOptimizationServiceGrpc.getCancelJobMethod) == null) {
+      synchronized (RouteOptimizationServiceGrpc.class) {
+        if ((getCancelJobMethod = RouteOptimizationServiceGrpc.getCancelJobMethod) == null) {
+          RouteOptimizationServiceGrpc.getCancelJobMethod = getCancelJobMethod =
+              io.grpc.MethodDescriptor.<route.optimization.RouteOptimization.CancelJobRequest, route.optimization.RouteOptimization.CancelJobResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CancelJob"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  route.optimization.RouteOptimization.CancelJobRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  route.optimization.RouteOptimization.CancelJobResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new RouteOptimizationServiceMethodDescriptorSupplier("CancelJob"))
+              .build();
+        }
+      }
+    }
+    return getCancelJobMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<route.optimization.RouteOptimization.QueueInfoRequest,
+      route.optimization.RouteOptimization.QueueInfoResponse> getGetQueueInfoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetQueueInfo",
+      requestType = route.optimization.RouteOptimization.QueueInfoRequest.class,
+      responseType = route.optimization.RouteOptimization.QueueInfoResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<route.optimization.RouteOptimization.QueueInfoRequest,
+      route.optimization.RouteOptimization.QueueInfoResponse> getGetQueueInfoMethod() {
+    io.grpc.MethodDescriptor<route.optimization.RouteOptimization.QueueInfoRequest, route.optimization.RouteOptimization.QueueInfoResponse> getGetQueueInfoMethod;
+    if ((getGetQueueInfoMethod = RouteOptimizationServiceGrpc.getGetQueueInfoMethod) == null) {
+      synchronized (RouteOptimizationServiceGrpc.class) {
+        if ((getGetQueueInfoMethod = RouteOptimizationServiceGrpc.getGetQueueInfoMethod) == null) {
+          RouteOptimizationServiceGrpc.getGetQueueInfoMethod = getGetQueueInfoMethod =
+              io.grpc.MethodDescriptor.<route.optimization.RouteOptimization.QueueInfoRequest, route.optimization.RouteOptimization.QueueInfoResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetQueueInfo"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  route.optimization.RouteOptimization.QueueInfoRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  route.optimization.RouteOptimization.QueueInfoResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new RouteOptimizationServiceMethodDescriptorSupplier("GetQueueInfo"))
+              .build();
+        }
+      }
+    }
+    return getGetQueueInfoMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<route.optimization.RouteOptimization.HealthRequest,
       route.optimization.RouteOptimization.HealthResponse> getHealthCheckMethod;
 
@@ -143,6 +267,46 @@ public final class RouteOptimizationServiceGrpc {
 
     /**
      * <pre>
+     *Consultar estado de un trabajo
+     * </pre>
+     */
+    default void getJobStatus(route.optimization.RouteOptimization.JobStatusRequest request,
+        io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.JobStatusResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetJobStatusMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Obtener resultado de un trabajo completado
+     * </pre>
+     */
+    default void getJobResult(route.optimization.RouteOptimization.JobResultRequest request,
+        io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.RouteOptimizationResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetJobResultMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Cancelar un trabajo
+     * </pre>
+     */
+    default void cancelJob(route.optimization.RouteOptimization.CancelJobRequest request,
+        io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.CancelJobResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCancelJobMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Obtener información del sistema de colas
+     * </pre>
+     */
+    default void getQueueInfo(route.optimization.RouteOptimization.QueueInfoRequest request,
+        io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.QueueInfoResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetQueueInfoMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Método para verificar el estado del servicio
      * </pre>
      */
@@ -198,6 +362,50 @@ public final class RouteOptimizationServiceGrpc {
 
     /**
      * <pre>
+     *Consultar estado de un trabajo
+     * </pre>
+     */
+    public void getJobStatus(route.optimization.RouteOptimization.JobStatusRequest request,
+        io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.JobStatusResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetJobStatusMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Obtener resultado de un trabajo completado
+     * </pre>
+     */
+    public void getJobResult(route.optimization.RouteOptimization.JobResultRequest request,
+        io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.RouteOptimizationResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetJobResultMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Cancelar un trabajo
+     * </pre>
+     */
+    public void cancelJob(route.optimization.RouteOptimization.CancelJobRequest request,
+        io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.CancelJobResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCancelJobMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Obtener información del sistema de colas
+     * </pre>
+     */
+    public void getQueueInfo(route.optimization.RouteOptimization.QueueInfoRequest request,
+        io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.QueueInfoResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetQueueInfoMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
      * Método para verificar el estado del servicio
      * </pre>
      */
@@ -235,6 +443,46 @@ public final class RouteOptimizationServiceGrpc {
     public route.optimization.RouteOptimization.RouteOptimizationResponse optimizeRoute(route.optimization.RouteOptimization.RouteOptimizationRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getOptimizeRouteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *Consultar estado de un trabajo
+     * </pre>
+     */
+    public route.optimization.RouteOptimization.JobStatusResponse getJobStatus(route.optimization.RouteOptimization.JobStatusRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetJobStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Obtener resultado de un trabajo completado
+     * </pre>
+     */
+    public route.optimization.RouteOptimization.RouteOptimizationResponse getJobResult(route.optimization.RouteOptimization.JobResultRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetJobResultMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Cancelar un trabajo
+     * </pre>
+     */
+    public route.optimization.RouteOptimization.CancelJobResponse cancelJob(route.optimization.RouteOptimization.CancelJobRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCancelJobMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Obtener información del sistema de colas
+     * </pre>
+     */
+    public route.optimization.RouteOptimization.QueueInfoResponse getQueueInfo(route.optimization.RouteOptimization.QueueInfoRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetQueueInfoMethod(), getCallOptions(), request);
     }
 
     /**
@@ -280,6 +528,50 @@ public final class RouteOptimizationServiceGrpc {
 
     /**
      * <pre>
+     *Consultar estado de un trabajo
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<route.optimization.RouteOptimization.JobStatusResponse> getJobStatus(
+        route.optimization.RouteOptimization.JobStatusRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetJobStatusMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Obtener resultado de un trabajo completado
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<route.optimization.RouteOptimization.RouteOptimizationResponse> getJobResult(
+        route.optimization.RouteOptimization.JobResultRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetJobResultMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Cancelar un trabajo
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<route.optimization.RouteOptimization.CancelJobResponse> cancelJob(
+        route.optimization.RouteOptimization.CancelJobRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCancelJobMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Obtener información del sistema de colas
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<route.optimization.RouteOptimization.QueueInfoResponse> getQueueInfo(
+        route.optimization.RouteOptimization.QueueInfoRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetQueueInfoMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * Método para verificar el estado del servicio
      * </pre>
      */
@@ -291,7 +583,11 @@ public final class RouteOptimizationServiceGrpc {
   }
 
   private static final int METHODID_OPTIMIZE_ROUTE = 0;
-  private static final int METHODID_HEALTH_CHECK = 1;
+  private static final int METHODID_GET_JOB_STATUS = 1;
+  private static final int METHODID_GET_JOB_RESULT = 2;
+  private static final int METHODID_CANCEL_JOB = 3;
+  private static final int METHODID_GET_QUEUE_INFO = 4;
+  private static final int METHODID_HEALTH_CHECK = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -313,6 +609,22 @@ public final class RouteOptimizationServiceGrpc {
         case METHODID_OPTIMIZE_ROUTE:
           serviceImpl.optimizeRoute((route.optimization.RouteOptimization.RouteOptimizationRequest) request,
               (io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.RouteOptimizationResponse>) responseObserver);
+          break;
+        case METHODID_GET_JOB_STATUS:
+          serviceImpl.getJobStatus((route.optimization.RouteOptimization.JobStatusRequest) request,
+              (io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.JobStatusResponse>) responseObserver);
+          break;
+        case METHODID_GET_JOB_RESULT:
+          serviceImpl.getJobResult((route.optimization.RouteOptimization.JobResultRequest) request,
+              (io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.RouteOptimizationResponse>) responseObserver);
+          break;
+        case METHODID_CANCEL_JOB:
+          serviceImpl.cancelJob((route.optimization.RouteOptimization.CancelJobRequest) request,
+              (io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.CancelJobResponse>) responseObserver);
+          break;
+        case METHODID_GET_QUEUE_INFO:
+          serviceImpl.getQueueInfo((route.optimization.RouteOptimization.QueueInfoRequest) request,
+              (io.grpc.stub.StreamObserver<route.optimization.RouteOptimization.QueueInfoResponse>) responseObserver);
           break;
         case METHODID_HEALTH_CHECK:
           serviceImpl.healthCheck((route.optimization.RouteOptimization.HealthRequest) request,
@@ -343,6 +655,34 @@ public final class RouteOptimizationServiceGrpc {
               route.optimization.RouteOptimization.RouteOptimizationRequest,
               route.optimization.RouteOptimization.RouteOptimizationResponse>(
                 service, METHODID_OPTIMIZE_ROUTE)))
+        .addMethod(
+          getGetJobStatusMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              route.optimization.RouteOptimization.JobStatusRequest,
+              route.optimization.RouteOptimization.JobStatusResponse>(
+                service, METHODID_GET_JOB_STATUS)))
+        .addMethod(
+          getGetJobResultMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              route.optimization.RouteOptimization.JobResultRequest,
+              route.optimization.RouteOptimization.RouteOptimizationResponse>(
+                service, METHODID_GET_JOB_RESULT)))
+        .addMethod(
+          getCancelJobMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              route.optimization.RouteOptimization.CancelJobRequest,
+              route.optimization.RouteOptimization.CancelJobResponse>(
+                service, METHODID_CANCEL_JOB)))
+        .addMethod(
+          getGetQueueInfoMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              route.optimization.RouteOptimization.QueueInfoRequest,
+              route.optimization.RouteOptimization.QueueInfoResponse>(
+                service, METHODID_GET_QUEUE_INFO)))
         .addMethod(
           getHealthCheckMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -399,6 +739,10 @@ public final class RouteOptimizationServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RouteOptimizationServiceFileDescriptorSupplier())
               .addMethod(getOptimizeRouteMethod())
+              .addMethod(getGetJobStatusMethod())
+              .addMethod(getGetJobResultMethod())
+              .addMethod(getCancelJobMethod())
+              .addMethod(getGetQueueInfoMethod())
               .addMethod(getHealthCheckMethod())
               .build();
         }

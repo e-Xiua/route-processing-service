@@ -1,6 +1,7 @@
 package com.exiua.processing.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ import jakarta.validation.constraints.Positive;
 /**
  * Configuration properties for gRPC communication with Python MRL-AMIS service
  */
+@Component
 @ConfigurationProperties(prefix = "grpc.python-mrl-amis")
 @Validated
 public class GrpcPythonMrlAmisConfigurationProperties {
@@ -47,6 +49,18 @@ public class GrpcPythonMrlAmisConfigurationProperties {
      * Enable TLS for gRPC connection
      */
     private boolean enableTls = false;
+
+    /**
+     * Polling interval in seconds for checking job status
+     */
+    @Positive
+    private int pollingIntervalSeconds = 10; // 10 seconds between polls
+
+    /**
+     * Maximum number of polling attempts before timeout
+     */
+    @Positive
+    private int pollingMaxAttempts = 1000; // 1000 attempts = 10000 seconds (2.78 hours)
 
     // Getters and Setters
     public String getHost() {
@@ -95,5 +109,21 @@ public class GrpcPythonMrlAmisConfigurationProperties {
 
     public void setEnableTls(boolean enableTls) {
         this.enableTls = enableTls;
+    }
+
+    public int getPollingIntervalSeconds() {
+        return pollingIntervalSeconds;
+    }
+
+    public void setPollingIntervalSeconds(int pollingIntervalSeconds) {
+        this.pollingIntervalSeconds = pollingIntervalSeconds;
+    }
+
+    public int getPollingMaxAttempts() {
+        return pollingMaxAttempts;
+    }
+
+    public void setPollingMaxAttempts(int pollingMaxAttempts) {
+        this.pollingMaxAttempts = pollingMaxAttempts;
     }
 }

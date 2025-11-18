@@ -1526,12 +1526,6 @@ public final class RouteOptimization {
         getRouteIdBytes();
 
     /**
-     * <code>bool success = 2;</code>
-     * @return The success.
-     */
-    boolean getSuccess();
-
-    /**
      * <code>string message = 3;</code>
      * @return The message.
      */
@@ -1572,6 +1566,42 @@ public final class RouteOptimization {
      * <code>.route.optimization.OptimizationMetrics metrics = 5;</code>
      */
     route.optimization.RouteOptimization.OptimizationMetricsOrBuilder getMetricsOrBuilder();
+
+    /**
+     * <code>string job_id = 6;</code>
+     * @return The jobId.
+     */
+    java.lang.String getJobId();
+    /**
+     * <code>string job_id = 6;</code>
+     * @return The bytes for jobId.
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
+
+    /**
+     * <code>string status = 7;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>string status = 7;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+
+    /**
+     * <code>int32 queue_position = 8;</code>
+     * @return The queuePosition.
+     */
+    int getQueuePosition();
+
+    /**
+     * <code>int32 estimated_wait_time_minutes = 9;</code>
+     * @return The estimatedWaitTimeMinutes.
+     */
+    int getEstimatedWaitTimeMinutes();
   }
   /**
    * <pre>
@@ -1592,6 +1622,8 @@ public final class RouteOptimization {
     private RouteOptimizationResponse() {
       routeId_ = "";
       message_ = "";
+      jobId_ = "";
+      status_ = "";
     }
 
     @java.lang.Override
@@ -1652,17 +1684,6 @@ public final class RouteOptimization {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
-    }
-
-    public static final int SUCCESS_FIELD_NUMBER = 2;
-    private boolean success_ = false;
-    /**
-     * <code>bool success = 2;</code>
-     * @return The success.
-     */
-    @java.lang.Override
-    public boolean getSuccess() {
-      return success_;
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 3;
@@ -1756,6 +1777,106 @@ public final class RouteOptimization {
       return metrics_ == null ? route.optimization.RouteOptimization.OptimizationMetrics.getDefaultInstance() : metrics_;
     }
 
+    public static final int JOB_ID_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object jobId_ = "";
+    /**
+     * <code>string job_id = 6;</code>
+     * @return The jobId.
+     */
+    @java.lang.Override
+    public java.lang.String getJobId() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jobId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string job_id = 6;</code>
+     * @return The bytes for jobId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jobId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 7;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object status_ = "";
+    /**
+     * <code>string status = 7;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string status = 7;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int QUEUE_POSITION_FIELD_NUMBER = 8;
+    private int queuePosition_ = 0;
+    /**
+     * <code>int32 queue_position = 8;</code>
+     * @return The queuePosition.
+     */
+    @java.lang.Override
+    public int getQueuePosition() {
+      return queuePosition_;
+    }
+
+    public static final int ESTIMATED_WAIT_TIME_MINUTES_FIELD_NUMBER = 9;
+    private int estimatedWaitTimeMinutes_ = 0;
+    /**
+     * <code>int32 estimated_wait_time_minutes = 9;</code>
+     * @return The estimatedWaitTimeMinutes.
+     */
+    @java.lang.Override
+    public int getEstimatedWaitTimeMinutes() {
+      return estimatedWaitTimeMinutes_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1773,9 +1894,6 @@ public final class RouteOptimization {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(routeId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, routeId_);
       }
-      if (success_ != false) {
-        output.writeBool(2, success_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
       }
@@ -1784,6 +1902,18 @@ public final class RouteOptimization {
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         output.writeMessage(5, getMetrics());
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, jobId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, status_);
+      }
+      if (queuePosition_ != 0) {
+        output.writeInt32(8, queuePosition_);
+      }
+      if (estimatedWaitTimeMinutes_ != 0) {
+        output.writeInt32(9, estimatedWaitTimeMinutes_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1797,10 +1927,6 @@ public final class RouteOptimization {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(routeId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, routeId_);
       }
-      if (success_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, success_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
       }
@@ -1811,6 +1937,20 @@ public final class RouteOptimization {
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getMetrics());
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, jobId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, status_);
+      }
+      if (queuePosition_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, queuePosition_);
+      }
+      if (estimatedWaitTimeMinutes_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, estimatedWaitTimeMinutes_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1829,8 +1969,6 @@ public final class RouteOptimization {
 
       if (!getRouteId()
           .equals(other.getRouteId())) return false;
-      if (getSuccess()
-          != other.getSuccess()) return false;
       if (!getMessage()
           .equals(other.getMessage())) return false;
       if (hasResults() != other.hasResults()) return false;
@@ -1843,6 +1981,14 @@ public final class RouteOptimization {
         if (!getMetrics()
             .equals(other.getMetrics())) return false;
       }
+      if (!getJobId()
+          .equals(other.getJobId())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (getQueuePosition()
+          != other.getQueuePosition()) return false;
+      if (getEstimatedWaitTimeMinutes()
+          != other.getEstimatedWaitTimeMinutes()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1856,9 +2002,6 @@ public final class RouteOptimization {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ROUTE_ID_FIELD_NUMBER;
       hash = (53 * hash) + getRouteId().hashCode();
-      hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getSuccess());
       hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
       hash = (53 * hash) + getMessage().hashCode();
       if (hasResults()) {
@@ -1869,6 +2012,14 @@ public final class RouteOptimization {
         hash = (37 * hash) + METRICS_FIELD_NUMBER;
         hash = (53 * hash) + getMetrics().hashCode();
       }
+      hash = (37 * hash) + JOB_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobId().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (37 * hash) + QUEUE_POSITION_FIELD_NUMBER;
+      hash = (53 * hash) + getQueuePosition();
+      hash = (37 * hash) + ESTIMATED_WAIT_TIME_MINUTES_FIELD_NUMBER;
+      hash = (53 * hash) + getEstimatedWaitTimeMinutes();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2012,7 +2163,6 @@ public final class RouteOptimization {
         super.clear();
         bitField0_ = 0;
         routeId_ = "";
-        success_ = false;
         message_ = "";
         results_ = null;
         if (resultsBuilder_ != null) {
@@ -2024,6 +2174,10 @@ public final class RouteOptimization {
           metricsBuilder_.dispose();
           metricsBuilder_ = null;
         }
+        jobId_ = "";
+        status_ = "";
+        queuePosition_ = 0;
+        estimatedWaitTimeMinutes_ = 0;
         return this;
       }
 
@@ -2061,23 +2215,32 @@ public final class RouteOptimization {
           result.routeId_ = routeId_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.success_ = success_;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
           result.message_ = message_;
         }
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000008) != 0)) {
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           result.results_ = resultsBuilder_ == null
               ? results_
               : resultsBuilder_.build();
           to_bitField0_ |= 0x00000001;
         }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
+        if (((from_bitField0_ & 0x00000008) != 0)) {
           result.metrics_ = metricsBuilder_ == null
               ? metrics_
               : metricsBuilder_.build();
           to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.jobId_ = jobId_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.status_ = status_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.queuePosition_ = queuePosition_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.estimatedWaitTimeMinutes_ = estimatedWaitTimeMinutes_;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -2131,12 +2294,9 @@ public final class RouteOptimization {
           bitField0_ |= 0x00000001;
           onChanged();
         }
-        if (other.getSuccess() != false) {
-          setSuccess(other.getSuccess());
-        }
         if (!other.getMessage().isEmpty()) {
           message_ = other.message_;
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
           onChanged();
         }
         if (other.hasResults()) {
@@ -2144,6 +2304,22 @@ public final class RouteOptimization {
         }
         if (other.hasMetrics()) {
           mergeMetrics(other.getMetrics());
+        }
+        if (!other.getJobId().isEmpty()) {
+          jobId_ = other.jobId_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
+        if (other.getQueuePosition() != 0) {
+          setQueuePosition(other.getQueuePosition());
+        }
+        if (other.getEstimatedWaitTimeMinutes() != 0) {
+          setEstimatedWaitTimeMinutes(other.getEstimatedWaitTimeMinutes());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -2176,30 +2352,45 @@ public final class RouteOptimization {
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
-              case 16: {
-                success_ = input.readBool();
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 16
               case 26: {
                 message_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000004;
+                bitField0_ |= 0x00000002;
                 break;
               } // case 26
               case 34: {
                 input.readMessage(
                     getResultsFieldBuilder().getBuilder(),
                     extensionRegistry);
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000004;
                 break;
               } // case 34
               case 42: {
                 input.readMessage(
                     getMetricsFieldBuilder().getBuilder(),
                     extensionRegistry);
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000008;
                 break;
               } // case 42
+              case 50: {
+                jobId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 50
+              case 58: {
+                status_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 58
+              case 64: {
+                queuePosition_ = input.readInt32();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 64
+              case 72: {
+                estimatedWaitTimeMinutes_ = input.readInt32();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 72
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2289,38 +2480,6 @@ public final class RouteOptimization {
         return this;
       }
 
-      private boolean success_ ;
-      /**
-       * <code>bool success = 2;</code>
-       * @return The success.
-       */
-      @java.lang.Override
-      public boolean getSuccess() {
-        return success_;
-      }
-      /**
-       * <code>bool success = 2;</code>
-       * @param value The success to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSuccess(boolean value) {
-
-        success_ = value;
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool success = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSuccess() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        success_ = false;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object message_ = "";
       /**
        * <code>string message = 3;</code>
@@ -2364,7 +2523,7 @@ public final class RouteOptimization {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         message_ = value;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2374,7 +2533,7 @@ public final class RouteOptimization {
        */
       public Builder clearMessage() {
         message_ = getDefaultInstance().getMessage();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
@@ -2388,7 +2547,7 @@ public final class RouteOptimization {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         message_ = value;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
@@ -2401,7 +2560,7 @@ public final class RouteOptimization {
        * @return Whether the results field is set.
        */
       public boolean hasResults() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <code>.route.optimization.OptimizationResults results = 4;</code>
@@ -2426,7 +2585,7 @@ public final class RouteOptimization {
         } else {
           resultsBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -2440,7 +2599,7 @@ public final class RouteOptimization {
         } else {
           resultsBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -2449,7 +2608,7 @@ public final class RouteOptimization {
        */
       public Builder mergeResults(route.optimization.RouteOptimization.OptimizationResults value) {
         if (resultsBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) != 0) &&
+          if (((bitField0_ & 0x00000004) != 0) &&
             results_ != null &&
             results_ != route.optimization.RouteOptimization.OptimizationResults.getDefaultInstance()) {
             getResultsBuilder().mergeFrom(value);
@@ -2460,7 +2619,7 @@ public final class RouteOptimization {
           resultsBuilder_.mergeFrom(value);
         }
         if (results_ != null) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         return this;
@@ -2469,7 +2628,7 @@ public final class RouteOptimization {
        * <code>.route.optimization.OptimizationResults results = 4;</code>
        */
       public Builder clearResults() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         results_ = null;
         if (resultsBuilder_ != null) {
           resultsBuilder_.dispose();
@@ -2482,7 +2641,7 @@ public final class RouteOptimization {
        * <code>.route.optimization.OptimizationResults results = 4;</code>
        */
       public route.optimization.RouteOptimization.OptimizationResults.Builder getResultsBuilder() {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         onChanged();
         return getResultsFieldBuilder().getBuilder();
       }
@@ -2522,7 +2681,7 @@ public final class RouteOptimization {
        * @return Whether the metrics field is set.
        */
       public boolean hasMetrics() {
-        return ((bitField0_ & 0x00000010) != 0);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
        * <code>.route.optimization.OptimizationMetrics metrics = 5;</code>
@@ -2547,7 +2706,7 @@ public final class RouteOptimization {
         } else {
           metricsBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -2561,7 +2720,7 @@ public final class RouteOptimization {
         } else {
           metricsBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -2570,7 +2729,7 @@ public final class RouteOptimization {
        */
       public Builder mergeMetrics(route.optimization.RouteOptimization.OptimizationMetrics value) {
         if (metricsBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) != 0) &&
+          if (((bitField0_ & 0x00000008) != 0) &&
             metrics_ != null &&
             metrics_ != route.optimization.RouteOptimization.OptimizationMetrics.getDefaultInstance()) {
             getMetricsBuilder().mergeFrom(value);
@@ -2581,7 +2740,7 @@ public final class RouteOptimization {
           metricsBuilder_.mergeFrom(value);
         }
         if (metrics_ != null) {
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000008;
           onChanged();
         }
         return this;
@@ -2590,7 +2749,7 @@ public final class RouteOptimization {
        * <code>.route.optimization.OptimizationMetrics metrics = 5;</code>
        */
       public Builder clearMetrics() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         metrics_ = null;
         if (metricsBuilder_ != null) {
           metricsBuilder_.dispose();
@@ -2603,7 +2762,7 @@ public final class RouteOptimization {
        * <code>.route.optimization.OptimizationMetrics metrics = 5;</code>
        */
       public route.optimization.RouteOptimization.OptimizationMetrics.Builder getMetricsBuilder() {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         onChanged();
         return getMetricsFieldBuilder().getBuilder();
       }
@@ -2633,6 +2792,214 @@ public final class RouteOptimization {
           metrics_ = null;
         }
         return metricsBuilder_;
+      }
+
+      private java.lang.Object jobId_ = "";
+      /**
+       * <code>string job_id = 6;</code>
+       * @return The jobId.
+       */
+      public java.lang.String getJobId() {
+        java.lang.Object ref = jobId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jobId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 6;</code>
+       * @return The bytes for jobId.
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        java.lang.Object ref = jobId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jobId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 6;</code>
+       * @param value The jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        jobId_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobId() {
+        jobId_ = getDefaultInstance().getJobId();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 6;</code>
+       * @param value The bytes for jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        jobId_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>string status = 7;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string status = 7;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string status = 7;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        status_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        status_ = getDefaultInstance().getStatus();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 7;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        status_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      private int queuePosition_ ;
+      /**
+       * <code>int32 queue_position = 8;</code>
+       * @return The queuePosition.
+       */
+      @java.lang.Override
+      public int getQueuePosition() {
+        return queuePosition_;
+      }
+      /**
+       * <code>int32 queue_position = 8;</code>
+       * @param value The queuePosition to set.
+       * @return This builder for chaining.
+       */
+      public Builder setQueuePosition(int value) {
+
+        queuePosition_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 queue_position = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearQueuePosition() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        queuePosition_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int estimatedWaitTimeMinutes_ ;
+      /**
+       * <code>int32 estimated_wait_time_minutes = 9;</code>
+       * @return The estimatedWaitTimeMinutes.
+       */
+      @java.lang.Override
+      public int getEstimatedWaitTimeMinutes() {
+        return estimatedWaitTimeMinutes_;
+      }
+      /**
+       * <code>int32 estimated_wait_time_minutes = 9;</code>
+       * @param value The estimatedWaitTimeMinutes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEstimatedWaitTimeMinutes(int value) {
+
+        estimatedWaitTimeMinutes_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 estimated_wait_time_minutes = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEstimatedWaitTimeMinutes() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        estimatedWaitTimeMinutes_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -5290,16 +5657,1555 @@ public final class RouteOptimization {
 
   }
 
+  public interface HealthResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.HealthResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool is_healthy = 1;</code>
+     * @return The isHealthy.
+     */
+    boolean getIsHealthy();
+
+    /**
+     * <code>string status = 2;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+
+    /**
+     * <code>string version = 3;</code>
+     * @return The version.
+     */
+    java.lang.String getVersion();
+    /**
+     * <code>string version = 3;</code>
+     * @return The bytes for version.
+     */
+    com.google.protobuf.ByteString
+        getVersionBytes();
+
+    /**
+     * <pre>
+     * &lt;-- Añade este campo
+     * </pre>
+     *
+     * <code>int32 queue_size = 4;</code>
+     * @return The queueSize.
+     */
+    int getQueueSize();
+
+    /**
+     * <pre>
+     * &lt;-- Añade este campo
+     * </pre>
+     *
+     * <code>int32 active_jobs = 5;</code>
+     * @return The activeJobs.
+     */
+    int getActiveJobs();
+  }
+  /**
+   * Protobuf type {@code route.optimization.HealthResponse}
+   */
+  public static final class HealthResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.HealthResponse)
+      HealthResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use HealthResponse.newBuilder() to construct.
+    private HealthResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private HealthResponse() {
+      status_ = "";
+      version_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HealthResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.HealthResponse.class, route.optimization.RouteOptimization.HealthResponse.Builder.class);
+    }
+
+    public static final int IS_HEALTHY_FIELD_NUMBER = 1;
+    private boolean isHealthy_ = false;
+    /**
+     * <code>bool is_healthy = 1;</code>
+     * @return The isHealthy.
+     */
+    @java.lang.Override
+    public boolean getIsHealthy() {
+      return isHealthy_;
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object status_ = "";
+    /**
+     * <code>string status = 2;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string status = 2;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int VERSION_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object version_ = "";
+    /**
+     * <code>string version = 3;</code>
+     * @return The version.
+     */
+    @java.lang.Override
+    public java.lang.String getVersion() {
+      java.lang.Object ref = version_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        version_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string version = 3;</code>
+     * @return The bytes for version.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getVersionBytes() {
+      java.lang.Object ref = version_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        version_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int QUEUE_SIZE_FIELD_NUMBER = 4;
+    private int queueSize_ = 0;
+    /**
+     * <pre>
+     * &lt;-- Añade este campo
+     * </pre>
+     *
+     * <code>int32 queue_size = 4;</code>
+     * @return The queueSize.
+     */
+    @java.lang.Override
+    public int getQueueSize() {
+      return queueSize_;
+    }
+
+    public static final int ACTIVE_JOBS_FIELD_NUMBER = 5;
+    private int activeJobs_ = 0;
+    /**
+     * <pre>
+     * &lt;-- Añade este campo
+     * </pre>
+     *
+     * <code>int32 active_jobs = 5;</code>
+     * @return The activeJobs.
+     */
+    @java.lang.Override
+    public int getActiveJobs() {
+      return activeJobs_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (isHealthy_ != false) {
+        output.writeBool(1, isHealthy_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, version_);
+      }
+      if (queueSize_ != 0) {
+        output.writeInt32(4, queueSize_);
+      }
+      if (activeJobs_ != 0) {
+        output.writeInt32(5, activeJobs_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (isHealthy_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, isHealthy_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, version_);
+      }
+      if (queueSize_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, queueSize_);
+      }
+      if (activeJobs_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, activeJobs_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.HealthResponse)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.HealthResponse other = (route.optimization.RouteOptimization.HealthResponse) obj;
+
+      if (getIsHealthy()
+          != other.getIsHealthy()) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (!getVersion()
+          .equals(other.getVersion())) return false;
+      if (getQueueSize()
+          != other.getQueueSize()) return false;
+      if (getActiveJobs()
+          != other.getActiveJobs()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + IS_HEALTHY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsHealthy());
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion().hashCode();
+      hash = (37 * hash) + QUEUE_SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getQueueSize();
+      hash = (37 * hash) + ACTIVE_JOBS_FIELD_NUMBER;
+      hash = (53 * hash) + getActiveJobs();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.HealthResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.HealthResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.HealthResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code route.optimization.HealthResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.HealthResponse)
+        route.optimization.RouteOptimization.HealthResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.HealthResponse.class, route.optimization.RouteOptimization.HealthResponse.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.HealthResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        isHealthy_ = false;
+        status_ = "";
+        version_ = "";
+        queueSize_ = 0;
+        activeJobs_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.HealthResponse getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.HealthResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.HealthResponse build() {
+        route.optimization.RouteOptimization.HealthResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.HealthResponse buildPartial() {
+        route.optimization.RouteOptimization.HealthResponse result = new route.optimization.RouteOptimization.HealthResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(route.optimization.RouteOptimization.HealthResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.isHealthy_ = isHealthy_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.status_ = status_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.version_ = version_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.queueSize_ = queueSize_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.activeJobs_ = activeJobs_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.HealthResponse) {
+          return mergeFrom((route.optimization.RouteOptimization.HealthResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.HealthResponse other) {
+        if (other == route.optimization.RouteOptimization.HealthResponse.getDefaultInstance()) return this;
+        if (other.getIsHealthy() != false) {
+          setIsHealthy(other.getIsHealthy());
+        }
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getVersion().isEmpty()) {
+          version_ = other.version_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.getQueueSize() != 0) {
+          setQueueSize(other.getQueueSize());
+        }
+        if (other.getActiveJobs() != 0) {
+          setActiveJobs(other.getActiveJobs());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                isHealthy_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                status_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                version_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 32: {
+                queueSize_ = input.readInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                activeJobs_ = input.readInt32();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean isHealthy_ ;
+      /**
+       * <code>bool is_healthy = 1;</code>
+       * @return The isHealthy.
+       */
+      @java.lang.Override
+      public boolean getIsHealthy() {
+        return isHealthy_;
+      }
+      /**
+       * <code>bool is_healthy = 1;</code>
+       * @param value The isHealthy to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsHealthy(boolean value) {
+
+        isHealthy_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_healthy = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsHealthy() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        isHealthy_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>string status = 2;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string status = 2;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string status = 2;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        status_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        status_ = getDefaultInstance().getStatus();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string status = 2;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        status_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object version_ = "";
+      /**
+       * <code>string version = 3;</code>
+       * @return The version.
+       */
+      public java.lang.String getVersion() {
+        java.lang.Object ref = version_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          version_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string version = 3;</code>
+       * @return The bytes for version.
+       */
+      public com.google.protobuf.ByteString
+          getVersionBytes() {
+        java.lang.Object ref = version_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          version_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string version = 3;</code>
+       * @param value The version to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVersion(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        version_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string version = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVersion() {
+        version_ = getDefaultInstance().getVersion();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string version = 3;</code>
+       * @param value The bytes for version to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVersionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        version_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private int queueSize_ ;
+      /**
+       * <pre>
+       * &lt;-- Añade este campo
+       * </pre>
+       *
+       * <code>int32 queue_size = 4;</code>
+       * @return The queueSize.
+       */
+      @java.lang.Override
+      public int getQueueSize() {
+        return queueSize_;
+      }
+      /**
+       * <pre>
+       * &lt;-- Añade este campo
+       * </pre>
+       *
+       * <code>int32 queue_size = 4;</code>
+       * @param value The queueSize to set.
+       * @return This builder for chaining.
+       */
+      public Builder setQueueSize(int value) {
+
+        queueSize_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;-- Añade este campo
+       * </pre>
+       *
+       * <code>int32 queue_size = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearQueueSize() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        queueSize_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int activeJobs_ ;
+      /**
+       * <pre>
+       * &lt;-- Añade este campo
+       * </pre>
+       *
+       * <code>int32 active_jobs = 5;</code>
+       * @return The activeJobs.
+       */
+      @java.lang.Override
+      public int getActiveJobs() {
+        return activeJobs_;
+      }
+      /**
+       * <pre>
+       * &lt;-- Añade este campo
+       * </pre>
+       *
+       * <code>int32 active_jobs = 5;</code>
+       * @param value The activeJobs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setActiveJobs(int value) {
+
+        activeJobs_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;-- Añade este campo
+       * </pre>
+       *
+       * <code>int32 active_jobs = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearActiveJobs() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        activeJobs_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.HealthResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.HealthResponse)
+    private static final route.optimization.RouteOptimization.HealthResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.HealthResponse();
+    }
+
+    public static route.optimization.RouteOptimization.HealthResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HealthResponse>
+        PARSER = new com.google.protobuf.AbstractParser<HealthResponse>() {
+      @java.lang.Override
+      public HealthResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<HealthResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HealthResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.HealthResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface LocationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.Location)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>double latitude = 1;</code>
+     * @return The latitude.
+     */
+    double getLatitude();
+
+    /**
+     * <code>double longitude = 2;</code>
+     * @return The longitude.
+     */
+    double getLongitude();
+  }
+  /**
+   * Protobuf type {@code route.optimization.Location}
+   */
+  public static final class Location extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.Location)
+      LocationOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Location.newBuilder() to construct.
+    private Location(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Location() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Location();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_Location_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_Location_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.Location.class, route.optimization.RouteOptimization.Location.Builder.class);
+    }
+
+    public static final int LATITUDE_FIELD_NUMBER = 1;
+    private double latitude_ = 0D;
+    /**
+     * <code>double latitude = 1;</code>
+     * @return The latitude.
+     */
+    @java.lang.Override
+    public double getLatitude() {
+      return latitude_;
+    }
+
+    public static final int LONGITUDE_FIELD_NUMBER = 2;
+    private double longitude_ = 0D;
+    /**
+     * <code>double longitude = 2;</code>
+     * @return The longitude.
+     */
+    @java.lang.Override
+    public double getLongitude() {
+      return longitude_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (java.lang.Double.doubleToRawLongBits(latitude_) != 0) {
+        output.writeDouble(1, latitude_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(longitude_) != 0) {
+        output.writeDouble(2, longitude_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (java.lang.Double.doubleToRawLongBits(latitude_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(1, latitude_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(longitude_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, longitude_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.Location)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.Location other = (route.optimization.RouteOptimization.Location) obj;
+
+      if (java.lang.Double.doubleToLongBits(getLatitude())
+          != java.lang.Double.doubleToLongBits(
+              other.getLatitude())) return false;
+      if (java.lang.Double.doubleToLongBits(getLongitude())
+          != java.lang.Double.doubleToLongBits(
+              other.getLongitude())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LATITUDE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLatitude()));
+      hash = (37 * hash) + LONGITUDE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLongitude()));
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.Location parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.Location parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.Location parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.Location parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.Location prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code route.optimization.Location}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.Location)
+        route.optimization.RouteOptimization.LocationOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_Location_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_Location_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.Location.class, route.optimization.RouteOptimization.Location.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.Location.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        latitude_ = 0D;
+        longitude_ = 0D;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_Location_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.Location getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.Location.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.Location build() {
+        route.optimization.RouteOptimization.Location result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.Location buildPartial() {
+        route.optimization.RouteOptimization.Location result = new route.optimization.RouteOptimization.Location(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(route.optimization.RouteOptimization.Location result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.latitude_ = latitude_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.longitude_ = longitude_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.Location) {
+          return mergeFrom((route.optimization.RouteOptimization.Location)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.Location other) {
+        if (other == route.optimization.RouteOptimization.Location.getDefaultInstance()) return this;
+        if (other.getLatitude() != 0D) {
+          setLatitude(other.getLatitude());
+        }
+        if (other.getLongitude() != 0D) {
+          setLongitude(other.getLongitude());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 9: {
+                latitude_ = input.readDouble();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 9
+              case 17: {
+                longitude_ = input.readDouble();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 17
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private double latitude_ ;
+      /**
+       * <code>double latitude = 1;</code>
+       * @return The latitude.
+       */
+      @java.lang.Override
+      public double getLatitude() {
+        return latitude_;
+      }
+      /**
+       * <code>double latitude = 1;</code>
+       * @param value The latitude to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLatitude(double value) {
+
+        latitude_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double latitude = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLatitude() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        latitude_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double longitude_ ;
+      /**
+       * <code>double longitude = 2;</code>
+       * @return The longitude.
+       */
+      @java.lang.Override
+      public double getLongitude() {
+        return longitude_;
+      }
+      /**
+       * <code>double longitude = 2;</code>
+       * @param value The longitude to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLongitude(double value) {
+
+        longitude_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double longitude = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLongitude() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        longitude_ = 0D;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.Location)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.Location)
+    private static final route.optimization.RouteOptimization.Location DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.Location();
+    }
+
+    public static route.optimization.RouteOptimization.Location getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Location>
+        PARSER = new com.google.protobuf.AbstractParser<Location>() {
+      @java.lang.Override
+      public Location parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<Location> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Location> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.Location getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface RouteConstraintsOrBuilder extends
       // @@protoc_insertion_point(interface_extends:route.optimization.RouteConstraints)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.route.optimization.Location start_location = 1;</code>
+     * @return Whether the startLocation field is set.
+     */
+    boolean hasStartLocation();
+    /**
+     * <code>.route.optimization.Location start_location = 1;</code>
+     * @return The startLocation.
+     */
+    route.optimization.RouteOptimization.Location getStartLocation();
+    /**
+     * <code>.route.optimization.Location start_location = 1;</code>
+     */
+    route.optimization.RouteOptimization.LocationOrBuilder getStartLocationOrBuilder();
+
+    /**
+     * <code>.route.optimization.Location end_location = 2;</code>
+     * @return Whether the endLocation field is set.
+     */
+    boolean hasEndLocation();
+    /**
+     * <code>.route.optimization.Location end_location = 2;</code>
+     * @return The endLocation.
+     */
+    route.optimization.RouteOptimization.Location getEndLocation();
+    /**
+     * <code>.route.optimization.Location end_location = 2;</code>
+     */
+    route.optimization.RouteOptimization.LocationOrBuilder getEndLocationOrBuilder();
 
     /**
      * <pre>
      * formato "HH:mm"
      * </pre>
      *
-     * <code>string start_time = 1;</code>
+     * <code>string start_time = 3;</code>
      * @return The startTime.
      */
     java.lang.String getStartTime();
@@ -5308,14 +7214,14 @@ public final class RouteOptimization {
      * formato "HH:mm"
      * </pre>
      *
-     * <code>string start_time = 1;</code>
+     * <code>string start_time = 3;</code>
      * @return The bytes for startTime.
      */
     com.google.protobuf.ByteString
         getStartTimeBytes();
 
     /**
-     * <code>bool lunch_break_required = 2;</code>
+     * <code>bool lunch_break_required = 4;</code>
      * @return The lunchBreakRequired.
      */
     boolean getLunchBreakRequired();
@@ -5325,7 +7231,7 @@ public final class RouteOptimization {
      * en minutos
      * </pre>
      *
-     * <code>int32 lunch_break_duration = 3;</code>
+     * <code>int32 lunch_break_duration = 5;</code>
      * @return The lunchBreakDuration.
      */
     int getLunchBreakDuration();
@@ -5370,7 +7276,60 @@ public final class RouteOptimization {
               route.optimization.RouteOptimization.RouteConstraints.class, route.optimization.RouteOptimization.RouteConstraints.Builder.class);
     }
 
-    public static final int START_TIME_FIELD_NUMBER = 1;
+    private int bitField0_;
+    public static final int START_LOCATION_FIELD_NUMBER = 1;
+    private route.optimization.RouteOptimization.Location startLocation_;
+    /**
+     * <code>.route.optimization.Location start_location = 1;</code>
+     * @return Whether the startLocation field is set.
+     */
+    @java.lang.Override
+    public boolean hasStartLocation() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.route.optimization.Location start_location = 1;</code>
+     * @return The startLocation.
+     */
+    @java.lang.Override
+    public route.optimization.RouteOptimization.Location getStartLocation() {
+      return startLocation_ == null ? route.optimization.RouteOptimization.Location.getDefaultInstance() : startLocation_;
+    }
+    /**
+     * <code>.route.optimization.Location start_location = 1;</code>
+     */
+    @java.lang.Override
+    public route.optimization.RouteOptimization.LocationOrBuilder getStartLocationOrBuilder() {
+      return startLocation_ == null ? route.optimization.RouteOptimization.Location.getDefaultInstance() : startLocation_;
+    }
+
+    public static final int END_LOCATION_FIELD_NUMBER = 2;
+    private route.optimization.RouteOptimization.Location endLocation_;
+    /**
+     * <code>.route.optimization.Location end_location = 2;</code>
+     * @return Whether the endLocation field is set.
+     */
+    @java.lang.Override
+    public boolean hasEndLocation() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>.route.optimization.Location end_location = 2;</code>
+     * @return The endLocation.
+     */
+    @java.lang.Override
+    public route.optimization.RouteOptimization.Location getEndLocation() {
+      return endLocation_ == null ? route.optimization.RouteOptimization.Location.getDefaultInstance() : endLocation_;
+    }
+    /**
+     * <code>.route.optimization.Location end_location = 2;</code>
+     */
+    @java.lang.Override
+    public route.optimization.RouteOptimization.LocationOrBuilder getEndLocationOrBuilder() {
+      return endLocation_ == null ? route.optimization.RouteOptimization.Location.getDefaultInstance() : endLocation_;
+    }
+
+    public static final int START_TIME_FIELD_NUMBER = 3;
     @SuppressWarnings("serial")
     private volatile java.lang.Object startTime_ = "";
     /**
@@ -5378,7 +7337,7 @@ public final class RouteOptimization {
      * formato "HH:mm"
      * </pre>
      *
-     * <code>string start_time = 1;</code>
+     * <code>string start_time = 3;</code>
      * @return The startTime.
      */
     @java.lang.Override
@@ -5399,7 +7358,7 @@ public final class RouteOptimization {
      * formato "HH:mm"
      * </pre>
      *
-     * <code>string start_time = 1;</code>
+     * <code>string start_time = 3;</code>
      * @return The bytes for startTime.
      */
     @java.lang.Override
@@ -5417,10 +7376,10 @@ public final class RouteOptimization {
       }
     }
 
-    public static final int LUNCH_BREAK_REQUIRED_FIELD_NUMBER = 2;
+    public static final int LUNCH_BREAK_REQUIRED_FIELD_NUMBER = 4;
     private boolean lunchBreakRequired_ = false;
     /**
-     * <code>bool lunch_break_required = 2;</code>
+     * <code>bool lunch_break_required = 4;</code>
      * @return The lunchBreakRequired.
      */
     @java.lang.Override
@@ -5428,14 +7387,14 @@ public final class RouteOptimization {
       return lunchBreakRequired_;
     }
 
-    public static final int LUNCH_BREAK_DURATION_FIELD_NUMBER = 3;
+    public static final int LUNCH_BREAK_DURATION_FIELD_NUMBER = 5;
     private int lunchBreakDuration_ = 0;
     /**
      * <pre>
      * en minutos
      * </pre>
      *
-     * <code>int32 lunch_break_duration = 3;</code>
+     * <code>int32 lunch_break_duration = 5;</code>
      * @return The lunchBreakDuration.
      */
     @java.lang.Override
@@ -5457,14 +7416,20 @@ public final class RouteOptimization {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(1, getStartLocation());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(2, getEndLocation());
+      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(startTime_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, startTime_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, startTime_);
       }
       if (lunchBreakRequired_ != false) {
-        output.writeBool(2, lunchBreakRequired_);
+        output.writeBool(4, lunchBreakRequired_);
       }
       if (lunchBreakDuration_ != 0) {
-        output.writeInt32(3, lunchBreakDuration_);
+        output.writeInt32(5, lunchBreakDuration_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5475,16 +7440,24 @@ public final class RouteOptimization {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getStartLocation());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getEndLocation());
+      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(startTime_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, startTime_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, startTime_);
       }
       if (lunchBreakRequired_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, lunchBreakRequired_);
+          .computeBoolSize(4, lunchBreakRequired_);
       }
       if (lunchBreakDuration_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, lunchBreakDuration_);
+          .computeInt32Size(5, lunchBreakDuration_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -5501,6 +7474,16 @@ public final class RouteOptimization {
       }
       route.optimization.RouteOptimization.RouteConstraints other = (route.optimization.RouteOptimization.RouteConstraints) obj;
 
+      if (hasStartLocation() != other.hasStartLocation()) return false;
+      if (hasStartLocation()) {
+        if (!getStartLocation()
+            .equals(other.getStartLocation())) return false;
+      }
+      if (hasEndLocation() != other.hasEndLocation()) return false;
+      if (hasEndLocation()) {
+        if (!getEndLocation()
+            .equals(other.getEndLocation())) return false;
+      }
       if (!getStartTime()
           .equals(other.getStartTime())) return false;
       if (getLunchBreakRequired()
@@ -5518,6 +7501,14 @@ public final class RouteOptimization {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStartLocation()) {
+        hash = (37 * hash) + START_LOCATION_FIELD_NUMBER;
+        hash = (53 * hash) + getStartLocation().hashCode();
+      }
+      if (hasEndLocation()) {
+        hash = (37 * hash) + END_LOCATION_FIELD_NUMBER;
+        hash = (53 * hash) + getEndLocation().hashCode();
+      }
       hash = (37 * hash) + START_TIME_FIELD_NUMBER;
       hash = (53 * hash) + getStartTime().hashCode();
       hash = (37 * hash) + LUNCH_BREAK_REQUIRED_FIELD_NUMBER;
@@ -5648,18 +7639,35 @@ public final class RouteOptimization {
 
       // Construct using route.optimization.RouteOptimization.RouteConstraints.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getStartLocationFieldBuilder();
+          getEndLocationFieldBuilder();
+        }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
+        startLocation_ = null;
+        if (startLocationBuilder_ != null) {
+          startLocationBuilder_.dispose();
+          startLocationBuilder_ = null;
+        }
+        endLocation_ = null;
+        if (endLocationBuilder_ != null) {
+          endLocationBuilder_.dispose();
+          endLocationBuilder_ = null;
+        }
         startTime_ = "";
         lunchBreakRequired_ = false;
         lunchBreakDuration_ = 0;
@@ -5696,15 +7704,29 @@ public final class RouteOptimization {
 
       private void buildPartial0(route.optimization.RouteOptimization.RouteConstraints result) {
         int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.startTime_ = startTime_;
+          result.startLocation_ = startLocationBuilder_ == null
+              ? startLocation_
+              : startLocationBuilder_.build();
+          to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.lunchBreakRequired_ = lunchBreakRequired_;
+          result.endLocation_ = endLocationBuilder_ == null
+              ? endLocation_
+              : endLocationBuilder_.build();
+          to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.startTime_ = startTime_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.lunchBreakRequired_ = lunchBreakRequired_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
           result.lunchBreakDuration_ = lunchBreakDuration_;
         }
+        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -5751,9 +7773,15 @@ public final class RouteOptimization {
 
       public Builder mergeFrom(route.optimization.RouteOptimization.RouteConstraints other) {
         if (other == route.optimization.RouteOptimization.RouteConstraints.getDefaultInstance()) return this;
+        if (other.hasStartLocation()) {
+          mergeStartLocation(other.getStartLocation());
+        }
+        if (other.hasEndLocation()) {
+          mergeEndLocation(other.getEndLocation());
+        }
         if (!other.getStartTime().isEmpty()) {
           startTime_ = other.startTime_;
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (other.getLunchBreakRequired() != false) {
@@ -5789,20 +7817,34 @@ public final class RouteOptimization {
                 done = true;
                 break;
               case 10: {
-                startTime_ = input.readStringRequireUtf8();
+                input.readMessage(
+                    getStartLocationFieldBuilder().getBuilder(),
+                    extensionRegistry);
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
-              case 16: {
-                lunchBreakRequired_ = input.readBool();
+              case 18: {
+                input.readMessage(
+                    getEndLocationFieldBuilder().getBuilder(),
+                    extensionRegistry);
                 bitField0_ |= 0x00000002;
                 break;
-              } // case 16
-              case 24: {
-                lunchBreakDuration_ = input.readInt32();
+              } // case 18
+              case 26: {
+                startTime_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000004;
                 break;
-              } // case 24
+              } // case 26
+              case 32: {
+                lunchBreakRequired_ = input.readBool();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                lunchBreakDuration_ = input.readInt32();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -5820,13 +7862,255 @@ public final class RouteOptimization {
       }
       private int bitField0_;
 
+      private route.optimization.RouteOptimization.Location startLocation_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          route.optimization.RouteOptimization.Location, route.optimization.RouteOptimization.Location.Builder, route.optimization.RouteOptimization.LocationOrBuilder> startLocationBuilder_;
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       * @return Whether the startLocation field is set.
+       */
+      public boolean hasStartLocation() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       * @return The startLocation.
+       */
+      public route.optimization.RouteOptimization.Location getStartLocation() {
+        if (startLocationBuilder_ == null) {
+          return startLocation_ == null ? route.optimization.RouteOptimization.Location.getDefaultInstance() : startLocation_;
+        } else {
+          return startLocationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       */
+      public Builder setStartLocation(route.optimization.RouteOptimization.Location value) {
+        if (startLocationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          startLocation_ = value;
+        } else {
+          startLocationBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       */
+      public Builder setStartLocation(
+          route.optimization.RouteOptimization.Location.Builder builderForValue) {
+        if (startLocationBuilder_ == null) {
+          startLocation_ = builderForValue.build();
+        } else {
+          startLocationBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       */
+      public Builder mergeStartLocation(route.optimization.RouteOptimization.Location value) {
+        if (startLocationBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            startLocation_ != null &&
+            startLocation_ != route.optimization.RouteOptimization.Location.getDefaultInstance()) {
+            getStartLocationBuilder().mergeFrom(value);
+          } else {
+            startLocation_ = value;
+          }
+        } else {
+          startLocationBuilder_.mergeFrom(value);
+        }
+        if (startLocation_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       */
+      public Builder clearStartLocation() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        startLocation_ = null;
+        if (startLocationBuilder_ != null) {
+          startLocationBuilder_.dispose();
+          startLocationBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       */
+      public route.optimization.RouteOptimization.Location.Builder getStartLocationBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getStartLocationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       */
+      public route.optimization.RouteOptimization.LocationOrBuilder getStartLocationOrBuilder() {
+        if (startLocationBuilder_ != null) {
+          return startLocationBuilder_.getMessageOrBuilder();
+        } else {
+          return startLocation_ == null ?
+              route.optimization.RouteOptimization.Location.getDefaultInstance() : startLocation_;
+        }
+      }
+      /**
+       * <code>.route.optimization.Location start_location = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          route.optimization.RouteOptimization.Location, route.optimization.RouteOptimization.Location.Builder, route.optimization.RouteOptimization.LocationOrBuilder> 
+          getStartLocationFieldBuilder() {
+        if (startLocationBuilder_ == null) {
+          startLocationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              route.optimization.RouteOptimization.Location, route.optimization.RouteOptimization.Location.Builder, route.optimization.RouteOptimization.LocationOrBuilder>(
+                  getStartLocation(),
+                  getParentForChildren(),
+                  isClean());
+          startLocation_ = null;
+        }
+        return startLocationBuilder_;
+      }
+
+      private route.optimization.RouteOptimization.Location endLocation_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          route.optimization.RouteOptimization.Location, route.optimization.RouteOptimization.Location.Builder, route.optimization.RouteOptimization.LocationOrBuilder> endLocationBuilder_;
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       * @return Whether the endLocation field is set.
+       */
+      public boolean hasEndLocation() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       * @return The endLocation.
+       */
+      public route.optimization.RouteOptimization.Location getEndLocation() {
+        if (endLocationBuilder_ == null) {
+          return endLocation_ == null ? route.optimization.RouteOptimization.Location.getDefaultInstance() : endLocation_;
+        } else {
+          return endLocationBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       */
+      public Builder setEndLocation(route.optimization.RouteOptimization.Location value) {
+        if (endLocationBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          endLocation_ = value;
+        } else {
+          endLocationBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       */
+      public Builder setEndLocation(
+          route.optimization.RouteOptimization.Location.Builder builderForValue) {
+        if (endLocationBuilder_ == null) {
+          endLocation_ = builderForValue.build();
+        } else {
+          endLocationBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       */
+      public Builder mergeEndLocation(route.optimization.RouteOptimization.Location value) {
+        if (endLocationBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+            endLocation_ != null &&
+            endLocation_ != route.optimization.RouteOptimization.Location.getDefaultInstance()) {
+            getEndLocationBuilder().mergeFrom(value);
+          } else {
+            endLocation_ = value;
+          }
+        } else {
+          endLocationBuilder_.mergeFrom(value);
+        }
+        if (endLocation_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       */
+      public Builder clearEndLocation() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        endLocation_ = null;
+        if (endLocationBuilder_ != null) {
+          endLocationBuilder_.dispose();
+          endLocationBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       */
+      public route.optimization.RouteOptimization.Location.Builder getEndLocationBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getEndLocationFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       */
+      public route.optimization.RouteOptimization.LocationOrBuilder getEndLocationOrBuilder() {
+        if (endLocationBuilder_ != null) {
+          return endLocationBuilder_.getMessageOrBuilder();
+        } else {
+          return endLocation_ == null ?
+              route.optimization.RouteOptimization.Location.getDefaultInstance() : endLocation_;
+        }
+      }
+      /**
+       * <code>.route.optimization.Location end_location = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          route.optimization.RouteOptimization.Location, route.optimization.RouteOptimization.Location.Builder, route.optimization.RouteOptimization.LocationOrBuilder> 
+          getEndLocationFieldBuilder() {
+        if (endLocationBuilder_ == null) {
+          endLocationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              route.optimization.RouteOptimization.Location, route.optimization.RouteOptimization.Location.Builder, route.optimization.RouteOptimization.LocationOrBuilder>(
+                  getEndLocation(),
+                  getParentForChildren(),
+                  isClean());
+          endLocation_ = null;
+        }
+        return endLocationBuilder_;
+      }
+
       private java.lang.Object startTime_ = "";
       /**
        * <pre>
        * formato "HH:mm"
        * </pre>
        *
-       * <code>string start_time = 1;</code>
+       * <code>string start_time = 3;</code>
        * @return The startTime.
        */
       public java.lang.String getStartTime() {
@@ -5846,7 +8130,7 @@ public final class RouteOptimization {
        * formato "HH:mm"
        * </pre>
        *
-       * <code>string start_time = 1;</code>
+       * <code>string start_time = 3;</code>
        * @return The bytes for startTime.
        */
       public com.google.protobuf.ByteString
@@ -5867,7 +8151,7 @@ public final class RouteOptimization {
        * formato "HH:mm"
        * </pre>
        *
-       * <code>string start_time = 1;</code>
+       * <code>string start_time = 3;</code>
        * @param value The startTime to set.
        * @return This builder for chaining.
        */
@@ -5875,7 +8159,7 @@ public final class RouteOptimization {
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         startTime_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
@@ -5884,12 +8168,12 @@ public final class RouteOptimization {
        * formato "HH:mm"
        * </pre>
        *
-       * <code>string start_time = 1;</code>
+       * <code>string start_time = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearStartTime() {
         startTime_ = getDefaultInstance().getStartTime();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -5898,7 +8182,7 @@ public final class RouteOptimization {
        * formato "HH:mm"
        * </pre>
        *
-       * <code>string start_time = 1;</code>
+       * <code>string start_time = 3;</code>
        * @param value The bytes for startTime to set.
        * @return This builder for chaining.
        */
@@ -5907,14 +8191,14 @@ public final class RouteOptimization {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
         startTime_ = value;
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000004;
         onChanged();
         return this;
       }
 
       private boolean lunchBreakRequired_ ;
       /**
-       * <code>bool lunch_break_required = 2;</code>
+       * <code>bool lunch_break_required = 4;</code>
        * @return The lunchBreakRequired.
        */
       @java.lang.Override
@@ -5922,23 +8206,23 @@ public final class RouteOptimization {
         return lunchBreakRequired_;
       }
       /**
-       * <code>bool lunch_break_required = 2;</code>
+       * <code>bool lunch_break_required = 4;</code>
        * @param value The lunchBreakRequired to set.
        * @return This builder for chaining.
        */
       public Builder setLunchBreakRequired(boolean value) {
 
         lunchBreakRequired_ = value;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
       /**
-       * <code>bool lunch_break_required = 2;</code>
+       * <code>bool lunch_break_required = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearLunchBreakRequired() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000008);
         lunchBreakRequired_ = false;
         onChanged();
         return this;
@@ -5950,7 +8234,7 @@ public final class RouteOptimization {
        * en minutos
        * </pre>
        *
-       * <code>int32 lunch_break_duration = 3;</code>
+       * <code>int32 lunch_break_duration = 5;</code>
        * @return The lunchBreakDuration.
        */
       @java.lang.Override
@@ -5962,14 +8246,14 @@ public final class RouteOptimization {
        * en minutos
        * </pre>
        *
-       * <code>int32 lunch_break_duration = 3;</code>
+       * <code>int32 lunch_break_duration = 5;</code>
        * @param value The lunchBreakDuration to set.
        * @return This builder for chaining.
        */
       public Builder setLunchBreakDuration(int value) {
 
         lunchBreakDuration_ = value;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -5978,11 +8262,11 @@ public final class RouteOptimization {
        * en minutos
        * </pre>
        *
-       * <code>int32 lunch_break_duration = 3;</code>
+       * <code>int32 lunch_break_duration = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearLunchBreakDuration() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         lunchBreakDuration_ = 0;
         onChanged();
         return this;
@@ -10027,15 +12311,6185 @@ public final class RouteOptimization {
 
   }
 
-  public interface HealthResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:route.optimization.HealthResponse)
+  public interface JobStatusRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.JobStatusRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bool is_healthy = 1;</code>
-     * @return The isHealthy.
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
      */
-    boolean getIsHealthy();
+    java.lang.String getJobId();
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
+  }
+  /**
+   * <pre>
+   * Solicitud de estado de trabajo
+   * </pre>
+   *
+   * Protobuf type {@code route.optimization.JobStatusRequest}
+   */
+  public static final class JobStatusRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.JobStatusRequest)
+      JobStatusRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use JobStatusRequest.newBuilder() to construct.
+    private JobStatusRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private JobStatusRequest() {
+      jobId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new JobStatusRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.JobStatusRequest.class, route.optimization.RouteOptimization.JobStatusRequest.Builder.class);
+    }
+
+    public static final int JOB_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object jobId_ = "";
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    @java.lang.Override
+    public java.lang.String getJobId() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jobId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jobId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, jobId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, jobId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.JobStatusRequest)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.JobStatusRequest other = (route.optimization.RouteOptimization.JobStatusRequest) obj;
+
+      if (!getJobId()
+          .equals(other.getJobId())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + JOB_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobId().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.JobStatusRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.JobStatusRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.JobStatusRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.JobStatusRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Solicitud de estado de trabajo
+     * </pre>
+     *
+     * Protobuf type {@code route.optimization.JobStatusRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.JobStatusRequest)
+        route.optimization.RouteOptimization.JobStatusRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.JobStatusRequest.class, route.optimization.RouteOptimization.JobStatusRequest.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.JobStatusRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        jobId_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobStatusRequest getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.JobStatusRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobStatusRequest build() {
+        route.optimization.RouteOptimization.JobStatusRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobStatusRequest buildPartial() {
+        route.optimization.RouteOptimization.JobStatusRequest result = new route.optimization.RouteOptimization.JobStatusRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(route.optimization.RouteOptimization.JobStatusRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.jobId_ = jobId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.JobStatusRequest) {
+          return mergeFrom((route.optimization.RouteOptimization.JobStatusRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.JobStatusRequest other) {
+        if (other == route.optimization.RouteOptimization.JobStatusRequest.getDefaultInstance()) return this;
+        if (!other.getJobId().isEmpty()) {
+          jobId_ = other.jobId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                jobId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object jobId_ = "";
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The jobId.
+       */
+      public java.lang.String getJobId() {
+        java.lang.Object ref = jobId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jobId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The bytes for jobId.
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        java.lang.Object ref = jobId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jobId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobId() {
+        jobId_ = getDefaultInstance().getJobId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The bytes for jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.JobStatusRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.JobStatusRequest)
+    private static final route.optimization.RouteOptimization.JobStatusRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.JobStatusRequest();
+    }
+
+    public static route.optimization.RouteOptimization.JobStatusRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<JobStatusRequest>
+        PARSER = new com.google.protobuf.AbstractParser<JobStatusRequest>() {
+      @java.lang.Override
+      public JobStatusRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<JobStatusRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JobStatusRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.JobStatusRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface JobStatusResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.JobStatusResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    java.lang.String getJobId();
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
+
+    /**
+     * <code>string route_id = 2;</code>
+     * @return The routeId.
+     */
+    java.lang.String getRouteId();
+    /**
+     * <code>string route_id = 2;</code>
+     * @return The bytes for routeId.
+     */
+    com.google.protobuf.ByteString
+        getRouteIdBytes();
+
+    /**
+     * <pre>
+     * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+     * </pre>
+     *
+     * <code>string status = 3;</code>
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     * <pre>
+     * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+     * </pre>
+     *
+     * <code>string status = 3;</code>
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+
+    /**
+     * <pre>
+     * 0.0 a 100.0
+     * </pre>
+     *
+     * <code>float progress = 4;</code>
+     * @return The progress.
+     */
+    float getProgress();
+
+    /**
+     * <code>string message = 5;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 5;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+
+    /**
+     * <pre>
+     * ISO 8601 timestamp
+     * </pre>
+     *
+     * <code>string created_at = 6;</code>
+     * @return The createdAt.
+     */
+    java.lang.String getCreatedAt();
+    /**
+     * <pre>
+     * ISO 8601 timestamp
+     * </pre>
+     *
+     * <code>string created_at = 6;</code>
+     * @return The bytes for createdAt.
+     */
+    com.google.protobuf.ByteString
+        getCreatedAtBytes();
+
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string started_at = 7;</code>
+     * @return The startedAt.
+     */
+    java.lang.String getStartedAt();
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string started_at = 7;</code>
+     * @return The bytes for startedAt.
+     */
+    com.google.protobuf.ByteString
+        getStartedAtBytes();
+
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string completed_at = 8;</code>
+     * @return The completedAt.
+     */
+    java.lang.String getCompletedAt();
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string completed_at = 8;</code>
+     * @return The bytes for completedAt.
+     */
+    com.google.protobuf.ByteString
+        getCompletedAtBytes();
+
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string estimated_completion_time = 9;</code>
+     * @return The estimatedCompletionTime.
+     */
+    java.lang.String getEstimatedCompletionTime();
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string estimated_completion_time = 9;</code>
+     * @return The bytes for estimatedCompletionTime.
+     */
+    com.google.protobuf.ByteString
+        getEstimatedCompletionTimeBytes();
+
+    /**
+     * <pre>
+     * Solo si status=FAILED
+     * </pre>
+     *
+     * <code>string error_message = 10;</code>
+     * @return The errorMessage.
+     */
+    java.lang.String getErrorMessage();
+    /**
+     * <pre>
+     * Solo si status=FAILED
+     * </pre>
+     *
+     * <code>string error_message = 10;</code>
+     * @return The bytes for errorMessage.
+     */
+    com.google.protobuf.ByteString
+        getErrorMessageBytes();
+
+    /**
+     * <pre>
+     * true si los resultados están listos
+     * </pre>
+     *
+     * <code>bool has_result = 11;</code>
+     * @return The hasResult.
+     */
+    boolean getHasResult();
+  }
+  /**
+   * <pre>
+   * Respuesta de estado de trabajo
+   * </pre>
+   *
+   * Protobuf type {@code route.optimization.JobStatusResponse}
+   */
+  public static final class JobStatusResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.JobStatusResponse)
+      JobStatusResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use JobStatusResponse.newBuilder() to construct.
+    private JobStatusResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private JobStatusResponse() {
+      jobId_ = "";
+      routeId_ = "";
+      status_ = "";
+      message_ = "";
+      createdAt_ = "";
+      startedAt_ = "";
+      completedAt_ = "";
+      estimatedCompletionTime_ = "";
+      errorMessage_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new JobStatusResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.JobStatusResponse.class, route.optimization.RouteOptimization.JobStatusResponse.Builder.class);
+    }
+
+    public static final int JOB_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object jobId_ = "";
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    @java.lang.Override
+    public java.lang.String getJobId() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jobId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jobId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ROUTE_ID_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object routeId_ = "";
+    /**
+     * <code>string route_id = 2;</code>
+     * @return The routeId.
+     */
+    @java.lang.Override
+    public java.lang.String getRouteId() {
+      java.lang.Object ref = routeId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        routeId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string route_id = 2;</code>
+     * @return The bytes for routeId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRouteIdBytes() {
+      java.lang.Object ref = routeId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        routeId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object status_ = "";
+    /**
+     * <pre>
+     * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+     * </pre>
+     *
+     * <code>string status = 3;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+     * </pre>
+     *
+     * <code>string status = 3;</code>
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PROGRESS_FIELD_NUMBER = 4;
+    private float progress_ = 0F;
+    /**
+     * <pre>
+     * 0.0 a 100.0
+     * </pre>
+     *
+     * <code>float progress = 4;</code>
+     * @return The progress.
+     */
+    @java.lang.Override
+    public float getProgress() {
+      return progress_;
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object message_ = "";
+    /**
+     * <code>string message = 5;</code>
+     * @return The message.
+     */
+    @java.lang.Override
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 5;</code>
+     * @return The bytes for message.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CREATED_AT_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object createdAt_ = "";
+    /**
+     * <pre>
+     * ISO 8601 timestamp
+     * </pre>
+     *
+     * <code>string created_at = 6;</code>
+     * @return The createdAt.
+     */
+    @java.lang.Override
+    public java.lang.String getCreatedAt() {
+      java.lang.Object ref = createdAt_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        createdAt_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * ISO 8601 timestamp
+     * </pre>
+     *
+     * <code>string created_at = 6;</code>
+     * @return The bytes for createdAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCreatedAtBytes() {
+      java.lang.Object ref = createdAt_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        createdAt_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STARTED_AT_FIELD_NUMBER = 7;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object startedAt_ = "";
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string started_at = 7;</code>
+     * @return The startedAt.
+     */
+    @java.lang.Override
+    public java.lang.String getStartedAt() {
+      java.lang.Object ref = startedAt_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        startedAt_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string started_at = 7;</code>
+     * @return The bytes for startedAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStartedAtBytes() {
+      java.lang.Object ref = startedAt_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        startedAt_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int COMPLETED_AT_FIELD_NUMBER = 8;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object completedAt_ = "";
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string completed_at = 8;</code>
+     * @return The completedAt.
+     */
+    @java.lang.Override
+    public java.lang.String getCompletedAt() {
+      java.lang.Object ref = completedAt_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        completedAt_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string completed_at = 8;</code>
+     * @return The bytes for completedAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCompletedAtBytes() {
+      java.lang.Object ref = completedAt_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        completedAt_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ESTIMATED_COMPLETION_TIME_FIELD_NUMBER = 9;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object estimatedCompletionTime_ = "";
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string estimated_completion_time = 9;</code>
+     * @return The estimatedCompletionTime.
+     */
+    @java.lang.Override
+    public java.lang.String getEstimatedCompletionTime() {
+      java.lang.Object ref = estimatedCompletionTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        estimatedCompletionTime_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * ISO 8601 timestamp (opcional)
+     * </pre>
+     *
+     * <code>string estimated_completion_time = 9;</code>
+     * @return The bytes for estimatedCompletionTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEstimatedCompletionTimeBytes() {
+      java.lang.Object ref = estimatedCompletionTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        estimatedCompletionTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ERROR_MESSAGE_FIELD_NUMBER = 10;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object errorMessage_ = "";
+    /**
+     * <pre>
+     * Solo si status=FAILED
+     * </pre>
+     *
+     * <code>string error_message = 10;</code>
+     * @return The errorMessage.
+     */
+    @java.lang.Override
+    public java.lang.String getErrorMessage() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        errorMessage_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Solo si status=FAILED
+     * </pre>
+     *
+     * <code>string error_message = 10;</code>
+     * @return The bytes for errorMessage.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getErrorMessageBytes() {
+      java.lang.Object ref = errorMessage_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        errorMessage_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int HAS_RESULT_FIELD_NUMBER = 11;
+    private boolean hasResult_ = false;
+    /**
+     * <pre>
+     * true si los resultados están listos
+     * </pre>
+     *
+     * <code>bool has_result = 11;</code>
+     * @return The hasResult.
+     */
+    @java.lang.Override
+    public boolean getHasResult() {
+      return hasResult_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, jobId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(routeId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, routeId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, status_);
+      }
+      if (java.lang.Float.floatToRawIntBits(progress_) != 0) {
+        output.writeFloat(4, progress_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, message_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdAt_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, createdAt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(startedAt_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, startedAt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(completedAt_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, completedAt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(estimatedCompletionTime_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, estimatedCompletionTime_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errorMessage_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, errorMessage_);
+      }
+      if (hasResult_ != false) {
+        output.writeBool(11, hasResult_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, jobId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(routeId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, routeId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, status_);
+      }
+      if (java.lang.Float.floatToRawIntBits(progress_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(4, progress_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, message_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdAt_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, createdAt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(startedAt_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, startedAt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(completedAt_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, completedAt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(estimatedCompletionTime_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, estimatedCompletionTime_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(errorMessage_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, errorMessage_);
+      }
+      if (hasResult_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(11, hasResult_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.JobStatusResponse)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.JobStatusResponse other = (route.optimization.RouteOptimization.JobStatusResponse) obj;
+
+      if (!getJobId()
+          .equals(other.getJobId())) return false;
+      if (!getRouteId()
+          .equals(other.getRouteId())) return false;
+      if (!getStatus()
+          .equals(other.getStatus())) return false;
+      if (java.lang.Float.floatToIntBits(getProgress())
+          != java.lang.Float.floatToIntBits(
+              other.getProgress())) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!getCreatedAt()
+          .equals(other.getCreatedAt())) return false;
+      if (!getStartedAt()
+          .equals(other.getStartedAt())) return false;
+      if (!getCompletedAt()
+          .equals(other.getCompletedAt())) return false;
+      if (!getEstimatedCompletionTime()
+          .equals(other.getEstimatedCompletionTime())) return false;
+      if (!getErrorMessage()
+          .equals(other.getErrorMessage())) return false;
+      if (getHasResult()
+          != other.getHasResult()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + JOB_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobId().hashCode();
+      hash = (37 * hash) + ROUTE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getRouteId().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (37 * hash) + PROGRESS_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getProgress());
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (37 * hash) + CREATED_AT_FIELD_NUMBER;
+      hash = (53 * hash) + getCreatedAt().hashCode();
+      hash = (37 * hash) + STARTED_AT_FIELD_NUMBER;
+      hash = (53 * hash) + getStartedAt().hashCode();
+      hash = (37 * hash) + COMPLETED_AT_FIELD_NUMBER;
+      hash = (53 * hash) + getCompletedAt().hashCode();
+      hash = (37 * hash) + ESTIMATED_COMPLETION_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getEstimatedCompletionTime().hashCode();
+      hash = (37 * hash) + ERROR_MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getErrorMessage().hashCode();
+      hash = (37 * hash) + HAS_RESULT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHasResult());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.JobStatusResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.JobStatusResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.JobStatusResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.JobStatusResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Respuesta de estado de trabajo
+     * </pre>
+     *
+     * Protobuf type {@code route.optimization.JobStatusResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.JobStatusResponse)
+        route.optimization.RouteOptimization.JobStatusResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.JobStatusResponse.class, route.optimization.RouteOptimization.JobStatusResponse.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.JobStatusResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        jobId_ = "";
+        routeId_ = "";
+        status_ = "";
+        progress_ = 0F;
+        message_ = "";
+        createdAt_ = "";
+        startedAt_ = "";
+        completedAt_ = "";
+        estimatedCompletionTime_ = "";
+        errorMessage_ = "";
+        hasResult_ = false;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobStatusResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobStatusResponse getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.JobStatusResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobStatusResponse build() {
+        route.optimization.RouteOptimization.JobStatusResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobStatusResponse buildPartial() {
+        route.optimization.RouteOptimization.JobStatusResponse result = new route.optimization.RouteOptimization.JobStatusResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(route.optimization.RouteOptimization.JobStatusResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.jobId_ = jobId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.routeId_ = routeId_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.status_ = status_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.progress_ = progress_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.message_ = message_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.createdAt_ = createdAt_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.startedAt_ = startedAt_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.completedAt_ = completedAt_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.estimatedCompletionTime_ = estimatedCompletionTime_;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.errorMessage_ = errorMessage_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.hasResult_ = hasResult_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.JobStatusResponse) {
+          return mergeFrom((route.optimization.RouteOptimization.JobStatusResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.JobStatusResponse other) {
+        if (other == route.optimization.RouteOptimization.JobStatusResponse.getDefaultInstance()) return this;
+        if (!other.getJobId().isEmpty()) {
+          jobId_ = other.jobId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getRouteId().isEmpty()) {
+          routeId_ = other.routeId_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.getProgress() != 0F) {
+          setProgress(other.getProgress());
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (!other.getCreatedAt().isEmpty()) {
+          createdAt_ = other.createdAt_;
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
+        if (!other.getStartedAt().isEmpty()) {
+          startedAt_ = other.startedAt_;
+          bitField0_ |= 0x00000040;
+          onChanged();
+        }
+        if (!other.getCompletedAt().isEmpty()) {
+          completedAt_ = other.completedAt_;
+          bitField0_ |= 0x00000080;
+          onChanged();
+        }
+        if (!other.getEstimatedCompletionTime().isEmpty()) {
+          estimatedCompletionTime_ = other.estimatedCompletionTime_;
+          bitField0_ |= 0x00000100;
+          onChanged();
+        }
+        if (!other.getErrorMessage().isEmpty()) {
+          errorMessage_ = other.errorMessage_;
+          bitField0_ |= 0x00000200;
+          onChanged();
+        }
+        if (other.getHasResult() != false) {
+          setHasResult(other.getHasResult());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                jobId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                routeId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                status_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 37: {
+                progress_ = input.readFloat();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 37
+              case 42: {
+                message_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                createdAt_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              case 58: {
+                startedAt_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 58
+              case 66: {
+                completedAt_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000080;
+                break;
+              } // case 66
+              case 74: {
+                estimatedCompletionTime_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 74
+              case 82: {
+                errorMessage_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 82
+              case 88: {
+                hasResult_ = input.readBool();
+                bitField0_ |= 0x00000400;
+                break;
+              } // case 88
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object jobId_ = "";
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The jobId.
+       */
+      public java.lang.String getJobId() {
+        java.lang.Object ref = jobId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jobId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The bytes for jobId.
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        java.lang.Object ref = jobId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jobId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobId() {
+        jobId_ = getDefaultInstance().getJobId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The bytes for jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object routeId_ = "";
+      /**
+       * <code>string route_id = 2;</code>
+       * @return The routeId.
+       */
+      public java.lang.String getRouteId() {
+        java.lang.Object ref = routeId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          routeId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string route_id = 2;</code>
+       * @return The bytes for routeId.
+       */
+      public com.google.protobuf.ByteString
+          getRouteIdBytes() {
+        java.lang.Object ref = routeId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          routeId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string route_id = 2;</code>
+       * @param value The routeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRouteId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        routeId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string route_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRouteId() {
+        routeId_ = getDefaultInstance().getRouteId();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string route_id = 2;</code>
+       * @param value The bytes for routeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRouteIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        routeId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <pre>
+       * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+       * </pre>
+       *
+       * <code>string status = 3;</code>
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+       * </pre>
+       *
+       * <code>string status = 3;</code>
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+       * </pre>
+       *
+       * <code>string status = 3;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        status_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+       * </pre>
+       *
+       * <code>string status = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        status_ = getDefaultInstance().getStatus();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * QUEUED, PROCESSING, COMPLETED, FAILED, CANCELLED
+       * </pre>
+       *
+       * <code>string status = 3;</code>
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        status_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private float progress_ ;
+      /**
+       * <pre>
+       * 0.0 a 100.0
+       * </pre>
+       *
+       * <code>float progress = 4;</code>
+       * @return The progress.
+       */
+      @java.lang.Override
+      public float getProgress() {
+        return progress_;
+      }
+      /**
+       * <pre>
+       * 0.0 a 100.0
+       * </pre>
+       *
+       * <code>float progress = 4;</code>
+       * @param value The progress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProgress(float value) {
+
+        progress_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 0.0 a 100.0
+       * </pre>
+       *
+       * <code>float progress = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProgress() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        progress_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 5;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 5;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 5;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        message_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        message_ = getDefaultInstance().getMessage();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 5;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        message_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object createdAt_ = "";
+      /**
+       * <pre>
+       * ISO 8601 timestamp
+       * </pre>
+       *
+       * <code>string created_at = 6;</code>
+       * @return The createdAt.
+       */
+      public java.lang.String getCreatedAt() {
+        java.lang.Object ref = createdAt_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          createdAt_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp
+       * </pre>
+       *
+       * <code>string created_at = 6;</code>
+       * @return The bytes for createdAt.
+       */
+      public com.google.protobuf.ByteString
+          getCreatedAtBytes() {
+        java.lang.Object ref = createdAt_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          createdAt_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp
+       * </pre>
+       *
+       * <code>string created_at = 6;</code>
+       * @param value The createdAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreatedAt(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        createdAt_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp
+       * </pre>
+       *
+       * <code>string created_at = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCreatedAt() {
+        createdAt_ = getDefaultInstance().getCreatedAt();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp
+       * </pre>
+       *
+       * <code>string created_at = 6;</code>
+       * @param value The bytes for createdAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreatedAtBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        createdAt_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object startedAt_ = "";
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string started_at = 7;</code>
+       * @return The startedAt.
+       */
+      public java.lang.String getStartedAt() {
+        java.lang.Object ref = startedAt_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          startedAt_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string started_at = 7;</code>
+       * @return The bytes for startedAt.
+       */
+      public com.google.protobuf.ByteString
+          getStartedAtBytes() {
+        java.lang.Object ref = startedAt_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          startedAt_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string started_at = 7;</code>
+       * @param value The startedAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartedAt(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        startedAt_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string started_at = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStartedAt() {
+        startedAt_ = getDefaultInstance().getStartedAt();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string started_at = 7;</code>
+       * @param value The bytes for startedAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartedAtBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        startedAt_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object completedAt_ = "";
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string completed_at = 8;</code>
+       * @return The completedAt.
+       */
+      public java.lang.String getCompletedAt() {
+        java.lang.Object ref = completedAt_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          completedAt_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string completed_at = 8;</code>
+       * @return The bytes for completedAt.
+       */
+      public com.google.protobuf.ByteString
+          getCompletedAtBytes() {
+        java.lang.Object ref = completedAt_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          completedAt_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string completed_at = 8;</code>
+       * @param value The completedAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCompletedAt(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        completedAt_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string completed_at = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCompletedAt() {
+        completedAt_ = getDefaultInstance().getCompletedAt();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string completed_at = 8;</code>
+       * @param value The bytes for completedAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCompletedAtBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        completedAt_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object estimatedCompletionTime_ = "";
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string estimated_completion_time = 9;</code>
+       * @return The estimatedCompletionTime.
+       */
+      public java.lang.String getEstimatedCompletionTime() {
+        java.lang.Object ref = estimatedCompletionTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          estimatedCompletionTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string estimated_completion_time = 9;</code>
+       * @return The bytes for estimatedCompletionTime.
+       */
+      public com.google.protobuf.ByteString
+          getEstimatedCompletionTimeBytes() {
+        java.lang.Object ref = estimatedCompletionTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          estimatedCompletionTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string estimated_completion_time = 9;</code>
+       * @param value The estimatedCompletionTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEstimatedCompletionTime(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        estimatedCompletionTime_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string estimated_completion_time = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEstimatedCompletionTime() {
+        estimatedCompletionTime_ = getDefaultInstance().getEstimatedCompletionTime();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 8601 timestamp (opcional)
+       * </pre>
+       *
+       * <code>string estimated_completion_time = 9;</code>
+       * @param value The bytes for estimatedCompletionTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEstimatedCompletionTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        estimatedCompletionTime_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object errorMessage_ = "";
+      /**
+       * <pre>
+       * Solo si status=FAILED
+       * </pre>
+       *
+       * <code>string error_message = 10;</code>
+       * @return The errorMessage.
+       */
+      public java.lang.String getErrorMessage() {
+        java.lang.Object ref = errorMessage_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          errorMessage_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Solo si status=FAILED
+       * </pre>
+       *
+       * <code>string error_message = 10;</code>
+       * @return The bytes for errorMessage.
+       */
+      public com.google.protobuf.ByteString
+          getErrorMessageBytes() {
+        java.lang.Object ref = errorMessage_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          errorMessage_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Solo si status=FAILED
+       * </pre>
+       *
+       * <code>string error_message = 10;</code>
+       * @param value The errorMessage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setErrorMessage(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        errorMessage_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Solo si status=FAILED
+       * </pre>
+       *
+       * <code>string error_message = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearErrorMessage() {
+        errorMessage_ = getDefaultInstance().getErrorMessage();
+        bitField0_ = (bitField0_ & ~0x00000200);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Solo si status=FAILED
+       * </pre>
+       *
+       * <code>string error_message = 10;</code>
+       * @param value The bytes for errorMessage to set.
+       * @return This builder for chaining.
+       */
+      public Builder setErrorMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        errorMessage_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+
+      private boolean hasResult_ ;
+      /**
+       * <pre>
+       * true si los resultados están listos
+       * </pre>
+       *
+       * <code>bool has_result = 11;</code>
+       * @return The hasResult.
+       */
+      @java.lang.Override
+      public boolean getHasResult() {
+        return hasResult_;
+      }
+      /**
+       * <pre>
+       * true si los resultados están listos
+       * </pre>
+       *
+       * <code>bool has_result = 11;</code>
+       * @param value The hasResult to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHasResult(boolean value) {
+
+        hasResult_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * true si los resultados están listos
+       * </pre>
+       *
+       * <code>bool has_result = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHasResult() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        hasResult_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.JobStatusResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.JobStatusResponse)
+    private static final route.optimization.RouteOptimization.JobStatusResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.JobStatusResponse();
+    }
+
+    public static route.optimization.RouteOptimization.JobStatusResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<JobStatusResponse>
+        PARSER = new com.google.protobuf.AbstractParser<JobStatusResponse>() {
+      @java.lang.Override
+      public JobStatusResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<JobStatusResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JobStatusResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.JobStatusResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface JobResultRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.JobResultRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    java.lang.String getJobId();
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
+  }
+  /**
+   * <pre>
+   * Solicitud de resultado de trabajo
+   * </pre>
+   *
+   * Protobuf type {@code route.optimization.JobResultRequest}
+   */
+  public static final class JobResultRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.JobResultRequest)
+      JobResultRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use JobResultRequest.newBuilder() to construct.
+    private JobResultRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private JobResultRequest() {
+      jobId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new JobResultRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_JobResultRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_JobResultRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.JobResultRequest.class, route.optimization.RouteOptimization.JobResultRequest.Builder.class);
+    }
+
+    public static final int JOB_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object jobId_ = "";
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    @java.lang.Override
+    public java.lang.String getJobId() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jobId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jobId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, jobId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, jobId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.JobResultRequest)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.JobResultRequest other = (route.optimization.RouteOptimization.JobResultRequest) obj;
+
+      if (!getJobId()
+          .equals(other.getJobId())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + JOB_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobId().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.JobResultRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.JobResultRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.JobResultRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.JobResultRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Solicitud de resultado de trabajo
+     * </pre>
+     *
+     * Protobuf type {@code route.optimization.JobResultRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.JobResultRequest)
+        route.optimization.RouteOptimization.JobResultRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobResultRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobResultRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.JobResultRequest.class, route.optimization.RouteOptimization.JobResultRequest.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.JobResultRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        jobId_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobResultRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobResultRequest getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.JobResultRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobResultRequest build() {
+        route.optimization.RouteOptimization.JobResultRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.JobResultRequest buildPartial() {
+        route.optimization.RouteOptimization.JobResultRequest result = new route.optimization.RouteOptimization.JobResultRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(route.optimization.RouteOptimization.JobResultRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.jobId_ = jobId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.JobResultRequest) {
+          return mergeFrom((route.optimization.RouteOptimization.JobResultRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.JobResultRequest other) {
+        if (other == route.optimization.RouteOptimization.JobResultRequest.getDefaultInstance()) return this;
+        if (!other.getJobId().isEmpty()) {
+          jobId_ = other.jobId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                jobId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object jobId_ = "";
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The jobId.
+       */
+      public java.lang.String getJobId() {
+        java.lang.Object ref = jobId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jobId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The bytes for jobId.
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        java.lang.Object ref = jobId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jobId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobId() {
+        jobId_ = getDefaultInstance().getJobId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The bytes for jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.JobResultRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.JobResultRequest)
+    private static final route.optimization.RouteOptimization.JobResultRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.JobResultRequest();
+    }
+
+    public static route.optimization.RouteOptimization.JobResultRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<JobResultRequest>
+        PARSER = new com.google.protobuf.AbstractParser<JobResultRequest>() {
+      @java.lang.Override
+      public JobResultRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<JobResultRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JobResultRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.JobResultRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CancelJobRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.CancelJobRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    java.lang.String getJobId();
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
+  }
+  /**
+   * <pre>
+   * Solicitud de cancelación de trabajo
+   * </pre>
+   *
+   * Protobuf type {@code route.optimization.CancelJobRequest}
+   */
+  public static final class CancelJobRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.CancelJobRequest)
+      CancelJobRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CancelJobRequest.newBuilder() to construct.
+    private CancelJobRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CancelJobRequest() {
+      jobId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CancelJobRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.CancelJobRequest.class, route.optimization.RouteOptimization.CancelJobRequest.Builder.class);
+    }
+
+    public static final int JOB_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object jobId_ = "";
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    @java.lang.Override
+    public java.lang.String getJobId() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jobId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jobId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, jobId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, jobId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.CancelJobRequest)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.CancelJobRequest other = (route.optimization.RouteOptimization.CancelJobRequest) obj;
+
+      if (!getJobId()
+          .equals(other.getJobId())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + JOB_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobId().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.CancelJobRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.CancelJobRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.CancelJobRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.CancelJobRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Solicitud de cancelación de trabajo
+     * </pre>
+     *
+     * Protobuf type {@code route.optimization.CancelJobRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.CancelJobRequest)
+        route.optimization.RouteOptimization.CancelJobRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.CancelJobRequest.class, route.optimization.RouteOptimization.CancelJobRequest.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.CancelJobRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        jobId_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.CancelJobRequest getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.CancelJobRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.CancelJobRequest build() {
+        route.optimization.RouteOptimization.CancelJobRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.CancelJobRequest buildPartial() {
+        route.optimization.RouteOptimization.CancelJobRequest result = new route.optimization.RouteOptimization.CancelJobRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(route.optimization.RouteOptimization.CancelJobRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.jobId_ = jobId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.CancelJobRequest) {
+          return mergeFrom((route.optimization.RouteOptimization.CancelJobRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.CancelJobRequest other) {
+        if (other == route.optimization.RouteOptimization.CancelJobRequest.getDefaultInstance()) return this;
+        if (!other.getJobId().isEmpty()) {
+          jobId_ = other.jobId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                jobId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object jobId_ = "";
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The jobId.
+       */
+      public java.lang.String getJobId() {
+        java.lang.Object ref = jobId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jobId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The bytes for jobId.
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        java.lang.Object ref = jobId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jobId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobId() {
+        jobId_ = getDefaultInstance().getJobId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The bytes for jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.CancelJobRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.CancelJobRequest)
+    private static final route.optimization.RouteOptimization.CancelJobRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.CancelJobRequest();
+    }
+
+    public static route.optimization.RouteOptimization.CancelJobRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CancelJobRequest>
+        PARSER = new com.google.protobuf.AbstractParser<CancelJobRequest>() {
+      @java.lang.Override
+      public CancelJobRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<CancelJobRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CancelJobRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.CancelJobRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CancelJobResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.CancelJobResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    java.lang.String getJobId();
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
+
+    /**
+     * <code>bool success = 2;</code>
+     * @return The success.
+     */
+    boolean getSuccess();
+
+    /**
+     * <code>string message = 3;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 3;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+  }
+  /**
+   * <pre>
+   * Respuesta de cancelación
+   * </pre>
+   *
+   * Protobuf type {@code route.optimization.CancelJobResponse}
+   */
+  public static final class CancelJobResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.CancelJobResponse)
+      CancelJobResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CancelJobResponse.newBuilder() to construct.
+    private CancelJobResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CancelJobResponse() {
+      jobId_ = "";
+      message_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CancelJobResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.CancelJobResponse.class, route.optimization.RouteOptimization.CancelJobResponse.Builder.class);
+    }
+
+    public static final int JOB_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object jobId_ = "";
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    @java.lang.Override
+    public java.lang.String getJobId() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jobId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jobId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUCCESS_FIELD_NUMBER = 2;
+    private boolean success_ = false;
+    /**
+     * <code>bool success = 2;</code>
+     * @return The success.
+     */
+    @java.lang.Override
+    public boolean getSuccess() {
+      return success_;
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object message_ = "";
+    /**
+     * <code>string message = 3;</code>
+     * @return The message.
+     */
+    @java.lang.Override
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 3;</code>
+     * @return The bytes for message.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, jobId_);
+      }
+      if (success_ != false) {
+        output.writeBool(2, success_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, jobId_);
+      }
+      if (success_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, success_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.CancelJobResponse)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.CancelJobResponse other = (route.optimization.RouteOptimization.CancelJobResponse) obj;
+
+      if (!getJobId()
+          .equals(other.getJobId())) return false;
+      if (getSuccess()
+          != other.getSuccess()) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + JOB_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobId().hashCode();
+      hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSuccess());
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.CancelJobResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.CancelJobResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.CancelJobResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.CancelJobResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Respuesta de cancelación
+     * </pre>
+     *
+     * Protobuf type {@code route.optimization.CancelJobResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.CancelJobResponse)
+        route.optimization.RouteOptimization.CancelJobResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.CancelJobResponse.class, route.optimization.RouteOptimization.CancelJobResponse.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.CancelJobResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        jobId_ = "";
+        success_ = false;
+        message_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_CancelJobResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.CancelJobResponse getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.CancelJobResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.CancelJobResponse build() {
+        route.optimization.RouteOptimization.CancelJobResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.CancelJobResponse buildPartial() {
+        route.optimization.RouteOptimization.CancelJobResponse result = new route.optimization.RouteOptimization.CancelJobResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(route.optimization.RouteOptimization.CancelJobResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.jobId_ = jobId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.success_ = success_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.message_ = message_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.CancelJobResponse) {
+          return mergeFrom((route.optimization.RouteOptimization.CancelJobResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.CancelJobResponse other) {
+        if (other == route.optimization.RouteOptimization.CancelJobResponse.getDefaultInstance()) return this;
+        if (!other.getJobId().isEmpty()) {
+          jobId_ = other.jobId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.getSuccess() != false) {
+          setSuccess(other.getSuccess());
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                jobId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                success_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                message_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object jobId_ = "";
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The jobId.
+       */
+      public java.lang.String getJobId() {
+        java.lang.Object ref = jobId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jobId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return The bytes for jobId.
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        java.lang.Object ref = jobId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jobId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobId() {
+        jobId_ = getDefaultInstance().getJobId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The bytes for jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private boolean success_ ;
+      /**
+       * <code>bool success = 2;</code>
+       * @return The success.
+       */
+      @java.lang.Override
+      public boolean getSuccess() {
+        return success_;
+      }
+      /**
+       * <code>bool success = 2;</code>
+       * @param value The success to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSuccess(boolean value) {
+
+        success_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool success = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSuccess() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        success_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 3;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 3;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 3;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        message_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        message_ = getDefaultInstance().getMessage();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 3;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        message_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.CancelJobResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.CancelJobResponse)
+    private static final route.optimization.RouteOptimization.CancelJobResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.CancelJobResponse();
+    }
+
+    public static route.optimization.RouteOptimization.CancelJobResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CancelJobResponse>
+        PARSER = new com.google.protobuf.AbstractParser<CancelJobResponse>() {
+      @java.lang.Override
+      public CancelJobResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<CancelJobResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CancelJobResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.CancelJobResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface QueueInfoRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.QueueInfoRequest)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * Solicitud de información de cola
+   * </pre>
+   *
+   * Protobuf type {@code route.optimization.QueueInfoRequest}
+   */
+  public static final class QueueInfoRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.QueueInfoRequest)
+      QueueInfoRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use QueueInfoRequest.newBuilder() to construct.
+    private QueueInfoRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QueueInfoRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new QueueInfoRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.QueueInfoRequest.class, route.optimization.RouteOptimization.QueueInfoRequest.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.QueueInfoRequest)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.QueueInfoRequest other = (route.optimization.RouteOptimization.QueueInfoRequest) obj;
+
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.QueueInfoRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Solicitud de información de cola
+     * </pre>
+     *
+     * Protobuf type {@code route.optimization.QueueInfoRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.QueueInfoRequest)
+        route.optimization.RouteOptimization.QueueInfoRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.QueueInfoRequest.class, route.optimization.RouteOptimization.QueueInfoRequest.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.QueueInfoRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.QueueInfoRequest getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.QueueInfoRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.QueueInfoRequest build() {
+        route.optimization.RouteOptimization.QueueInfoRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.QueueInfoRequest buildPartial() {
+        route.optimization.RouteOptimization.QueueInfoRequest result = new route.optimization.RouteOptimization.QueueInfoRequest(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.QueueInfoRequest) {
+          return mergeFrom((route.optimization.RouteOptimization.QueueInfoRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.QueueInfoRequest other) {
+        if (other == route.optimization.RouteOptimization.QueueInfoRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.QueueInfoRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.QueueInfoRequest)
+    private static final route.optimization.RouteOptimization.QueueInfoRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.QueueInfoRequest();
+    }
+
+    public static route.optimization.RouteOptimization.QueueInfoRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QueueInfoRequest>
+        PARSER = new com.google.protobuf.AbstractParser<QueueInfoRequest>() {
+      @java.lang.Override
+      public QueueInfoRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<QueueInfoRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueueInfoRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.QueueInfoRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface QueueInfoResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.QueueInfoResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 queue_size = 1;</code>
+     * @return The queueSize.
+     */
+    int getQueueSize();
+
+    /**
+     * <code>int32 active_jobs = 2;</code>
+     * @return The activeJobs.
+     */
+    int getActiveJobs();
+
+    /**
+     * <code>int32 completed_jobs = 3;</code>
+     * @return The completedJobs.
+     */
+    int getCompletedJobs();
+
+    /**
+     * <code>int32 max_concurrent_jobs = 4;</code>
+     * @return The maxConcurrentJobs.
+     */
+    int getMaxConcurrentJobs();
+
+    /**
+     * <code>bool multiprocessing_enabled = 5;</code>
+     * @return The multiprocessingEnabled.
+     */
+    boolean getMultiprocessingEnabled();
+
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    java.util.List<route.optimization.RouteOptimization.JobInfo> 
+        getActiveJobsDetailList();
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    route.optimization.RouteOptimization.JobInfo getActiveJobsDetail(int index);
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    int getActiveJobsDetailCount();
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    java.util.List<? extends route.optimization.RouteOptimization.JobInfoOrBuilder> 
+        getActiveJobsDetailOrBuilderList();
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    route.optimization.RouteOptimization.JobInfoOrBuilder getActiveJobsDetailOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * Respuesta de información de cola
+   * </pre>
+   *
+   * Protobuf type {@code route.optimization.QueueInfoResponse}
+   */
+  public static final class QueueInfoResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:route.optimization.QueueInfoResponse)
+      QueueInfoResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use QueueInfoResponse.newBuilder() to construct.
+    private QueueInfoResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private QueueInfoResponse() {
+      activeJobsDetail_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new QueueInfoResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              route.optimization.RouteOptimization.QueueInfoResponse.class, route.optimization.RouteOptimization.QueueInfoResponse.Builder.class);
+    }
+
+    public static final int QUEUE_SIZE_FIELD_NUMBER = 1;
+    private int queueSize_ = 0;
+    /**
+     * <code>int32 queue_size = 1;</code>
+     * @return The queueSize.
+     */
+    @java.lang.Override
+    public int getQueueSize() {
+      return queueSize_;
+    }
+
+    public static final int ACTIVE_JOBS_FIELD_NUMBER = 2;
+    private int activeJobs_ = 0;
+    /**
+     * <code>int32 active_jobs = 2;</code>
+     * @return The activeJobs.
+     */
+    @java.lang.Override
+    public int getActiveJobs() {
+      return activeJobs_;
+    }
+
+    public static final int COMPLETED_JOBS_FIELD_NUMBER = 3;
+    private int completedJobs_ = 0;
+    /**
+     * <code>int32 completed_jobs = 3;</code>
+     * @return The completedJobs.
+     */
+    @java.lang.Override
+    public int getCompletedJobs() {
+      return completedJobs_;
+    }
+
+    public static final int MAX_CONCURRENT_JOBS_FIELD_NUMBER = 4;
+    private int maxConcurrentJobs_ = 0;
+    /**
+     * <code>int32 max_concurrent_jobs = 4;</code>
+     * @return The maxConcurrentJobs.
+     */
+    @java.lang.Override
+    public int getMaxConcurrentJobs() {
+      return maxConcurrentJobs_;
+    }
+
+    public static final int MULTIPROCESSING_ENABLED_FIELD_NUMBER = 5;
+    private boolean multiprocessingEnabled_ = false;
+    /**
+     * <code>bool multiprocessing_enabled = 5;</code>
+     * @return The multiprocessingEnabled.
+     */
+    @java.lang.Override
+    public boolean getMultiprocessingEnabled() {
+      return multiprocessingEnabled_;
+    }
+
+    public static final int ACTIVE_JOBS_DETAIL_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private java.util.List<route.optimization.RouteOptimization.JobInfo> activeJobsDetail_;
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    @java.lang.Override
+    public java.util.List<route.optimization.RouteOptimization.JobInfo> getActiveJobsDetailList() {
+      return activeJobsDetail_;
+    }
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends route.optimization.RouteOptimization.JobInfoOrBuilder> 
+        getActiveJobsDetailOrBuilderList() {
+      return activeJobsDetail_;
+    }
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    @java.lang.Override
+    public int getActiveJobsDetailCount() {
+      return activeJobsDetail_.size();
+    }
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    @java.lang.Override
+    public route.optimization.RouteOptimization.JobInfo getActiveJobsDetail(int index) {
+      return activeJobsDetail_.get(index);
+    }
+    /**
+     * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+     */
+    @java.lang.Override
+    public route.optimization.RouteOptimization.JobInfoOrBuilder getActiveJobsDetailOrBuilder(
+        int index) {
+      return activeJobsDetail_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (queueSize_ != 0) {
+        output.writeInt32(1, queueSize_);
+      }
+      if (activeJobs_ != 0) {
+        output.writeInt32(2, activeJobs_);
+      }
+      if (completedJobs_ != 0) {
+        output.writeInt32(3, completedJobs_);
+      }
+      if (maxConcurrentJobs_ != 0) {
+        output.writeInt32(4, maxConcurrentJobs_);
+      }
+      if (multiprocessingEnabled_ != false) {
+        output.writeBool(5, multiprocessingEnabled_);
+      }
+      for (int i = 0; i < activeJobsDetail_.size(); i++) {
+        output.writeMessage(6, activeJobsDetail_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (queueSize_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, queueSize_);
+      }
+      if (activeJobs_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, activeJobs_);
+      }
+      if (completedJobs_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, completedJobs_);
+      }
+      if (maxConcurrentJobs_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, maxConcurrentJobs_);
+      }
+      if (multiprocessingEnabled_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, multiprocessingEnabled_);
+      }
+      for (int i = 0; i < activeJobsDetail_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, activeJobsDetail_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof route.optimization.RouteOptimization.QueueInfoResponse)) {
+        return super.equals(obj);
+      }
+      route.optimization.RouteOptimization.QueueInfoResponse other = (route.optimization.RouteOptimization.QueueInfoResponse) obj;
+
+      if (getQueueSize()
+          != other.getQueueSize()) return false;
+      if (getActiveJobs()
+          != other.getActiveJobs()) return false;
+      if (getCompletedJobs()
+          != other.getCompletedJobs()) return false;
+      if (getMaxConcurrentJobs()
+          != other.getMaxConcurrentJobs()) return false;
+      if (getMultiprocessingEnabled()
+          != other.getMultiprocessingEnabled()) return false;
+      if (!getActiveJobsDetailList()
+          .equals(other.getActiveJobsDetailList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + QUEUE_SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getQueueSize();
+      hash = (37 * hash) + ACTIVE_JOBS_FIELD_NUMBER;
+      hash = (53 * hash) + getActiveJobs();
+      hash = (37 * hash) + COMPLETED_JOBS_FIELD_NUMBER;
+      hash = (53 * hash) + getCompletedJobs();
+      hash = (37 * hash) + MAX_CONCURRENT_JOBS_FIELD_NUMBER;
+      hash = (53 * hash) + getMaxConcurrentJobs();
+      hash = (37 * hash) + MULTIPROCESSING_ENABLED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getMultiprocessingEnabled());
+      if (getActiveJobsDetailCount() > 0) {
+        hash = (37 * hash) + ACTIVE_JOBS_DETAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getActiveJobsDetailList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static route.optimization.RouteOptimization.QueueInfoResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(route.optimization.RouteOptimization.QueueInfoResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Respuesta de información de cola
+     * </pre>
+     *
+     * Protobuf type {@code route.optimization.QueueInfoResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:route.optimization.QueueInfoResponse)
+        route.optimization.RouteOptimization.QueueInfoResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                route.optimization.RouteOptimization.QueueInfoResponse.class, route.optimization.RouteOptimization.QueueInfoResponse.Builder.class);
+      }
+
+      // Construct using route.optimization.RouteOptimization.QueueInfoResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        queueSize_ = 0;
+        activeJobs_ = 0;
+        completedJobs_ = 0;
+        maxConcurrentJobs_ = 0;
+        multiprocessingEnabled_ = false;
+        if (activeJobsDetailBuilder_ == null) {
+          activeJobsDetail_ = java.util.Collections.emptyList();
+        } else {
+          activeJobsDetail_ = null;
+          activeJobsDetailBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return route.optimization.RouteOptimization.internal_static_route_optimization_QueueInfoResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.QueueInfoResponse getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.QueueInfoResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.QueueInfoResponse build() {
+        route.optimization.RouteOptimization.QueueInfoResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public route.optimization.RouteOptimization.QueueInfoResponse buildPartial() {
+        route.optimization.RouteOptimization.QueueInfoResponse result = new route.optimization.RouteOptimization.QueueInfoResponse(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(route.optimization.RouteOptimization.QueueInfoResponse result) {
+        if (activeJobsDetailBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) != 0)) {
+            activeJobsDetail_ = java.util.Collections.unmodifiableList(activeJobsDetail_);
+            bitField0_ = (bitField0_ & ~0x00000020);
+          }
+          result.activeJobsDetail_ = activeJobsDetail_;
+        } else {
+          result.activeJobsDetail_ = activeJobsDetailBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(route.optimization.RouteOptimization.QueueInfoResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.queueSize_ = queueSize_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.activeJobs_ = activeJobs_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.completedJobs_ = completedJobs_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.maxConcurrentJobs_ = maxConcurrentJobs_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.multiprocessingEnabled_ = multiprocessingEnabled_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof route.optimization.RouteOptimization.QueueInfoResponse) {
+          return mergeFrom((route.optimization.RouteOptimization.QueueInfoResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(route.optimization.RouteOptimization.QueueInfoResponse other) {
+        if (other == route.optimization.RouteOptimization.QueueInfoResponse.getDefaultInstance()) return this;
+        if (other.getQueueSize() != 0) {
+          setQueueSize(other.getQueueSize());
+        }
+        if (other.getActiveJobs() != 0) {
+          setActiveJobs(other.getActiveJobs());
+        }
+        if (other.getCompletedJobs() != 0) {
+          setCompletedJobs(other.getCompletedJobs());
+        }
+        if (other.getMaxConcurrentJobs() != 0) {
+          setMaxConcurrentJobs(other.getMaxConcurrentJobs());
+        }
+        if (other.getMultiprocessingEnabled() != false) {
+          setMultiprocessingEnabled(other.getMultiprocessingEnabled());
+        }
+        if (activeJobsDetailBuilder_ == null) {
+          if (!other.activeJobsDetail_.isEmpty()) {
+            if (activeJobsDetail_.isEmpty()) {
+              activeJobsDetail_ = other.activeJobsDetail_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+            } else {
+              ensureActiveJobsDetailIsMutable();
+              activeJobsDetail_.addAll(other.activeJobsDetail_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.activeJobsDetail_.isEmpty()) {
+            if (activeJobsDetailBuilder_.isEmpty()) {
+              activeJobsDetailBuilder_.dispose();
+              activeJobsDetailBuilder_ = null;
+              activeJobsDetail_ = other.activeJobsDetail_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+              activeJobsDetailBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getActiveJobsDetailFieldBuilder() : null;
+            } else {
+              activeJobsDetailBuilder_.addAllMessages(other.activeJobsDetail_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                queueSize_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                activeJobs_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                completedJobs_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                maxConcurrentJobs_ = input.readInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 40: {
+                multiprocessingEnabled_ = input.readBool();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              case 50: {
+                route.optimization.RouteOptimization.JobInfo m =
+                    input.readMessage(
+                        route.optimization.RouteOptimization.JobInfo.parser(),
+                        extensionRegistry);
+                if (activeJobsDetailBuilder_ == null) {
+                  ensureActiveJobsDetailIsMutable();
+                  activeJobsDetail_.add(m);
+                } else {
+                  activeJobsDetailBuilder_.addMessage(m);
+                }
+                break;
+              } // case 50
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int queueSize_ ;
+      /**
+       * <code>int32 queue_size = 1;</code>
+       * @return The queueSize.
+       */
+      @java.lang.Override
+      public int getQueueSize() {
+        return queueSize_;
+      }
+      /**
+       * <code>int32 queue_size = 1;</code>
+       * @param value The queueSize to set.
+       * @return This builder for chaining.
+       */
+      public Builder setQueueSize(int value) {
+
+        queueSize_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 queue_size = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearQueueSize() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        queueSize_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int activeJobs_ ;
+      /**
+       * <code>int32 active_jobs = 2;</code>
+       * @return The activeJobs.
+       */
+      @java.lang.Override
+      public int getActiveJobs() {
+        return activeJobs_;
+      }
+      /**
+       * <code>int32 active_jobs = 2;</code>
+       * @param value The activeJobs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setActiveJobs(int value) {
+
+        activeJobs_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 active_jobs = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearActiveJobs() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        activeJobs_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int completedJobs_ ;
+      /**
+       * <code>int32 completed_jobs = 3;</code>
+       * @return The completedJobs.
+       */
+      @java.lang.Override
+      public int getCompletedJobs() {
+        return completedJobs_;
+      }
+      /**
+       * <code>int32 completed_jobs = 3;</code>
+       * @param value The completedJobs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCompletedJobs(int value) {
+
+        completedJobs_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 completed_jobs = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCompletedJobs() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        completedJobs_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int maxConcurrentJobs_ ;
+      /**
+       * <code>int32 max_concurrent_jobs = 4;</code>
+       * @return The maxConcurrentJobs.
+       */
+      @java.lang.Override
+      public int getMaxConcurrentJobs() {
+        return maxConcurrentJobs_;
+      }
+      /**
+       * <code>int32 max_concurrent_jobs = 4;</code>
+       * @param value The maxConcurrentJobs to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMaxConcurrentJobs(int value) {
+
+        maxConcurrentJobs_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 max_concurrent_jobs = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMaxConcurrentJobs() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        maxConcurrentJobs_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean multiprocessingEnabled_ ;
+      /**
+       * <code>bool multiprocessing_enabled = 5;</code>
+       * @return The multiprocessingEnabled.
+       */
+      @java.lang.Override
+      public boolean getMultiprocessingEnabled() {
+        return multiprocessingEnabled_;
+      }
+      /**
+       * <code>bool multiprocessing_enabled = 5;</code>
+       * @param value The multiprocessingEnabled to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMultiprocessingEnabled(boolean value) {
+
+        multiprocessingEnabled_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool multiprocessing_enabled = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMultiprocessingEnabled() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        multiprocessingEnabled_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<route.optimization.RouteOptimization.JobInfo> activeJobsDetail_ =
+        java.util.Collections.emptyList();
+      private void ensureActiveJobsDetailIsMutable() {
+        if (!((bitField0_ & 0x00000020) != 0)) {
+          activeJobsDetail_ = new java.util.ArrayList<route.optimization.RouteOptimization.JobInfo>(activeJobsDetail_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          route.optimization.RouteOptimization.JobInfo, route.optimization.RouteOptimization.JobInfo.Builder, route.optimization.RouteOptimization.JobInfoOrBuilder> activeJobsDetailBuilder_;
+
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public java.util.List<route.optimization.RouteOptimization.JobInfo> getActiveJobsDetailList() {
+        if (activeJobsDetailBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(activeJobsDetail_);
+        } else {
+          return activeJobsDetailBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public int getActiveJobsDetailCount() {
+        if (activeJobsDetailBuilder_ == null) {
+          return activeJobsDetail_.size();
+        } else {
+          return activeJobsDetailBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public route.optimization.RouteOptimization.JobInfo getActiveJobsDetail(int index) {
+        if (activeJobsDetailBuilder_ == null) {
+          return activeJobsDetail_.get(index);
+        } else {
+          return activeJobsDetailBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder setActiveJobsDetail(
+          int index, route.optimization.RouteOptimization.JobInfo value) {
+        if (activeJobsDetailBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureActiveJobsDetailIsMutable();
+          activeJobsDetail_.set(index, value);
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder setActiveJobsDetail(
+          int index, route.optimization.RouteOptimization.JobInfo.Builder builderForValue) {
+        if (activeJobsDetailBuilder_ == null) {
+          ensureActiveJobsDetailIsMutable();
+          activeJobsDetail_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder addActiveJobsDetail(route.optimization.RouteOptimization.JobInfo value) {
+        if (activeJobsDetailBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureActiveJobsDetailIsMutable();
+          activeJobsDetail_.add(value);
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder addActiveJobsDetail(
+          int index, route.optimization.RouteOptimization.JobInfo value) {
+        if (activeJobsDetailBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureActiveJobsDetailIsMutable();
+          activeJobsDetail_.add(index, value);
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder addActiveJobsDetail(
+          route.optimization.RouteOptimization.JobInfo.Builder builderForValue) {
+        if (activeJobsDetailBuilder_ == null) {
+          ensureActiveJobsDetailIsMutable();
+          activeJobsDetail_.add(builderForValue.build());
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder addActiveJobsDetail(
+          int index, route.optimization.RouteOptimization.JobInfo.Builder builderForValue) {
+        if (activeJobsDetailBuilder_ == null) {
+          ensureActiveJobsDetailIsMutable();
+          activeJobsDetail_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder addAllActiveJobsDetail(
+          java.lang.Iterable<? extends route.optimization.RouteOptimization.JobInfo> values) {
+        if (activeJobsDetailBuilder_ == null) {
+          ensureActiveJobsDetailIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, activeJobsDetail_);
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder clearActiveJobsDetail() {
+        if (activeJobsDetailBuilder_ == null) {
+          activeJobsDetail_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public Builder removeActiveJobsDetail(int index) {
+        if (activeJobsDetailBuilder_ == null) {
+          ensureActiveJobsDetailIsMutable();
+          activeJobsDetail_.remove(index);
+          onChanged();
+        } else {
+          activeJobsDetailBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public route.optimization.RouteOptimization.JobInfo.Builder getActiveJobsDetailBuilder(
+          int index) {
+        return getActiveJobsDetailFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public route.optimization.RouteOptimization.JobInfoOrBuilder getActiveJobsDetailOrBuilder(
+          int index) {
+        if (activeJobsDetailBuilder_ == null) {
+          return activeJobsDetail_.get(index);  } else {
+          return activeJobsDetailBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public java.util.List<? extends route.optimization.RouteOptimization.JobInfoOrBuilder> 
+           getActiveJobsDetailOrBuilderList() {
+        if (activeJobsDetailBuilder_ != null) {
+          return activeJobsDetailBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(activeJobsDetail_);
+        }
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public route.optimization.RouteOptimization.JobInfo.Builder addActiveJobsDetailBuilder() {
+        return getActiveJobsDetailFieldBuilder().addBuilder(
+            route.optimization.RouteOptimization.JobInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public route.optimization.RouteOptimization.JobInfo.Builder addActiveJobsDetailBuilder(
+          int index) {
+        return getActiveJobsDetailFieldBuilder().addBuilder(
+            index, route.optimization.RouteOptimization.JobInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .route.optimization.JobInfo active_jobs_detail = 6;</code>
+       */
+      public java.util.List<route.optimization.RouteOptimization.JobInfo.Builder> 
+           getActiveJobsDetailBuilderList() {
+        return getActiveJobsDetailFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          route.optimization.RouteOptimization.JobInfo, route.optimization.RouteOptimization.JobInfo.Builder, route.optimization.RouteOptimization.JobInfoOrBuilder> 
+          getActiveJobsDetailFieldBuilder() {
+        if (activeJobsDetailBuilder_ == null) {
+          activeJobsDetailBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              route.optimization.RouteOptimization.JobInfo, route.optimization.RouteOptimization.JobInfo.Builder, route.optimization.RouteOptimization.JobInfoOrBuilder>(
+                  activeJobsDetail_,
+                  ((bitField0_ & 0x00000020) != 0),
+                  getParentForChildren(),
+                  isClean());
+          activeJobsDetail_ = null;
+        }
+        return activeJobsDetailBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:route.optimization.QueueInfoResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:route.optimization.QueueInfoResponse)
+    private static final route.optimization.RouteOptimization.QueueInfoResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.QueueInfoResponse();
+    }
+
+    public static route.optimization.RouteOptimization.QueueInfoResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<QueueInfoResponse>
+        PARSER = new com.google.protobuf.AbstractParser<QueueInfoResponse>() {
+      @java.lang.Override
+      public QueueInfoResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<QueueInfoResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueueInfoResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public route.optimization.RouteOptimization.QueueInfoResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface JobInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:route.optimization.JobInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
+     */
+    java.lang.String getJobId();
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
 
     /**
      * <code>string status = 2;</code>
@@ -10050,67 +18504,115 @@ public final class RouteOptimization {
         getStatusBytes();
 
     /**
-     * <code>string version = 3;</code>
-     * @return The version.
+     * <code>float progress = 3;</code>
+     * @return The progress.
      */
-    java.lang.String getVersion();
+    float getProgress();
+
     /**
-     * <code>string version = 3;</code>
-     * @return The bytes for version.
+     * <code>string created_at = 4;</code>
+     * @return The createdAt.
+     */
+    java.lang.String getCreatedAt();
+    /**
+     * <code>string created_at = 4;</code>
+     * @return The bytes for createdAt.
      */
     com.google.protobuf.ByteString
-        getVersionBytes();
+        getCreatedAtBytes();
+
+    /**
+     * <code>string started_at = 5;</code>
+     * @return The startedAt.
+     */
+    java.lang.String getStartedAt();
+    /**
+     * <code>string started_at = 5;</code>
+     * @return The bytes for startedAt.
+     */
+    com.google.protobuf.ByteString
+        getStartedAtBytes();
   }
   /**
    * <pre>
-   * Respuesta de verificación de salud
+   * Información resumida de un trabajo
    * </pre>
    *
-   * Protobuf type {@code route.optimization.HealthResponse}
+   * Protobuf type {@code route.optimization.JobInfo}
    */
-  public static final class HealthResponse extends
+  public static final class JobInfo extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:route.optimization.HealthResponse)
-      HealthResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:route.optimization.JobInfo)
+      JobInfoOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use HealthResponse.newBuilder() to construct.
-    private HealthResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use JobInfo.newBuilder() to construct.
+    private JobInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private HealthResponse() {
+    private JobInfo() {
+      jobId_ = "";
       status_ = "";
-      version_ = "";
+      createdAt_ = "";
+      startedAt_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new HealthResponse();
+      return new JobInfo();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_descriptor;
+      return route.optimization.RouteOptimization.internal_static_route_optimization_JobInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_fieldAccessorTable
+      return route.optimization.RouteOptimization.internal_static_route_optimization_JobInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              route.optimization.RouteOptimization.HealthResponse.class, route.optimization.RouteOptimization.HealthResponse.Builder.class);
+              route.optimization.RouteOptimization.JobInfo.class, route.optimization.RouteOptimization.JobInfo.Builder.class);
     }
 
-    public static final int IS_HEALTHY_FIELD_NUMBER = 1;
-    private boolean isHealthy_ = false;
+    public static final int JOB_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object jobId_ = "";
     /**
-     * <code>bool is_healthy = 1;</code>
-     * @return The isHealthy.
+     * <code>string job_id = 1;</code>
+     * @return The jobId.
      */
     @java.lang.Override
-    public boolean getIsHealthy() {
-      return isHealthy_;
+    public java.lang.String getJobId() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jobId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string job_id = 1;</code>
+     * @return The bytes for jobId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jobId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int STATUS_FIELD_NUMBER = 2;
@@ -10152,39 +18654,89 @@ public final class RouteOptimization {
       }
     }
 
-    public static final int VERSION_FIELD_NUMBER = 3;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object version_ = "";
+    public static final int PROGRESS_FIELD_NUMBER = 3;
+    private float progress_ = 0F;
     /**
-     * <code>string version = 3;</code>
-     * @return The version.
+     * <code>float progress = 3;</code>
+     * @return The progress.
      */
     @java.lang.Override
-    public java.lang.String getVersion() {
-      java.lang.Object ref = version_;
+    public float getProgress() {
+      return progress_;
+    }
+
+    public static final int CREATED_AT_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object createdAt_ = "";
+    /**
+     * <code>string created_at = 4;</code>
+     * @return The createdAt.
+     */
+    @java.lang.Override
+    public java.lang.String getCreatedAt() {
+      java.lang.Object ref = createdAt_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        version_ = s;
+        createdAt_ = s;
         return s;
       }
     }
     /**
-     * <code>string version = 3;</code>
-     * @return The bytes for version.
+     * <code>string created_at = 4;</code>
+     * @return The bytes for createdAt.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getVersionBytes() {
-      java.lang.Object ref = version_;
+        getCreatedAtBytes() {
+      java.lang.Object ref = createdAt_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        version_ = b;
+        createdAt_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STARTED_AT_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object startedAt_ = "";
+    /**
+     * <code>string started_at = 5;</code>
+     * @return The startedAt.
+     */
+    @java.lang.Override
+    public java.lang.String getStartedAt() {
+      java.lang.Object ref = startedAt_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        startedAt_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string started_at = 5;</code>
+     * @return The bytes for startedAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStartedAtBytes() {
+      java.lang.Object ref = startedAt_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        startedAt_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -10205,14 +18757,20 @@ public final class RouteOptimization {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (isHealthy_ != false) {
-        output.writeBool(1, isHealthy_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, jobId_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, version_);
+      if (java.lang.Float.floatToRawIntBits(progress_) != 0) {
+        output.writeFloat(3, progress_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdAt_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, createdAt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(startedAt_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, startedAt_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -10223,15 +18781,21 @@ public final class RouteOptimization {
       if (size != -1) return size;
 
       size = 0;
-      if (isHealthy_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, isHealthy_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jobId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, jobId_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, version_);
+      if (java.lang.Float.floatToRawIntBits(progress_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(3, progress_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdAt_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, createdAt_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(startedAt_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, startedAt_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -10243,17 +18807,22 @@ public final class RouteOptimization {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof route.optimization.RouteOptimization.HealthResponse)) {
+      if (!(obj instanceof route.optimization.RouteOptimization.JobInfo)) {
         return super.equals(obj);
       }
-      route.optimization.RouteOptimization.HealthResponse other = (route.optimization.RouteOptimization.HealthResponse) obj;
+      route.optimization.RouteOptimization.JobInfo other = (route.optimization.RouteOptimization.JobInfo) obj;
 
-      if (getIsHealthy()
-          != other.getIsHealthy()) return false;
+      if (!getJobId()
+          .equals(other.getJobId())) return false;
       if (!getStatus()
           .equals(other.getStatus())) return false;
-      if (!getVersion()
-          .equals(other.getVersion())) return false;
+      if (java.lang.Float.floatToIntBits(getProgress())
+          != java.lang.Float.floatToIntBits(
+              other.getProgress())) return false;
+      if (!getCreatedAt()
+          .equals(other.getCreatedAt())) return false;
+      if (!getStartedAt()
+          .equals(other.getStartedAt())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -10265,56 +18834,60 @@ public final class RouteOptimization {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + IS_HEALTHY_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsHealthy());
+      hash = (37 * hash) + JOB_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobId().hashCode();
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + getStatus().hashCode();
-      hash = (37 * hash) + VERSION_FIELD_NUMBER;
-      hash = (53 * hash) + getVersion().hashCode();
+      hash = (37 * hash) + PROGRESS_FIELD_NUMBER;
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getProgress());
+      hash = (37 * hash) + CREATED_AT_FIELD_NUMBER;
+      hash = (53 * hash) + getCreatedAt().hashCode();
+      hash = (37 * hash) + STARTED_AT_FIELD_NUMBER;
+      hash = (53 * hash) + getStartedAt().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(byte[] data)
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(java.io.InputStream input)
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10322,26 +18895,26 @@ public final class RouteOptimization {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static route.optimization.RouteOptimization.HealthResponse parseDelimitedFrom(java.io.InputStream input)
+    public static route.optimization.RouteOptimization.JobInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static route.optimization.RouteOptimization.HealthResponse parseDelimitedFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static route.optimization.RouteOptimization.HealthResponse parseFrom(
+    public static route.optimization.RouteOptimization.JobInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10354,7 +18927,7 @@ public final class RouteOptimization {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(route.optimization.RouteOptimization.HealthResponse prototype) {
+    public static Builder newBuilder(route.optimization.RouteOptimization.JobInfo prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -10371,29 +18944,29 @@ public final class RouteOptimization {
     }
     /**
      * <pre>
-     * Respuesta de verificación de salud
+     * Información resumida de un trabajo
      * </pre>
      *
-     * Protobuf type {@code route.optimization.HealthResponse}
+     * Protobuf type {@code route.optimization.JobInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:route.optimization.HealthResponse)
-        route.optimization.RouteOptimization.HealthResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:route.optimization.JobInfo)
+        route.optimization.RouteOptimization.JobInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_descriptor;
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobInfo_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_fieldAccessorTable
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                route.optimization.RouteOptimization.HealthResponse.class, route.optimization.RouteOptimization.HealthResponse.Builder.class);
+                route.optimization.RouteOptimization.JobInfo.class, route.optimization.RouteOptimization.JobInfo.Builder.class);
       }
 
-      // Construct using route.optimization.RouteOptimization.HealthResponse.newBuilder()
+      // Construct using route.optimization.RouteOptimization.JobInfo.newBuilder()
       private Builder() {
 
       }
@@ -10407,26 +18980,28 @@ public final class RouteOptimization {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        isHealthy_ = false;
+        jobId_ = "";
         status_ = "";
-        version_ = "";
+        progress_ = 0F;
+        createdAt_ = "";
+        startedAt_ = "";
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return route.optimization.RouteOptimization.internal_static_route_optimization_HealthResponse_descriptor;
+        return route.optimization.RouteOptimization.internal_static_route_optimization_JobInfo_descriptor;
       }
 
       @java.lang.Override
-      public route.optimization.RouteOptimization.HealthResponse getDefaultInstanceForType() {
-        return route.optimization.RouteOptimization.HealthResponse.getDefaultInstance();
+      public route.optimization.RouteOptimization.JobInfo getDefaultInstanceForType() {
+        return route.optimization.RouteOptimization.JobInfo.getDefaultInstance();
       }
 
       @java.lang.Override
-      public route.optimization.RouteOptimization.HealthResponse build() {
-        route.optimization.RouteOptimization.HealthResponse result = buildPartial();
+      public route.optimization.RouteOptimization.JobInfo build() {
+        route.optimization.RouteOptimization.JobInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -10434,23 +19009,29 @@ public final class RouteOptimization {
       }
 
       @java.lang.Override
-      public route.optimization.RouteOptimization.HealthResponse buildPartial() {
-        route.optimization.RouteOptimization.HealthResponse result = new route.optimization.RouteOptimization.HealthResponse(this);
+      public route.optimization.RouteOptimization.JobInfo buildPartial() {
+        route.optimization.RouteOptimization.JobInfo result = new route.optimization.RouteOptimization.JobInfo(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(route.optimization.RouteOptimization.HealthResponse result) {
+      private void buildPartial0(route.optimization.RouteOptimization.JobInfo result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.isHealthy_ = isHealthy_;
+          result.jobId_ = jobId_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.status_ = status_;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.version_ = version_;
+          result.progress_ = progress_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.createdAt_ = createdAt_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.startedAt_ = startedAt_;
         }
       }
 
@@ -10488,27 +19069,37 @@ public final class RouteOptimization {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof route.optimization.RouteOptimization.HealthResponse) {
-          return mergeFrom((route.optimization.RouteOptimization.HealthResponse)other);
+        if (other instanceof route.optimization.RouteOptimization.JobInfo) {
+          return mergeFrom((route.optimization.RouteOptimization.JobInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(route.optimization.RouteOptimization.HealthResponse other) {
-        if (other == route.optimization.RouteOptimization.HealthResponse.getDefaultInstance()) return this;
-        if (other.getIsHealthy() != false) {
-          setIsHealthy(other.getIsHealthy());
+      public Builder mergeFrom(route.optimization.RouteOptimization.JobInfo other) {
+        if (other == route.optimization.RouteOptimization.JobInfo.getDefaultInstance()) return this;
+        if (!other.getJobId().isEmpty()) {
+          jobId_ = other.jobId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
         }
         if (!other.getStatus().isEmpty()) {
           status_ = other.status_;
           bitField0_ |= 0x00000002;
           onChanged();
         }
-        if (!other.getVersion().isEmpty()) {
-          version_ = other.version_;
-          bitField0_ |= 0x00000004;
+        if (other.getProgress() != 0F) {
+          setProgress(other.getProgress());
+        }
+        if (!other.getCreatedAt().isEmpty()) {
+          createdAt_ = other.createdAt_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (!other.getStartedAt().isEmpty()) {
+          startedAt_ = other.startedAt_;
+          bitField0_ |= 0x00000010;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -10537,21 +19128,31 @@ public final class RouteOptimization {
               case 0:
                 done = true;
                 break;
-              case 8: {
-                isHealthy_ = input.readBool();
+              case 10: {
+                jobId_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
-              } // case 8
+              } // case 10
               case 18: {
                 status_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 18
-              case 26: {
-                version_ = input.readStringRequireUtf8();
+              case 29: {
+                progress_ = input.readFloat();
                 bitField0_ |= 0x00000004;
                 break;
-              } // case 26
+              } // case 29
+              case 34: {
+                createdAt_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                startedAt_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10569,34 +19170,74 @@ public final class RouteOptimization {
       }
       private int bitField0_;
 
-      private boolean isHealthy_ ;
+      private java.lang.Object jobId_ = "";
       /**
-       * <code>bool is_healthy = 1;</code>
-       * @return The isHealthy.
+       * <code>string job_id = 1;</code>
+       * @return The jobId.
        */
-      @java.lang.Override
-      public boolean getIsHealthy() {
-        return isHealthy_;
+      public java.lang.String getJobId() {
+        java.lang.Object ref = jobId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jobId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bool is_healthy = 1;</code>
-       * @param value The isHealthy to set.
+       * <code>string job_id = 1;</code>
+       * @return The bytes for jobId.
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        java.lang.Object ref = jobId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jobId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The jobId to set.
        * @return This builder for chaining.
        */
-      public Builder setIsHealthy(boolean value) {
-
-        isHealthy_ = value;
+      public Builder setJobId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        jobId_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>bool is_healthy = 1;</code>
+       * <code>string job_id = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearIsHealthy() {
+      public Builder clearJobId() {
+        jobId_ = getDefaultInstance().getJobId();
         bitField0_ = (bitField0_ & ~0x00000001);
-        isHealthy_ = false;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string job_id = 1;</code>
+       * @param value The bytes for jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
@@ -10673,74 +19314,178 @@ public final class RouteOptimization {
         return this;
       }
 
-      private java.lang.Object version_ = "";
+      private float progress_ ;
       /**
-       * <code>string version = 3;</code>
-       * @return The version.
+       * <code>float progress = 3;</code>
+       * @return The progress.
        */
-      public java.lang.String getVersion() {
-        java.lang.Object ref = version_;
+      @java.lang.Override
+      public float getProgress() {
+        return progress_;
+      }
+      /**
+       * <code>float progress = 3;</code>
+       * @param value The progress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProgress(float value) {
+
+        progress_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>float progress = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProgress() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        progress_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object createdAt_ = "";
+      /**
+       * <code>string created_at = 4;</code>
+       * @return The createdAt.
+       */
+      public java.lang.String getCreatedAt() {
+        java.lang.Object ref = createdAt_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          version_ = s;
+          createdAt_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string version = 3;</code>
-       * @return The bytes for version.
+       * <code>string created_at = 4;</code>
+       * @return The bytes for createdAt.
        */
       public com.google.protobuf.ByteString
-          getVersionBytes() {
-        java.lang.Object ref = version_;
+          getCreatedAtBytes() {
+        java.lang.Object ref = createdAt_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          version_ = b;
+          createdAt_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string version = 3;</code>
-       * @param value The version to set.
+       * <code>string created_at = 4;</code>
+       * @param value The createdAt to set.
        * @return This builder for chaining.
        */
-      public Builder setVersion(
+      public Builder setCreatedAt(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        version_ = value;
-        bitField0_ |= 0x00000004;
+        createdAt_ = value;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
       /**
-       * <code>string version = 3;</code>
+       * <code>string created_at = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearVersion() {
-        version_ = getDefaultInstance().getVersion();
-        bitField0_ = (bitField0_ & ~0x00000004);
+      public Builder clearCreatedAt() {
+        createdAt_ = getDefaultInstance().getCreatedAt();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
       /**
-       * <code>string version = 3;</code>
-       * @param value The bytes for version to set.
+       * <code>string created_at = 4;</code>
+       * @param value The bytes for createdAt to set.
        * @return This builder for chaining.
        */
-      public Builder setVersionBytes(
+      public Builder setCreatedAtBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        version_ = value;
-        bitField0_ |= 0x00000004;
+        createdAt_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object startedAt_ = "";
+      /**
+       * <code>string started_at = 5;</code>
+       * @return The startedAt.
+       */
+      public java.lang.String getStartedAt() {
+        java.lang.Object ref = startedAt_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          startedAt_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string started_at = 5;</code>
+       * @return The bytes for startedAt.
+       */
+      public com.google.protobuf.ByteString
+          getStartedAtBytes() {
+        java.lang.Object ref = startedAt_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          startedAt_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string started_at = 5;</code>
+       * @param value The startedAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartedAt(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        startedAt_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string started_at = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStartedAt() {
+        startedAt_ = getDefaultInstance().getStartedAt();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string started_at = 5;</code>
+       * @param value The bytes for startedAt to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartedAtBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        startedAt_ = value;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -10757,23 +19502,23 @@ public final class RouteOptimization {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:route.optimization.HealthResponse)
+      // @@protoc_insertion_point(builder_scope:route.optimization.JobInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:route.optimization.HealthResponse)
-    private static final route.optimization.RouteOptimization.HealthResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:route.optimization.JobInfo)
+    private static final route.optimization.RouteOptimization.JobInfo DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.HealthResponse();
+      DEFAULT_INSTANCE = new route.optimization.RouteOptimization.JobInfo();
     }
 
-    public static route.optimization.RouteOptimization.HealthResponse getDefaultInstance() {
+    public static route.optimization.RouteOptimization.JobInfo getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<HealthResponse>
-        PARSER = new com.google.protobuf.AbstractParser<HealthResponse>() {
+    private static final com.google.protobuf.Parser<JobInfo>
+        PARSER = new com.google.protobuf.AbstractParser<JobInfo>() {
       @java.lang.Override
-      public HealthResponse parsePartialFrom(
+      public JobInfo parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -10792,17 +19537,17 @@ public final class RouteOptimization {
       }
     };
 
-    public static com.google.protobuf.Parser<HealthResponse> parser() {
+    public static com.google.protobuf.Parser<JobInfo> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HealthResponse> getParserForType() {
+    public com.google.protobuf.Parser<JobInfo> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public route.optimization.RouteOptimization.HealthResponse getDefaultInstanceForType() {
+    public route.optimization.RouteOptimization.JobInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -10829,6 +19574,16 @@ public final class RouteOptimization {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_route_optimization_RoutePreferences_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_HealthResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_HealthResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_Location_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_Location_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_route_optimization_RouteConstraints_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -10854,10 +19609,45 @@ public final class RouteOptimization {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_route_optimization_HealthRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_route_optimization_HealthResponse_descriptor;
+    internal_static_route_optimization_JobStatusRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_route_optimization_HealthResponse_fieldAccessorTable;
+      internal_static_route_optimization_JobStatusRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_JobStatusResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_JobStatusResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_JobResultRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_JobResultRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_CancelJobRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_CancelJobRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_CancelJobResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_CancelJobResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_QueueInfoRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_QueueInfoRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_QueueInfoResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_QueueInfoResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_route_optimization_JobInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_route_optimization_JobInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -10873,47 +19663,82 @@ public final class RouteOptimization {
       " \003(\0132\027.route.optimization.POI\0229\n\013prefere" +
       "nces\030\004 \001(\0132$.route.optimization.RoutePre" +
       "ferences\0229\n\013constraints\030\005 \001(\0132$.route.op" +
-      "timization.RouteConstraints\"\303\001\n\031RouteOpt" +
-      "imizationResponse\022\020\n\010route_id\030\001 \001(\t\022\017\n\007s" +
-      "uccess\030\002 \001(\010\022\017\n\007message\030\003 \001(\t\0228\n\007results" +
-      "\030\004 \001(\0132\'.route.optimization.Optimization" +
-      "Results\0228\n\007metrics\030\005 \001(\0132\'.route.optimiz" +
-      "ation.OptimizationMetrics\"\371\001\n\003POI\022\n\n\002id\030" +
-      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\020\n\010latitude\030\003 \001(\001\022\021\n" +
-      "\tlongitude\030\004 \001(\001\022\020\n\010category\030\005 \001(\t\022\023\n\013su" +
-      "bcategory\030\006 \001(\t\022\026\n\016visit_duration\030\007 \001(\005\022" +
-      "\014\n\004cost\030\010 \001(\001\022\016\n\006rating\030\t \001(\001\022\023\n\013descrip" +
-      "tion\030\n \001(\t\022\025\n\raccessibility\030\013 \001(\010\022\023\n\013pro" +
-      "vider_id\030\014 \001(\005\022\025\n\rprovider_name\030\r \001(\t\"x\n" +
-      "\020RoutePreferences\022\024\n\014optimize_for\030\001 \001(\t\022" +
-      "\026\n\016max_total_time\030\002 \001(\005\022\026\n\016max_total_cos" +
-      "t\030\003 \001(\001\022\036\n\026accessibility_required\030\004 \001(\010\"" +
-      "b\n\020RouteConstraints\022\022\n\nstart_time\030\001 \001(\t\022" +
-      "\034\n\024lunch_break_required\030\002 \001(\010\022\034\n\024lunch_b" +
-      "reak_duration\030\003 \001(\005\"\325\001\n\023OptimizationResu" +
-      "lts\022<\n\022optimized_sequence\030\001 \003(\0132 .route." +
-      "optimization.OptimizedPOI\022\031\n\021total_dista" +
-      "nce_km\030\002 \001(\001\022\032\n\022total_time_minutes\030\003 \001(\005" +
-      "\022\022\n\ntotal_cost\030\004 \001(\001\022\032\n\022optimization_sco" +
-      "re\030\005 \001(\001\022\031\n\021route_description\030\006 \001(\t\"\266\001\n\014" +
-      "OptimizedPOI\022\016\n\006poi_id\030\001 \001(\005\022\020\n\010poi_name" +
-      "\030\002 \001(\t\022\023\n\013visit_order\030\003 \001(\005\022\024\n\014arrival_t" +
-      "ime\030\004 \001(\t\022\026\n\016departure_time\030\005 \001(\t\022\034\n\024est" +
-      "imated_visit_time\030\006 \001(\005\022\020\n\010latitude\030\007 \001(" +
-      "\001\022\021\n\tlongitude\030\010 \001(\001\"\235\001\n\023OptimizationMet" +
-      "rics\022\023\n\013hypervolume\030\001 \001(\001\022\013\n\003arp\030\002 \001(\001\022\017" +
-      "\n\007spacing\030\003 \001(\001\022\031\n\021pareto_front_size\030\004 \001" +
-      "(\005\022\030\n\020total_iterations\030\005 \001(\005\022\036\n\026executio" +
-      "n_time_seconds\030\006 \001(\001\"%\n\rHealthRequest\022\024\n" +
-      "\014service_name\030\001 \001(\t\"E\n\016HealthResponse\022\022\n" +
-      "\nis_healthy\030\001 \001(\010\022\016\n\006status\030\002 \001(\t\022\017\n\007ver" +
-      "sion\030\003 \001(\t2\336\001\n\030RouteOptimizationService\022" +
-      "l\n\rOptimizeRoute\022,.route.optimization.Ro" +
-      "uteOptimizationRequest\032-.route.optimizat" +
-      "ion.RouteOptimizationResponse\022T\n\013HealthC" +
-      "heck\022!.route.optimization.HealthRequest\032" +
-      "\".route.optimization.HealthResponseb\006pro" +
-      "to3"
+      "timization.RouteConstraints\"\217\002\n\031RouteOpt" +
+      "imizationResponse\022\020\n\010route_id\030\001 \001(\t\022\017\n\007m" +
+      "essage\030\003 \001(\t\0228\n\007results\030\004 \001(\0132\'.route.op" +
+      "timization.OptimizationResults\0228\n\007metric" +
+      "s\030\005 \001(\0132\'.route.optimization.Optimizatio" +
+      "nMetrics\022\016\n\006job_id\030\006 \001(\t\022\016\n\006status\030\007 \001(\t" +
+      "\022\026\n\016queue_position\030\010 \001(\005\022#\n\033estimated_wa" +
+      "it_time_minutes\030\t \001(\005\"\371\001\n\003POI\022\n\n\002id\030\001 \001(" +
+      "\005\022\014\n\004name\030\002 \001(\t\022\020\n\010latitude\030\003 \001(\001\022\021\n\tlon" +
+      "gitude\030\004 \001(\001\022\020\n\010category\030\005 \001(\t\022\023\n\013subcat" +
+      "egory\030\006 \001(\t\022\026\n\016visit_duration\030\007 \001(\005\022\014\n\004c" +
+      "ost\030\010 \001(\001\022\016\n\006rating\030\t \001(\001\022\023\n\013description" +
+      "\030\n \001(\t\022\025\n\raccessibility\030\013 \001(\010\022\023\n\013provide" +
+      "r_id\030\014 \001(\005\022\025\n\rprovider_name\030\r \001(\t\"x\n\020Rou" +
+      "tePreferences\022\024\n\014optimize_for\030\001 \001(\t\022\026\n\016m" +
+      "ax_total_time\030\002 \001(\005\022\026\n\016max_total_cost\030\003 " +
+      "\001(\001\022\036\n\026accessibility_required\030\004 \001(\010\"n\n\016H" +
+      "ealthResponse\022\022\n\nis_healthy\030\001 \001(\010\022\016\n\006sta" +
+      "tus\030\002 \001(\t\022\017\n\007version\030\003 \001(\t\022\022\n\nqueue_size" +
+      "\030\004 \001(\005\022\023\n\013active_jobs\030\005 \001(\005\"/\n\010Location\022" +
+      "\020\n\010latitude\030\001 \001(\001\022\021\n\tlongitude\030\002 \001(\001\"\314\001\n" +
+      "\020RouteConstraints\0224\n\016start_location\030\001 \001(" +
+      "\0132\034.route.optimization.Location\0222\n\014end_l" +
+      "ocation\030\002 \001(\0132\034.route.optimization.Locat" +
+      "ion\022\022\n\nstart_time\030\003 \001(\t\022\034\n\024lunch_break_r" +
+      "equired\030\004 \001(\010\022\034\n\024lunch_break_duration\030\005 " +
+      "\001(\005\"\325\001\n\023OptimizationResults\022<\n\022optimized" +
+      "_sequence\030\001 \003(\0132 .route.optimization.Opt" +
+      "imizedPOI\022\031\n\021total_distance_km\030\002 \001(\001\022\032\n\022" +
+      "total_time_minutes\030\003 \001(\005\022\022\n\ntotal_cost\030\004" +
+      " \001(\001\022\032\n\022optimization_score\030\005 \001(\001\022\031\n\021rout" +
+      "e_description\030\006 \001(\t\"\266\001\n\014OptimizedPOI\022\016\n\006" +
+      "poi_id\030\001 \001(\005\022\020\n\010poi_name\030\002 \001(\t\022\023\n\013visit_" +
+      "order\030\003 \001(\005\022\024\n\014arrival_time\030\004 \001(\t\022\026\n\016dep" +
+      "arture_time\030\005 \001(\t\022\034\n\024estimated_visit_tim" +
+      "e\030\006 \001(\005\022\020\n\010latitude\030\007 \001(\001\022\021\n\tlongitude\030\010" +
+      " \001(\001\"\235\001\n\023OptimizationMetrics\022\023\n\013hypervol" +
+      "ume\030\001 \001(\001\022\013\n\003arp\030\002 \001(\001\022\017\n\007spacing\030\003 \001(\001\022" +
+      "\031\n\021pareto_front_size\030\004 \001(\005\022\030\n\020total_iter" +
+      "ations\030\005 \001(\005\022\036\n\026execution_time_seconds\030\006" +
+      " \001(\001\"%\n\rHealthRequest\022\024\n\014service_name\030\001 " +
+      "\001(\t\"\"\n\020JobStatusRequest\022\016\n\006job_id\030\001 \001(\t\"" +
+      "\364\001\n\021JobStatusResponse\022\016\n\006job_id\030\001 \001(\t\022\020\n" +
+      "\010route_id\030\002 \001(\t\022\016\n\006status\030\003 \001(\t\022\020\n\010progr" +
+      "ess\030\004 \001(\002\022\017\n\007message\030\005 \001(\t\022\022\n\ncreated_at" +
+      "\030\006 \001(\t\022\022\n\nstarted_at\030\007 \001(\t\022\024\n\014completed_" +
+      "at\030\010 \001(\t\022!\n\031estimated_completion_time\030\t " +
+      "\001(\t\022\025\n\rerror_message\030\n \001(\t\022\022\n\nhas_result" +
+      "\030\013 \001(\010\"\"\n\020JobResultRequest\022\016\n\006job_id\030\001 \001" +
+      "(\t\"\"\n\020CancelJobRequest\022\016\n\006job_id\030\001 \001(\t\"E" +
+      "\n\021CancelJobResponse\022\016\n\006job_id\030\001 \001(\t\022\017\n\007s" +
+      "uccess\030\002 \001(\010\022\017\n\007message\030\003 \001(\t\"\022\n\020QueueIn" +
+      "foRequest\"\313\001\n\021QueueInfoResponse\022\022\n\nqueue" +
+      "_size\030\001 \001(\005\022\023\n\013active_jobs\030\002 \001(\005\022\026\n\016comp" +
+      "leted_jobs\030\003 \001(\005\022\033\n\023max_concurrent_jobs\030" +
+      "\004 \001(\005\022\037\n\027multiprocessing_enabled\030\005 \001(\010\0227" +
+      "\n\022active_jobs_detail\030\006 \003(\0132\033.route.optim" +
+      "ization.JobInfo\"c\n\007JobInfo\022\016\n\006job_id\030\001 \001" +
+      "(\t\022\016\n\006status\030\002 \001(\t\022\020\n\010progress\030\003 \001(\002\022\022\n\n" +
+      "created_at\030\004 \001(\t\022\022\n\nstarted_at\030\005 \001(\t2\327\004\n" +
+      "\030RouteOptimizationService\022l\n\rOptimizeRou" +
+      "te\022,.route.optimization.RouteOptimizatio" +
+      "nRequest\032-.route.optimization.RouteOptim" +
+      "izationResponse\022[\n\014GetJobStatus\022$.route." +
+      "optimization.JobStatusRequest\032%.route.op" +
+      "timization.JobStatusResponse\022c\n\014GetJobRe" +
+      "sult\022$.route.optimization.JobResultReque" +
+      "st\032-.route.optimization.RouteOptimizatio" +
+      "nResponse\022X\n\tCancelJob\022$.route.optimizat" +
+      "ion.CancelJobRequest\032%.route.optimizatio" +
+      "n.CancelJobResponse\022[\n\014GetQueueInfo\022$.ro" +
+      "ute.optimization.QueueInfoRequest\032%.rout" +
+      "e.optimization.QueueInfoResponse\022T\n\013Heal" +
+      "thCheck\022!.route.optimization.HealthReque" +
+      "st\032\".route.optimization.HealthResponseb\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10930,7 +19755,7 @@ public final class RouteOptimization {
     internal_static_route_optimization_RouteOptimizationResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_route_optimization_RouteOptimizationResponse_descriptor,
-        new java.lang.String[] { "RouteId", "Success", "Message", "Results", "Metrics", });
+        new java.lang.String[] { "RouteId", "Message", "Results", "Metrics", "JobId", "Status", "QueuePosition", "EstimatedWaitTimeMinutes", });
     internal_static_route_optimization_POI_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_route_optimization_POI_fieldAccessorTable = new
@@ -10943,42 +19768,96 @@ public final class RouteOptimization {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_route_optimization_RoutePreferences_descriptor,
         new java.lang.String[] { "OptimizeFor", "MaxTotalTime", "MaxTotalCost", "AccessibilityRequired", });
-    internal_static_route_optimization_RouteConstraints_descriptor =
+    internal_static_route_optimization_HealthResponse_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_route_optimization_HealthResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_HealthResponse_descriptor,
+        new java.lang.String[] { "IsHealthy", "Status", "Version", "QueueSize", "ActiveJobs", });
+    internal_static_route_optimization_Location_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_route_optimization_Location_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_Location_descriptor,
+        new java.lang.String[] { "Latitude", "Longitude", });
+    internal_static_route_optimization_RouteConstraints_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_route_optimization_RouteConstraints_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_route_optimization_RouteConstraints_descriptor,
-        new java.lang.String[] { "StartTime", "LunchBreakRequired", "LunchBreakDuration", });
+        new java.lang.String[] { "StartLocation", "EndLocation", "StartTime", "LunchBreakRequired", "LunchBreakDuration", });
     internal_static_route_optimization_OptimizationResults_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_route_optimization_OptimizationResults_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_route_optimization_OptimizationResults_descriptor,
         new java.lang.String[] { "OptimizedSequence", "TotalDistanceKm", "TotalTimeMinutes", "TotalCost", "OptimizationScore", "RouteDescription", });
     internal_static_route_optimization_OptimizedPOI_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_route_optimization_OptimizedPOI_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_route_optimization_OptimizedPOI_descriptor,
         new java.lang.String[] { "PoiId", "PoiName", "VisitOrder", "ArrivalTime", "DepartureTime", "EstimatedVisitTime", "Latitude", "Longitude", });
     internal_static_route_optimization_OptimizationMetrics_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_route_optimization_OptimizationMetrics_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_route_optimization_OptimizationMetrics_descriptor,
         new java.lang.String[] { "Hypervolume", "Arp", "Spacing", "ParetoFrontSize", "TotalIterations", "ExecutionTimeSeconds", });
     internal_static_route_optimization_HealthRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_route_optimization_HealthRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_route_optimization_HealthRequest_descriptor,
         new java.lang.String[] { "ServiceName", });
-    internal_static_route_optimization_HealthResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_route_optimization_HealthResponse_fieldAccessorTable = new
+    internal_static_route_optimization_JobStatusRequest_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_route_optimization_JobStatusRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_route_optimization_HealthResponse_descriptor,
-        new java.lang.String[] { "IsHealthy", "Status", "Version", });
+        internal_static_route_optimization_JobStatusRequest_descriptor,
+        new java.lang.String[] { "JobId", });
+    internal_static_route_optimization_JobStatusResponse_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_route_optimization_JobStatusResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_JobStatusResponse_descriptor,
+        new java.lang.String[] { "JobId", "RouteId", "Status", "Progress", "Message", "CreatedAt", "StartedAt", "CompletedAt", "EstimatedCompletionTime", "ErrorMessage", "HasResult", });
+    internal_static_route_optimization_JobResultRequest_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_route_optimization_JobResultRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_JobResultRequest_descriptor,
+        new java.lang.String[] { "JobId", });
+    internal_static_route_optimization_CancelJobRequest_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_route_optimization_CancelJobRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_CancelJobRequest_descriptor,
+        new java.lang.String[] { "JobId", });
+    internal_static_route_optimization_CancelJobResponse_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_route_optimization_CancelJobResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_CancelJobResponse_descriptor,
+        new java.lang.String[] { "JobId", "Success", "Message", });
+    internal_static_route_optimization_QueueInfoRequest_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_route_optimization_QueueInfoRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_QueueInfoRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_route_optimization_QueueInfoResponse_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_route_optimization_QueueInfoResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_QueueInfoResponse_descriptor,
+        new java.lang.String[] { "QueueSize", "ActiveJobs", "CompletedJobs", "MaxConcurrentJobs", "MultiprocessingEnabled", "ActiveJobsDetail", });
+    internal_static_route_optimization_JobInfo_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_route_optimization_JobInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_route_optimization_JobInfo_descriptor,
+        new java.lang.String[] { "JobId", "Status", "Progress", "CreatedAt", "StartedAt", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

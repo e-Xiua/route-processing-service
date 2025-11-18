@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  route-processing-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: route-processing-service:latest
+    container_name: route-processing-service
+    ports:
+      - "${ROUTE_PROCESSING_PORT:-8086}:8086"
+    environment:
+      # Spring Profile
+      - SPRING_PROFILES_ACTIVE=docker
+      
+      # Server Configuration
+      - SERVER_PORT=${SERVER_PORT:-8086}
+      
+      # CORS Configuration
+      - CORS_ORIGIN_1=${CORS_ORIGIN_1:-http://localhost:4200}
+      - CORS_ORIGIN_2=${CORS_ORIGIN_2:-http://localhost:3000}
+      - CORS_ORIGIN_3=${CORS_ORIGIN_3:-http://localhost:8085}
+      
+      # gRPC Python Service
+      - GRPC_PYTHON_HOST=${GRPC_PYTHON_HOST:-mrl-amis-python-service}
+      - GRPC_PYTHON_PORT=${GRPC_PYTHON_PORT:-50051}
+      - GRPC_CONNECTION_TIMEOUT=${GRPC_CONNECTION_TIMEOUT:-30}
+      - GRPC_REQUEST_TIMEOUT=${GRPC_REQUEST_TIMEOUT:-600}
+      - GRPC_MAX_RETRIES=${GRPC_MAX_RETRIES:-3}
+      
+      # Processing Configuration
+      - MAX_CONCURRENT_REQUESTS=${MAX_CONCURRENT_REQUESTS:-5}
+      - CLEANUP_HOURS=${CLEANUP_HOURS:-2}
+
+      # Java Options (construido desde variables separadas)
+      - JAVA_OPTS=-Xms${JAVA_OPTS_XMS:-512m} -Xmx${JAVA_OPTS_XMX:-1024m}
+    
+    networks:
+      - tesisNetwork
+    
+    depends_on:
+      mrl_amis_python_service:
+        condition: service_healthy
+    
+    restart: unless-stopped
+    
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8086/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+networks:
+  tesisNetwork:
+    external: true
